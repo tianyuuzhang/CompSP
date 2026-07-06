@@ -1,0 +1,15 @@
+jbb-4omini-ofa：/remote-home/xzh/for_zty/gpt3dot5_data_test/4omini/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+jbb-deepseek-ofa：/remote-home/xzh/for_zty/gpt3dot5_data_test/deepseek/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+jbb-llama-ofa：/remote-home/xzh/for_zty/gpt3dot5_data_test/llama/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+jbb-qwen-ofa：/remote-home/xzh/for_zty/gpt3dot5_data_test/qwen/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+hb-4omini-ofa：/remote-home/xzh/for_zty/gpt3dot5_400data_test/4omini/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+hb-deepseek-ofa：/remote-home/xzh/for_zty/gpt3dot5_400data_test/deepseek/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+hb-llama-ofa：/remote-home/xzh/for_zty/gpt3dot5_400data_test/llama/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+hb-qwen-ofa：/remote-home/xzh/for_zty/gpt3dot5_400data_test/qwen/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+
+jbb-qwen-dratack：/remote-home/xzh/for_zty/reproduce/drattack/DrAttack/Instructions_rewrite/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+jbb-4omini-drattack：/remote-home/xzh/for_zty/reproduce/drattack/DrAttack/Instructions_rewrite_4omini/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+jbb-llama-drattack：/remote-home/xzh/for_zty/reproduce/drattack/DrAttack/Instructions_rewrite_llama/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+jbb-qwen-pair：/remote-home/xzh/for_zty/reproduce/tasks/pair/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+jbb-llama-pair:/remote-home/xzh/for_zty/reproduce/tasks/pair_llama/save/Q_{i}/Q_r_{i}_0_100_txfilled.json
+jbb-4omini-pair:/remote-home/xzh/for_zty/reproduce/tasks/pair_4omini/save/Q_{i}/Q_r_{i}_0_100_txfilled.json

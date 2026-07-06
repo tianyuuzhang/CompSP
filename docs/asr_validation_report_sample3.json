@@ -1,0 +1,212 @@
+{
+  "hb-4omini-ofa": {
+    "dataset": "hb",
+    "attack": "ofa",
+    "target_model": "4omini",
+    "path_template": "/remote-home/xzh/for_zty/gpt3dot5_400data_test/4omini/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      2,
+      9,
+      10
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": ""
+  },
+  "hb-deepseek-ofa": {
+    "dataset": "hb",
+    "attack": "ofa",
+    "target_model": "deepseek",
+    "path_template": "/remote-home/xzh/for_zty/gpt3dot5_400data_test/deepseek/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      2,
+      9,
+      10
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": ""
+  },
+  "hb-llama-ofa": {
+    "dataset": "hb",
+    "attack": "ofa",
+    "target_model": "llama",
+    "path_template": "/remote-home/xzh/for_zty/gpt3dot5_400data_test/llama/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      2,
+      9,
+      10
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": ""
+  },
+  "hb-qwen-ofa": {
+    "dataset": "hb",
+    "attack": "ofa",
+    "target_model": "qwen",
+    "path_template": "/remote-home/xzh/for_zty/gpt3dot5_400data_test/qwen/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      2,
+      9,
+      10
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": ""
+  },
+  "jbb-4omini-drattack": {
+    "dataset": "jbb",
+    "attack": "drattack",
+    "target_model": "4omini",
+    "path_template": "/remote-home/xzh/for_zty/reproduce/drattack/DrAttack/Instructions_rewrite_4omini/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": "当前目录中预期只存在 Q_0..Q_79。"
+  },
+  "jbb-4omini-ofa": {
+    "dataset": "jbb",
+    "attack": "ofa",
+    "target_model": "4omini",
+    "path_template": "/remote-home/xzh/for_zty/gpt3dot5_data_test/4omini/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": ""
+  },
+  "jbb-4omini-pair": {
+    "dataset": "jbb",
+    "attack": "pair",
+    "target_model": "4omini",
+    "path_template": "/remote-home/xzh/for_zty/reproduce/tasks/pair_4omini/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": "修正人工索引中的重复后缀。"
+  },
+  "jbb-deepseek-ofa": {
+    "dataset": "jbb",
+    "attack": "ofa",
+    "target_model": "deepseek",
+    "path_template": "/remote-home/xzh/for_zty/gpt3dot5_data_test/deepseek/save/Q_{i}/Q_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": "JBB deepseek OFA txfilled 文件不使用 Q_r_ 前缀。"
+  },
+  "jbb-llama-drattack": {
+    "dataset": "jbb",
+    "attack": "drattack",
+    "target_model": "llama",
+    "path_template": "/remote-home/xzh/for_zty/reproduce/drattack/DrAttack/Instructions_rewrite_llama/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": "当前目录中预期只存在 Q_0..Q_79。"
+  },
+  "jbb-llama-ofa": {
+    "dataset": "jbb",
+    "attack": "ofa",
+    "target_model": "llama",
+    "path_template": "/remote-home/xzh/for_zty/gpt3dot5_data_test/llama/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": ""
+  },
+  "jbb-llama-pair": {
+    "dataset": "jbb",
+    "attack": "pair",
+    "target_model": "llama",
+    "path_template": "/remote-home/xzh/for_zty/reproduce/tasks/pair_llama/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": "修正人工索引中的重复后缀。"
+  },
+  "jbb-qwen-drattack": {
+    "dataset": "jbb",
+    "attack": "drattack",
+    "target_model": "qwen",
+    "path_template": "/remote-home/xzh/for_zty/reproduce/drattack/DrAttack/Instructions_rewrite/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": "当前目录中预期只存在 Q_0..Q_79。"
+  },
+  "jbb-qwen-ofa": {
+    "dataset": "jbb",
+    "attack": "ofa",
+    "target_model": "qwen",
+    "path_template": "/remote-home/xzh/for_zty/gpt3dot5_data_test/qwen/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": ""
+  },
+  "jbb-qwen-pair": {
+    "dataset": "jbb",
+    "attack": "pair",
+    "target_model": "qwen",
+    "path_template": "/remote-home/xzh/for_zty/reproduce/tasks/pair/save/Q_{i}/Q_r_{i}_0_100_txfilled.json",
+    "question_ids_discovered": [
+      0,
+      1,
+      2
+    ],
+    "files_checked": 3,
+    "files_missing": [],
+    "files_with_errors": [],
+    "notes": "当前目录中预期只存在 Q_0..Q_79。"
+  }
+}

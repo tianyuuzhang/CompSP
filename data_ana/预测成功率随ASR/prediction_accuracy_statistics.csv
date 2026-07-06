@@ -1,0 +1,7 @@
+task_name,overall_accuracy,overall_sample_count,non_01_accuracy,non_01_sample_count
+Qwen-ASR,0.7349,10000,0.7019,2600
+4omini-ASR,0.6914,8500,0.6387,4320
+Llama-ASR,0.7896,9500,0.714,2783
+Qwen-ALR,0.7923,6000,0.7394,307
+4omini-ALR,0.9112,4000,0.713,115
+Llama-ALR,0.9072,8500,0.769,870

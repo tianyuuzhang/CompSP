@@ -1,0 +1,15 @@
+[project]
+name = "tidy-compsp"
+version = "0.1.0"
+description = "Clean research utilities for OFA and CompSP experiments"
+requires-python = ">=3.10"
+dependencies = [
+  "aiohttp",
+  "numpy",
+]
+
+[project.optional-dependencies]
+ranking = ["torch", "transformers", "peft"]
+
+[tool.ruff]
+line-length = 120

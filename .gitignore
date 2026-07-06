@@ -1,0 +1,44 @@
+# Python/cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Secrets and local env
+.env
+.env.*
+config.json
+
+# Logs and runtime scratch
+logs/
+*.log
+*.pid
+
+# Large/generated data
+/data/大纲拆分/**
+!/data/大纲拆分/**/
+!/data/大纲拆分/**/README.md
+/data/work/**
+!/data/work/
+!/data/work/README.md
+
+# Heavy experiment outputs: keep compact final reports only
+/outputs/**
+!/outputs/
+!/outputs/attack_scheme_metrics_global/
+!/outputs/attack_scheme_metrics_global/*.md
+!/outputs/attack_scheme_metrics_global/*.csv
+!/outputs/attack_scheme_metrics_global/*.json
+
+# Binary intermediates from white-box runs
+*.pt
+*.pth
+*.safetensors
+*.jsonl
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
