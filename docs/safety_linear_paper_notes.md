@@ -247,3 +247,114 @@ PDF：`2025_Zhao_Harmfulness_Refusal_Separately.pdf`
 3. Pan 多维安全方向论文。
 4. Lin 越狱表示空间分析论文。
 5. SCANS，作为可直接复现的层级方向 recipe。
+
+## 11. Wang et al. 2025 - Refusal Direction is Universal Across Safety-Aligned Languages
+
+PDF：`2025_Wang_Multilingual_Refusal_Direction.pdf`
+
+链接：https://arxiv.org/abs/2505.17306
+
+核心结论：拒绝方向不只是英语安全行为中的局部现象，而是在多种安全对齐语言之间具有很强迁移性。英文抽取的 refusal direction 可以迁移到其他语言，其他安全对齐语言中抽取的方向也能相互迁移。
+
+方法：
+
+- 构建或使用多语言 harmful/benign prompt 对照集。
+- 在不同语言上抽取 refusal direction。
+- 做跨语言方向迁移和 activation intervention。
+- 分析不同语言 refusal vectors 的平行性。
+
+对 CompSP 的意义：
+
+- 这篇论文给“跨主题泛化”提供了一个很好的白盒类比：如果 refusal direction 能跨语言共享，那么 CompSP 的跨主题泛化也可能来自某种共享安全坐标。
+- 但它研究的是同一白盒模型内的跨语言，不等价于黑盒目标模型之间共享结构。写作时只能作为机制类比，不能直接当作跨模型证据。
+
+可复用指标：
+
+- 不同主题/攻击方案下方向 cosine。
+- 按攻击主题抽取方向，再测试跨主题迁移。
+- 如果后续加入中文/英文 prompt，可测试 CompSP 排序是否也有跨语言稳定性。
+
+## 12. Piras et al. 2025/2026 - Multi-Directional Refusal Suppression in Language Models
+
+PDF：`2025_Piras_Multi_Directional_Refusal_Suppression.pdf`
+
+链接：https://arxiv.org/abs/2511.08379
+
+核心结论：拒绝行为不一定只由单个方向充分描述，更像是由多个相关方向共同组成的低维 manifold。多方向方法能比单方向更细粒度地压制或分析拒绝。
+
+方法：
+
+- 在 harmful prompt 表示上训练 Self-Organizing Map。
+- 用 SOM 节点中心构造多个 refusal directions。
+- 比较单方向与多方向抑制 refusal 的效果。
+
+对 CompSP 的意义：
+
+- 如果单方向不能解释 CompSP 错排，多方向 refusal manifold 是自然升级路线。
+- OFA、PAIR、DrAttack 的 prompt 形式差异很大，可能落在 refusal manifold 的不同局部区域；单方向平均会抹掉这些局部结构。
+
+可复用指标：
+
+- 每个 prompt 到多个 refusal directions 的最大投影、均值投影、top-k 投影向量。
+- prompt 在多方向空间中的聚类，与 CompSP 排名桶或攻击方案标签比较。
+
+## 13. Joad et al. 2026 - There Is More to Refusal in Large Language Models than a Single Direction
+
+PDF：`2026_Joad_More_Than_Single_Refusal_Direction.pdf`
+
+链接：https://arxiv.org/abs/2602.02132
+
+核心结论：拒绝不是单一同质行为。安全拒绝、能力不足、过度拒绝、拟人化拒绝等不同拒绝类型在激活空间中对应几何上不同的方向；不过不同方向的线性 steering 可能共享一个类似的一维 refusal-control trade-off。
+
+方法：
+
+- 构造多种 refusal / non-compliance 类别。
+- 分别抽取类别方向。
+- 比较方向几何关系和 steering 后的拒绝-过度拒绝权衡。
+
+对 CompSP 的意义：
+
+- 这篇文献提醒我们：ALR 长回答/拒绝行为并不只有“安全拒绝”一种来源。
+- CompSP 可能学到某种更宽泛的 non-compliance 或 safety style 结构，而不是严格的 harmfulness 或 refusal。
+
+可复用指标：
+
+- 分别构造 safety refusal、over-refusal、capability refusal 的方向。
+- 对错排案例看它们更接近哪类 refusal 方向。
+- 检查低 ASR 高 CompSP 的 prompt 是否触发了“非安全型拒绝”方向。
+
+## 14. Cristofano 2026 - Universal Refusal Circuits Across LLMs
+
+PDF：`2026_Cristofano_Universal_Refusal_Circuits.pdf`
+
+链接：https://arxiv.org/abs/2601.16034
+
+核心结论：拒绝行为可能存在跨模型共享的低维语义 circuit。论文尝试把 donor model 的 refusal intervention 通过 concept-basis reconstruction 转移到不同架构或训练方式的 target model。
+
+方法：
+
+- 用 concept fingerprints 对齐不同模型的层。
+- 用概念基重构 donor refusal trajectory。
+- 在 target model 上重放或迁移 refusal ablation。
+- 加入 SVD 稳定性约束减少能力损伤。
+
+对 CompSP 的意义：
+
+- 这篇文章和我们的“黑盒代理是否学到白盒结构”非常接近，但它仍然是白盒/半白盒转移。
+- 可以作为强叙事背景：安全结构可能跨模型共享；但我们的实验必须避免直接把 Llama 白盒方向等同于 Qwen 或商业黑盒方向。
+
+可复用指标：
+
+- 跨模型方向/子空间对齐的概念框架。
+- 如果后续有 Qwen 开源白盒模型，可做 Llama/Qwen 白盒结构对照，再和 CompSP 跨模型结果比较。
+
+## 更新后的优先阅读顺序
+
+1. Arditi 单方向拒绝论文。
+2. Zhao 有害性/拒绝分离论文。
+3. Pan 多维安全方向论文。
+4. Piras/Joad 多方向 refusal 论文。
+5. Wang 多语言拒绝方向论文。
+6. Lin 越狱表示空间分析论文。
+7. SCANS，作为可直接复现的层级方向 recipe。
+8. Cristofano 跨模型 refusal circuits，作为远期叙事参考。
