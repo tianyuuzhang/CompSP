@@ -16,3 +16,10 @@
 ```bash
 export PYTHONPATH=$PWD/src
 ```
+
+## 伪安全结构可学习性实验
+
+- `build_pseudo_safety_direction.py`：从 Llama q1 最后一层 hidden state 和 ALR/ASR 学习 Ridge 伪安全方向，并输出每条 q1 的投影。
+- `build_pseudo_safety_pairs.py`：按伪方向投影大小关系构造新的 CompSP pairwise 训练/测试数据。
+- `train_pseudo_direction_compsp.py`：重新训练 LoRA pairwise 分类模型；不能复用旧 ASR CompSP。
+- `run_pseudo_safety_learnability.sh`：一键运行 ALR 主实验，支持 `SMOKE=1` 小样本烟测。

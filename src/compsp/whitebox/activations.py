@@ -78,6 +78,49 @@ def extract_last_and_mean(
     return ActivationBatch(last=torch.cat(last_chunks, dim=0), mean=torch.cat(mean_chunks, dim=0))
 
 
+@torch.no_grad()
+def extract_layer_last(
+    model,
+    tokenizer,
+    texts: list[str],
+    batch_size: int = 4,
+    max_length: int = 512,
+    layer_index: int = -1,
+    use_chat_template: bool = True,
+) -> torch.Tensor:
+    """只提取指定层最后一个有效 token 的 hidden state。
+
+    伪安全方向实验只需要最后一层最后 token 表示；相比 `extract_last_and_mean`，
+    这个函数不会把所有层堆叠到 CPU，适合 1 万条以上 q1 的批量抽取。
+    输出形状为 `[n, hidden]`。
+    """
+
+    chunks: list[torch.Tensor] = []
+    model_device = next(model.parameters()).device
+
+    for start in range(0, len(texts), batch_size):
+        batch_texts = [format_user_prompt(tokenizer, text, use_chat_template) for text in texts[start : start + batch_size]]
+        encoded = tokenizer(
+            batch_texts,
+            return_tensors="pt",
+            padding=True,
+            truncation=True,
+            max_length=max_length,
+        )
+        input_ids = encoded["input_ids"].to(model_device)
+        attention_mask = encoded["attention_mask"].to(model_device)
+        outputs = model(input_ids=input_ids, attention_mask=attention_mask, output_hidden_states=True, use_cache=False)
+        lengths = attention_mask.sum(dim=1) - 1
+        hidden = outputs.hidden_states[layer_index].float()
+        last = hidden[torch.arange(hidden.shape[0], device=hidden.device), lengths]
+        chunks.append(last.cpu())
+        del outputs, input_ids, attention_mask, encoded, hidden, last
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+    return torch.cat(chunks, dim=0)
+
+
 def batched(iterable: list, batch_size: int) -> Iterable[list]:
     for start in range(0, len(iterable), batch_size):
         yield iterable[start : start + batch_size]
