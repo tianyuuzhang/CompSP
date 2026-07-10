@@ -140,3 +140,42 @@ SMOKE=1 CUDA_VISIBLE_DEVICES=1 scripts/run_pseudo_safety_learnability.sh
 - 第一版只使用最后一层最后 token。
 - Ridge 方向是一维；多维安全结构需要后续扩展到 PLS/PCA/子空间。
 - ALR 是主监督，因为它更接近拒绝/长度行为；ASR 仍需作为最终攻击成功指标报告。
+## 2026-07-10 阶段性落档：ALR 非边界子集与 DrAttack 进度
+
+### 远程运行状态
+
+- 2026-07-10 09:40（北京时间）检查时，`jbb-llama-drattack` 伪安全方向 CompSP 训练仍在运行。
+- 最新 tqdm 约为 `12372/14108`，进度约 `87.7%`。
+- tqdm 训练剩余约 `3h`；由于 DrAttack 测试集有 `43,367` 个 pair，最终 evaluation/save 预计另需 `1.3~1.6h`。
+- 保守预计完整结束时间为北京时间 `2026-07-10 14:00` 左右。
+- DrAttack 未生成 `train_summary.json` 前，不启动 ASR 全流程，避免抢占 GPU。
+
+### ALR 非边界子集检查
+
+为排除模型只学习原始 ALR 的 `0 / middle / 1` 粗桶而形成 reward hacking，新增离线评估脚本：
+
+```text
+scripts/evaluate_pseudo_direction_compsp_subsets.py
+scripts/run_pseudo_subset_eval.sh
+```
+
+筛选条件：pair 中两条指令的原始 ALR 都严格位于 `(0,1)`。
+
+结果文件：
+
+```text
+outputs/pseudo_safety_direction/subset_eval/mixed_alr_last_layer/jbb-llama-ofa_alr_middle_eval.json
+outputs/pseudo_safety_direction/subset_eval/mixed_alr_last_layer/jbb-llama-pair_alr_middle_eval.json
+```
+
+| 数据集 | 全测试 accuracy | 两端 ALR 都在 (0,1) 的 n | 两端 ALR 都在 (0,1) accuracy | 同 ALR 桶 accuracy | 不同 ALR 桶 accuracy |
+|---|---:|---:|---:|---:|---:|
+| OFA | 0.7237 | 3,050 | 0.6443 | 0.5797 | 0.8239 |
+| PAIR | 0.7602 | 778 | 0.6735 | 0.6198 | 0.8381 |
+
+阶段性解释：
+
+1. 完整测试准确率中确实有一部分来自 ALR 粗桶差异，尤其是边界值 `0` 和 `1` 形成的容易 pair。
+2. 但在两端 ALR 都非边界的子集上，OFA/PAIR 仍显著高于随机，说明当前正结果不能完全由朴素二分类/三分类桶捷径解释。
+3. 同 ALR 桶子集 accuracy 更低，提示后续需要补充随机标签、打乱投影、随机方向 baseline 和按问题宏平均 accuracy。
+4. DrAttack 的同类评估需等待当前训练完成后补跑，预计单次评估约 `1.3~1.6h`。
