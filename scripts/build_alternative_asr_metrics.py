@@ -19,6 +19,8 @@ METRIC_KEYS = (
     "empirical_asr",
     "jeffreys_asr",
     "judge_hazard",
+    "hazard_weighted_asr",
+    "conditional_answer_unsafe_rate",
     "first_vote_unsafe_rate",
     "delayed_unsafe_rate",
     "unanimous_three_safe_rate",
@@ -89,7 +91,7 @@ def main() -> None:
     for dataset_key in dataset_keys:
         for qid in question_ids:
             for item_index, record in enumerate(iter_records(dataset_key, [qid])):
-                derived = derive_alternative_metrics(record.answers, record.tx, record.tot_qa)
+                derived = derive_alternative_metrics(record.answers, record.tx, record.txl, record.tot_qa)
                 rows.append(
                     {
                         "dataset_key": dataset_key,
