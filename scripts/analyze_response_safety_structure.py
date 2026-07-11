@@ -127,9 +127,9 @@ def tfidf_text(row: dict, view: str) -> str:
     raise ValueError(f"未知文本视图: {view}")
 
 
-def fit_tfidf(
-    train: list[dict], test: list[dict], target: str, alpha: float, max_features: int, view: str
-) -> np.ndarray:
+def build_tfidf_matrices(train: list[dict], test: list[dict], max_features: int, view: str):
+    """为一个文本视图只拟合一次词表，供多个目标复用。"""
+
     union = FeatureUnion(
         [
             ("word", TfidfVectorizer(ngram_range=(1, 2), min_df=3, max_features=max_features // 2, sublinear_tf=True)),
@@ -138,8 +138,7 @@ def fit_tfidf(
     )
     x_train = union.fit_transform([tfidf_text(row, view) for row in train])
     x_test = union.transform([tfidf_text(row, view) for row in test])
-    y_train = np.asarray([row[target] for row in train])
-    return Ridge(alpha=alpha, solver="lsqr").fit(x_train, y_train).predict(x_test)
+    return x_train, x_test
 
 
 def main() -> None:
@@ -175,7 +174,12 @@ def main() -> None:
             "测试采样拒绝开头比例": float(np.mean([row["sample_refusal_ratio"] for row in test])),
             "目标": {},
         }
+        tfidf_matrices = {}
+        if "tfidf" in args.methods:
+            for view in [x.strip() for x in args.text_views.split(",") if x.strip()]:
+                tfidf_matrices[view] = build_tfidf_matrices(train, test, args.max_features, view)
         for target in [x.strip() for x in args.targets.split(",") if x.strip()]:
+            y_train = np.asarray([row[target] for row in train])
             y_test = np.asarray([row[target] for row in test])
             target_result = {}
             if "handcrafted" in args.methods:
@@ -192,8 +196,8 @@ def main() -> None:
                         **details,
                     }
             if "tfidf" in args.methods:
-                for view in [x.strip() for x in args.text_views.split(",") if x.strip()]:
-                    pred = fit_tfidf(train, test, target, args.alpha, args.max_features, view)
+                for view, (x_train, x_test) in tfidf_matrices.items():
+                    pred = Ridge(alpha=args.alpha, solver="lsqr").fit(x_train, y_train).predict(x_test)
                     target_result[f"TFIDF_Ridge_{view}"] = {
                         "评估": sliced_metrics(test, y_test, pred, groups)
                     }
