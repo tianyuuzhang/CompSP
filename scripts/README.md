@@ -25,3 +25,4 @@ export PYTHONPATH=$PWD/src
 - `run_pseudo_safety_learnability.sh`：一键运行 ALR 主实验，支持 `SMOKE=1` 小样本烟测。
 - `launch_pseudo_safety_asr.sh`：以 `METRIC=asr` 后台启动同配置 ASR 辅助实验，并避免重复启动完整结果。
 - `analyze_response_safety_structure.py`：分析单条/少量回答内容与 ASR、ALR、白盒伪安全投影的关联；不使用安全判定字段作为特征。
+- `analyze_response_hidden_embeddings.py`：提取单条回答的 Llama 最后层表示，并检验其对输入端伪安全投影的嗅探能力。

@@ -7,6 +7,7 @@ from typing import Iterable
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from tqdm.auto import tqdm
 
 
 @dataclass
@@ -87,6 +88,7 @@ def extract_layer_last(
     max_length: int = 512,
     layer_index: int = -1,
     use_chat_template: bool = True,
+    show_progress: bool = False,
 ) -> torch.Tensor:
     """只提取指定层最后一个有效 token 的 hidden state。
 
@@ -98,7 +100,10 @@ def extract_layer_last(
     chunks: list[torch.Tensor] = []
     model_device = next(model.parameters()).device
 
-    for start in range(0, len(texts), batch_size):
+    starts = range(0, len(texts), batch_size)
+    if show_progress:
+        starts = tqdm(starts, total=(len(texts) + batch_size - 1) // batch_size, desc="提取最后层表示")
+    for start in starts:
         batch_texts = [format_user_prompt(tokenizer, text, use_chat_template) for text in texts[start : start + batch_size]]
         encoded = tokenizer(
             batch_texts,

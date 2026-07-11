@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-ranking = ["torch", "transformers", "peft", "datasets"]
+ranking = ["torch", "transformers", "peft", "datasets", "tqdm"]
 
 [tool.ruff]
 line-length = 120
