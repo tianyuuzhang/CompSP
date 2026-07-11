@@ -33,3 +33,4 @@ export PYTHONPATH=$PWD/src
 - `run_cross_attack_llama_response_matrix.sh`：运行 Llama 的 OFA/PAIR/DrAttack/混合数据 4×4 单回答迁移矩阵。
 - `launch_cross_attack_after_cross_model.sh`：等待跨模型矩阵结束后自动接力跨攻击/混合矩阵。
 - `summarize_response_transfer_matrix.py`：将迁移实验 JSON 单元汇总为 ASR、加权风险、ALR 的中文矩阵表。
+- `evaluate_few_answer_text_probe.py`：严格以少量回答文本预测独立后缀 ASR，排除回答参与同一标签统计的泄漏。
