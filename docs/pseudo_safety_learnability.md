@@ -226,3 +226,24 @@ DrAttack 非边界子集评估最终结果：
 DrAttack 在非边界、中间区间以及同/不同粗桶中都接近随机，因此其负结果不是由
 ALR=0/1 边界样本掩盖，也不是简单的粗桶分布问题。后续需要优先检查 512-token 截断、
 DrAttack 指令有效信息位置和 LoRA 训练稳定性，而不是继续解释为 reward hacking。
+
+## 2026-07-12 落档：ASR-PAIR 完成，ASR-DrAttack 启动
+
+ASR-Ridge 方向下，`jbb-llama-pair` 的新 CompSP 训练已经完成：
+
+| 数据集 | 训练 pair | 测试 pair | 训练耗时 | final accuracy | macro-F1 | AUC |
+|---|---:|---:|---:|---:|---:|---:|
+| jbb-llama-pair | 108,665 | 44,204 | 35,339s | 0.6485 | 0.6484 | 0.7086 |
+
+解释：ASR 伪方向在 PAIR 上可以被 CompSP 学到，但明显弱于 ALR 方向上的 PAIR
+结果（accuracy 约 0.7602）。这符合当前判断：ASR 更接近最终攻击成功指标，受采样、
+判定器和具体危险内容影响更大；ALR/拒绝结构更容易被文本和 pairwise 模型捕获。
+
+`jbb-llama-drattack` 已自动启动。pair 构造结果：
+
+| 数据集 | 训练 pair | 测试 pair | 训练问题 | 测试问题 |
+|---|---:|---:|---:|---:|
+| jbb-llama-drattack | 115,913 | 48,417 | 60 | 20 |
+
+初始 ETA：参考 ALR-DrAttack 实测 27.44 小时训练和约 1.3 小时最终评估，ASR-DrAttack
+预计约 28~32 小时。等训练 tqdm 正式出现后，以日志 ETA 为准。
