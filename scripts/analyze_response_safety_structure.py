@@ -82,6 +82,7 @@ def load_rows(score_file: str, sample_size: int, seed: int, max_rows: int | None
                         "split": score["split"],
                         "features": features,
                         "text": text,
+                        "q1": str(score.get("q1", record.q1)),
                         "pseudo_score": float(score["pseudo_score"]),
                         "asr": float(score["asr"]),
                         "alr": float(score["alr"]),
@@ -116,15 +117,27 @@ def fit_handcrafted(
     return pred, {"主要系数": [{"特征": names[i], "系数": float(model.coef_[i])} for i in largest]}
 
 
-def fit_tfidf(train: list[dict], test: list[dict], target: str, alpha: float, max_features: int) -> np.ndarray:
+def tfidf_text(row: dict, view: str) -> str:
+    if view == "response":
+        return row["text"]
+    if view == "q1":
+        return row["q1"]
+    if view == "joint":
+        return f"<指令>\n{row['q1']}\n<回答>\n{row['text']}"
+    raise ValueError(f"未知文本视图: {view}")
+
+
+def fit_tfidf(
+    train: list[dict], test: list[dict], target: str, alpha: float, max_features: int, view: str
+) -> np.ndarray:
     union = FeatureUnion(
         [
             ("word", TfidfVectorizer(ngram_range=(1, 2), min_df=3, max_features=max_features // 2, sublinear_tf=True)),
             ("char", TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 5), min_df=4, max_features=max_features // 2, sublinear_tf=True)),
         ]
     )
-    x_train = union.fit_transform([row["text"] for row in train])
-    x_test = union.transform([row["text"] for row in test])
+    x_train = union.fit_transform([tfidf_text(row, view) for row in train])
+    x_test = union.transform([tfidf_text(row, view) for row in test])
     y_train = np.asarray([row[target] for row in train])
     return Ridge(alpha=alpha, solver="lsqr").fit(x_train, y_train).predict(x_test)
 
@@ -136,6 +149,11 @@ def main() -> None:
     parser.add_argument("--sample-sizes", default="1,2,4,8,20")
     parser.add_argument("--targets", default="pseudo_score,asr,alr")
     parser.add_argument("--methods", default="handcrafted")
+    parser.add_argument(
+        "--text-views",
+        default="response",
+        help="TF-IDF 输入视图，逗号分隔：response、q1、joint。",
+    )
     parser.add_argument("--alpha", type=float, default=10.0)
     parser.add_argument("--max-features", type=int, default=30000)
     parser.add_argument("--max-rows", type=int, default=None)
@@ -174,10 +192,11 @@ def main() -> None:
                         **details,
                     }
             if "tfidf" in args.methods:
-                pred = fit_tfidf(train, test, target, args.alpha, args.max_features)
-                target_result["去拒绝前缀_TFIDF_Ridge"] = {
-                    "评估": sliced_metrics(test, y_test, pred, groups)
-                }
+                for view in [x.strip() for x in args.text_views.split(",") if x.strip()]:
+                    pred = fit_tfidf(train, test, target, args.alpha, args.max_features, view)
+                    target_result[f"TFIDF_Ridge_{view}"] = {
+                        "评估": sliced_metrics(test, y_test, pred, groups)
+                    }
             sample_result["目标"][target] = target_result
         all_results[str(sample_size)] = sample_result
         print(f"完成 sample_size={sample_size}: train={len(train)}, test={len(test)}", flush=True)
@@ -186,6 +205,7 @@ def main() -> None:
         "说明": "特征仅来自回答正文，未使用 toxic/toxicA；训练测试按固定问题划分。",
         "scores": args.scores,
         "methods": args.methods,
+        "text_views": args.text_views,
         "sample_sizes": args.sample_sizes,
         "results": all_results,
     }
