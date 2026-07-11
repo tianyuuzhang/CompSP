@@ -29,3 +29,4 @@ export PYTHONPATH=$PWD/src
 - `launch_response_hidden_after_subset.sh`：等待 DrAttack 子集评估释放 GPU 0 后，自动接力启动回答 hidden embedding 实验。
 - `build_alternative_asr_metrics.py`：从提前停止的 `toxicA` 判定序列构建 Jeffreys ASR、判定 hazard 等替代安全指标，不覆盖原 ASR。
 - `evaluate_few_answer_risk_estimators.py`：将 20 条回答随机拆成前缀和独立后缀，检验少量回答风险估计器能否预测未使用回答的 ASR。
+- `run_cross_model_ofa_response_matrix.sh`：在 JBB-OFA 上运行 Llama/Qwen/4omini/DeepSeek 的单回答 TF-IDF 4×4 跨模型迁移矩阵。

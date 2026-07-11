@@ -63,6 +63,7 @@ def load_rows(
     seed: int,
     max_rows: int | None,
     target_names: list[str],
+    dataset_filter: set[str] | None = None,
 ) -> list[dict]:
     score_rows = read_jsonl(score_file)
     score_map = {
@@ -70,6 +71,8 @@ def load_rows(
     }
     rows: list[dict] = []
     for dataset_key in sorted({key[0] for key in score_map}):
+        if dataset_filter is not None and dataset_key not in dataset_filter:
+            continue
         by_qid = sorted({key[1] for key in score_map if key[0] == dataset_key})
         for qid in by_qid:
             for item_index, record in enumerate(iter_records(dataset_key, [qid])):
@@ -202,9 +205,10 @@ def main() -> None:
     target_names = [x.strip() for x in args.targets.split(",") if x.strip()]
     train_datasets = {x.strip() for x in args.train_datasets.split(",") if x.strip()} if args.train_datasets else None
     test_datasets = {x.strip() for x in args.test_datasets.split(",") if x.strip()} if args.test_datasets else None
+    dataset_filter = (train_datasets or set()) | (test_datasets or set()) or None
     all_results: dict[str, dict] = {}
     for sample_size in [int(x) for x in args.sample_sizes.split(",") if x.strip()]:
-        rows = load_rows(args.scores, sample_size, args.seed, args.max_rows, target_names)
+        rows = load_rows(args.scores, sample_size, args.seed, args.max_rows, target_names, dataset_filter)
         if args.shuffle_responses_within_question:
             rows = shuffle_response_views(rows, args.seed + sample_size)
         train = [
