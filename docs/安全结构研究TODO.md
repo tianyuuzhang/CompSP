@@ -69,7 +69,7 @@
 - [x] 同攻击方案、同问题内打乱回答归属负对照。
 - [x] 单回答 Llama 最后层 embedding 初验；结果未超过黑盒 TF-IDF。
 - [x] 实现 Jeffreys ASR、判定 hazard、首票/延迟 unsafe、三票全 safe 和错误票率。
-- [ ] 验证 Llama 三攻击替代指标的相关性、分辨率和重建一致率。
+- [x] 验证 Llama 三攻击替代指标的相关性、分辨率和重建一致率。
 - [ ] 扩展到 Qwen、4omini、DeepSeek 与 HarmBench，按目标模型分别报告。
 - [ ] 训练单模型嗅探器并做 OFA/PAIR/DrAttack 跨攻击迁移矩阵。
 - [ ] 做跨模型迁移矩阵；禁止拿源模型 ASR 当目标模型标签。
