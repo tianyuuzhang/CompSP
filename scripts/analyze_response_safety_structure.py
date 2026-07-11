@@ -94,6 +94,23 @@ def load_rows(score_file: str, sample_size: int, seed: int, max_rows: int | None
     return rows
 
 
+def shuffle_response_views(rows: list[dict], seed: int) -> list[dict]:
+    """在同攻击方案、同问题内打乱回答视图，保留 q1 与所有目标不变。"""
+
+    rng = np.random.default_rng(seed)
+    by_group: dict[tuple[str, int], list[int]] = {}
+    for index, row in enumerate(rows):
+        by_group.setdefault((row["dataset_key"], row["question_id"]), []).append(index)
+    shuffled = [dict(row) for row in rows]
+    response_fields = ("features", "text", "sampled_answers", "sample_long_ratio", "sample_refusal_ratio")
+    for indices in by_group.values():
+        sources = rng.permutation(indices)
+        for destination, source in zip(indices, sources.tolist()):
+            for field in response_fields:
+                shuffled[destination][field] = rows[source][field]
+    return shuffled
+
+
 def fit_handcrafted(
     train: list[dict],
     test: list[dict],
@@ -157,6 +174,11 @@ def main() -> None:
     parser.add_argument("--max-features", type=int, default=30000)
     parser.add_argument("--max-rows", type=int, default=None)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument(
+        "--shuffle-responses-within-question",
+        action="store_true",
+        help="同攻击方案、同问题内打乱回答归属，用作负对照。",
+    )
     args = parser.parse_args()
 
     out_dir = Path(args.output_dir)
@@ -164,6 +186,8 @@ def main() -> None:
     all_results: dict[str, dict] = {}
     for sample_size in [int(x) for x in args.sample_sizes.split(",") if x.strip()]:
         rows = load_rows(args.scores, sample_size, args.seed, args.max_rows)
+        if args.shuffle_responses_within_question:
+            rows = shuffle_response_views(rows, args.seed + sample_size)
         train = [row for row in rows if row["split"] == "train"]
         test = [row for row in rows if row["split"] == "test"]
         groups = [(row["dataset_key"], row["question_id"]) for row in test]
@@ -210,6 +234,7 @@ def main() -> None:
         "scores": args.scores,
         "methods": args.methods,
         "text_views": args.text_views,
+        "shuffle_responses_within_question": args.shuffle_responses_within_question,
         "sample_sizes": args.sample_sizes,
         "results": all_results,
     }
