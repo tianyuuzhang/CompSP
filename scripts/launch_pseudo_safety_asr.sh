@@ -24,4 +24,4 @@ METRIC=asr SKIP_EXISTING=1 CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}" \
 PID=$!
 echo "ASR 实验已启动：PID=${PID}"
 echo "日志：${LOG}"
-echo "历史速度下预计总时长 25~35 小时；产生 tqdm 后以日志 ETA 为准。"
+echo "按 ALR 三组实测速度预计总时长 45~55 小时；产生 tqdm 后以日志 ETA 为准。"
