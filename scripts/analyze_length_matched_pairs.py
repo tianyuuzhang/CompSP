@@ -62,6 +62,13 @@ def length_matched_accuracy(
     }
 
 
+def dataset_slices(rows: list[dict]) -> dict[str, np.ndarray]:
+    """返回每个数据集在测试列表中的布尔掩码。"""
+
+    datasets = sorted({row["dataset_key"] for row in rows})
+    return {dataset: np.asarray([row["dataset_key"] == dataset for row in rows], dtype=bool) for dataset in datasets}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="长度匹配 pair 上的 response 嗅探评估。")
     parser.add_argument("--scores", required=True)
@@ -115,9 +122,24 @@ def main() -> None:
         pred = Ridge(alpha=args.alpha, solver="lsqr").fit(x_train, y_train).predict(x_test)
         target_result = {}
         for delta in deltas:
-            target_result[f"长度差<={delta:g}"] = length_matched_accuracy(
+            key = f"长度差<={delta:g}"
+            target_result[key] = {
+                "合并": length_matched_accuracy(
                 test, y_test, pred, lengths, delta, args.min_target_delta
-            )
+                ),
+                "按数据集": {},
+            }
+            for dataset, mask in dataset_slices(test).items():
+                indices = np.flatnonzero(mask)
+                subset_rows = [test[int(index)] for index in indices]
+                target_result[key]["按数据集"][dataset] = length_matched_accuracy(
+                    subset_rows,
+                    y_test[mask],
+                    pred[mask],
+                    lengths[mask],
+                    delta,
+                    args.min_target_delta,
+                )
         report["results"][target] = target_result
 
     out_dir = Path(args.output_dir)
@@ -131,10 +153,17 @@ def main() -> None:
         lines.append(f"## {target}")
         lines.extend(["", "| 长度阈值 | pair数 | 有效问题数 | 同题序准确率 | 宏平均序准确率 |", "|---|---:|---:|---:|---:|"])
         for name, item in report["results"][target].items():
+            merged = item["合并"]
             lines.append(
-                f"| {name} | {item['pair数']} | {item['有效问题数']} | "
-                f"{item['同题序准确率']:.3f} | {item['按问题宏平均序准确率']:.3f} |"
+                f"| {name} | {merged['pair数']} | {merged['有效问题数']} | "
+                f"{merged['同题序准确率']:.3f} | {merged['按问题宏平均序准确率']:.3f} |"
             )
+        lines.extend(["", "按数据集：", ""])
+        for dataset in sorted({row["dataset_key"] for row in test}):
+            values = []
+            for name, item in report["results"][target].items():
+                values.append(f"{name}: {item['按数据集'][dataset]['同题序准确率']:.3f}")
+            lines.append(f"- `{dataset}`：" + "；".join(values))
         lines.append("")
     md_path = out_dir / "length_matched_pairs_report.md"
     md_path.write_text("\n".join(lines), encoding="utf-8")
