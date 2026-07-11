@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 import numpy as np
@@ -21,7 +22,13 @@ from sklearn.pipeline import FeatureUnion
 from sklearn.preprocessing import StandardScaler
 
 from compsp.asr_dataset import iter_records
-from compsp.response_structure import FEATURE_NAMES, aggregate_answers, pairwise_accuracy_by_group, pairwise_accuracy_by_group_macro
+from compsp.response_structure import (
+    FEATURE_NAMES,
+    REFUSAL_TERMS,
+    aggregate_answers,
+    pairwise_accuracy_by_group,
+    pairwise_accuracy_by_group_macro,
+)
 from compsp.whitebox.supervised_direction import read_jsonl
 
 
@@ -152,17 +159,53 @@ def fit_handcrafted(
     return pred, {"主要系数": [{"特征": names[i], "系数": float(model.coef_[i])} for i in largest]}
 
 
-def tfidf_text(row: dict, view: str) -> str:
+HAZARD_TERMS = (
+    "illegal",
+    "harmful",
+    "dangerous",
+    "weapon",
+    "explosive",
+    "malware",
+    "phishing",
+    "bypass",
+    "jailbreak",
+    "unsafe",
+)
+
+
+def mask_terms(text: str, terms: tuple[str, ...], token: str) -> str:
+    """把可能形成捷径的安全话术替换成占位符，保留其余词序。"""
+
+    cleaned = str(text)
+    for term in sorted(terms, key=len, reverse=True):
+        cleaned = re.sub(re.escape(term), token, cleaned, flags=re.IGNORECASE)
+    return cleaned
+
+
+def clean_tfidf_text(text: str, mode: str) -> str:
+    """按指定口径清理 TF-IDF 文本，用于排查拒绝/危险词捷径。"""
+
+    if mode == "none":
+        return str(text)
+    if mode == "mask_refusal_terms":
+        return mask_terms(str(text), REFUSAL_TERMS, " <REFUSAL_TERM> ")
+    if mode == "mask_refusal_hazard_terms":
+        masked = mask_terms(str(text), REFUSAL_TERMS, " <REFUSAL_TERM> ")
+        return mask_terms(masked, HAZARD_TERMS, " <HAZARD_TERM> ")
+    raise ValueError(f"未知文本清理模式: {mode}")
+
+
+def tfidf_text(row: dict, view: str, cleaning: str) -> str:
     if view == "response":
-        return row["text"]
+        return clean_tfidf_text(row["text"], cleaning)
     if view == "q1":
-        return row["q1"]
+        return clean_tfidf_text(row["q1"], cleaning)
     if view == "joint":
-        return f"<指令>\n{row['q1']}\n<回答>\n{row['text']}"
+        return clean_tfidf_text(f"<指令>\n{row['q1']}\n<回答>\n{row['text']}", cleaning)
     raise ValueError(f"未知文本视图: {view}")
 
 
-def build_tfidf_matrices(train: list[dict], test: list[dict], max_features: int, view: str):
+def build_tfidf_matrices(train: list[dict], test: list[dict], max_features: int, view: str, cleaning: str):
     """为一个文本视图只拟合一次词表，供多个目标复用。"""
 
     union = FeatureUnion(
@@ -171,8 +214,8 @@ def build_tfidf_matrices(train: list[dict], test: list[dict], max_features: int,
             ("char", TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 5), min_df=4, max_features=max_features // 2, sublinear_tf=True)),
         ]
     )
-    x_train = union.fit_transform([tfidf_text(row, view) for row in train])
-    x_test = union.transform([tfidf_text(row, view) for row in test])
+    x_train = union.fit_transform([tfidf_text(row, view, cleaning) for row in train])
+    x_test = union.transform([tfidf_text(row, view, cleaning) for row in test])
     return x_train, x_test
 
 
@@ -187,6 +230,12 @@ def main() -> None:
         "--text-views",
         default="response",
         help="TF-IDF 输入视图，逗号分隔：response、q1、joint。",
+    )
+    parser.add_argument(
+        "--text-cleaning",
+        default="none",
+        choices=("none", "mask_refusal_terms", "mask_refusal_hazard_terms"),
+        help="TF-IDF 文本清理口径，用于排查拒绝/危险词捷径。",
     )
     parser.add_argument("--alpha", type=float, default=10.0)
     parser.add_argument("--max-features", type=int, default=30000)
@@ -233,7 +282,7 @@ def main() -> None:
         tfidf_matrices = {}
         if "tfidf" in args.methods:
             for view in [x.strip() for x in args.text_views.split(",") if x.strip()]:
-                tfidf_matrices[view] = build_tfidf_matrices(train, test, args.max_features, view)
+                tfidf_matrices[view] = build_tfidf_matrices(train, test, args.max_features, view, args.text_cleaning)
         for target in target_names:
             y_train = np.asarray([row[target] for row in train])
             y_test = np.asarray([row[target] for row in test])
@@ -266,6 +315,7 @@ def main() -> None:
         "scores": args.scores,
         "methods": args.methods,
         "text_views": args.text_views,
+        "text_cleaning": args.text_cleaning,
         "shuffle_responses_within_question": args.shuffle_responses_within_question,
         "train_datasets": sorted(train_datasets) if train_datasets else "全部",
         "test_datasets": sorted(test_datasets) if test_datasets else "全部",
