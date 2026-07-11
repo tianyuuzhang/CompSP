@@ -13,7 +13,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import Ridge
 
 from compsp.asr_dataset import iter_records
-from compsp.response_structure import answer_view, pairwise_accuracy_by_group
+from compsp.response_structure import answer_view, pairwise_accuracy_by_group, pairwise_accuracy_by_group_macro
 from compsp.whitebox.supervised_direction import TEST_QIDS, TRAIN_QIDS, parse_csv_ints
 
 
@@ -38,6 +38,7 @@ def metrics(rows: list[dict], pred: np.ndarray) -> dict:
         "mae": float(np.mean(np.abs(pred - y))),
         "brier": float(np.mean((pred - y) ** 2)),
         "同题序关系准确率": pairwise_accuracy_by_group(y, pred, groups),
+        "按问题宏平均序准确率": pairwise_accuracy_by_group_macro(y, pred, groups),
     }
 
 
@@ -125,4 +126,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

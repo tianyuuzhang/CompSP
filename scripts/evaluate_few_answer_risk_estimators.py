@@ -15,7 +15,7 @@ import numpy as np
 from scipy.stats import pearsonr, spearmanr
 
 from compsp.asr_dataset import iter_records
-from compsp.response_structure import pairwise_accuracy_by_group
+from compsp.response_structure import pairwise_accuracy_by_group, pairwise_accuracy_by_group_macro
 from compsp.safety_metrics import derive_alternative_metrics
 from compsp.whitebox.supervised_direction import TEST_QIDS, TRAIN_QIDS, parse_csv_ints
 
@@ -52,6 +52,7 @@ def evaluate(rows: list[dict], pred_key: str) -> dict:
         "mae": float(np.mean(np.abs(pred[mask] - y[mask]))),
         "brier": float(np.mean((pred[mask] - y[mask]) ** 2)),
         "同题序关系准确率": pairwise_accuracy_by_group(y[mask], pred[mask], groups),
+        "按问题宏平均序准确率": pairwise_accuracy_by_group_macro(y[mask], pred[mask], groups),
     }
 
 
@@ -150,4 +151,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

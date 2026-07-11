@@ -17,7 +17,7 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_absolute_error, r2_score
 
 from compsp.asr_dataset import iter_records
-from compsp.response_structure import answer_view, pairwise_accuracy_by_group
+from compsp.response_structure import answer_view, pairwise_accuracy_by_group, pairwise_accuracy_by_group_macro
 from compsp.whitebox.activations import extract_layer_last, load_causal_lm
 from compsp.whitebox.supervised_direction import read_jsonl, write_jsonl
 
@@ -80,6 +80,7 @@ def evaluate_slices(rows: list[dict], target: np.ndarray, pred: np.ndarray) -> d
             "mae": float(mean_absolute_error(y, p)),
             "r2": float(r2_score(y, p)),
             "同题序关系准确率": pairwise_accuracy_by_group(y, p, groups),
+            "按问题宏平均序准确率": pairwise_accuracy_by_group_macro(y, p, groups),
         }
     return result
 
@@ -136,4 +137,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

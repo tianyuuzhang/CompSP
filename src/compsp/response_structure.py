@@ -163,3 +163,24 @@ def pairwise_accuracy_by_group(
                 total += 1
     return float(correct / total) if total else float("nan")
 
+
+def pairwise_accuracy_by_group_macro(
+    targets: np.ndarray,
+    predictions: np.ndarray,
+    groups: Iterable[tuple[str, int]],
+    min_target_delta: float = 0.0,
+) -> float:
+    """先在每个攻击方案/问题内算序准确率，再对问题做等权平均。"""
+
+    grouped: dict[tuple[str, int], list[int]] = {}
+    for index, group in enumerate(groups):
+        grouped.setdefault(group, []).append(index)
+    accuracies = []
+    for group, indices in grouped.items():
+        local_targets = targets[indices]
+        local_predictions = predictions[indices]
+        local_groups = [group] * len(indices)
+        accuracy = pairwise_accuracy_by_group(local_targets, local_predictions, local_groups, min_target_delta)
+        if np.isfinite(accuracy):
+            accuracies.append(accuracy)
+    return float(np.mean(accuracies)) if accuracies else float("nan")

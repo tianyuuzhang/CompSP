@@ -21,7 +21,7 @@ from sklearn.pipeline import FeatureUnion
 from sklearn.preprocessing import StandardScaler
 
 from compsp.asr_dataset import iter_records
-from compsp.response_structure import FEATURE_NAMES, aggregate_answers, pairwise_accuracy_by_group
+from compsp.response_structure import FEATURE_NAMES, aggregate_answers, pairwise_accuracy_by_group, pairwise_accuracy_by_group_macro
 from compsp.whitebox.supervised_direction import read_jsonl
 
 
@@ -40,6 +40,7 @@ def metrics(y: np.ndarray, pred: np.ndarray, groups: list[tuple[str, int]]) -> d
         "mae": float(mean_absolute_error(y, pred)),
         "r2": float(r2_score(y, pred)),
         "同题序关系准确率": pairwise_accuracy_by_group(y, pred, groups),
+        "按问题宏平均序准确率": pairwise_accuracy_by_group_macro(y, pred, groups),
     }
 
 
