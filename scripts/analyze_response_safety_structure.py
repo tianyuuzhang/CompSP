@@ -57,7 +57,13 @@ def sliced_metrics(
     return result
 
 
-def load_rows(score_file: str, sample_size: int, seed: int, max_rows: int | None) -> list[dict]:
+def load_rows(
+    score_file: str,
+    sample_size: int,
+    seed: int,
+    max_rows: int | None,
+    target_names: list[str],
+) -> list[dict]:
     score_rows = read_jsonl(score_file)
     score_map = {
         (row["dataset_key"], int(row["question_id"]), int(row["item_index"])): row for row in score_rows
@@ -74,21 +80,29 @@ def load_rows(score_file: str, sample_size: int, seed: int, max_rows: int | None
                 features, text, extras = aggregate_answers(
                     record.answers, sample_size=sample_size, rng=np.random.default_rng(local_seed)
                 )
-                rows.append(
-                    {
-                        "dataset_key": dataset_key,
-                        "question_id": qid,
-                        "item_index": item_index,
-                        "split": score["split"],
-                        "features": features,
-                        "text": text,
-                        "q1": str(score.get("q1", record.q1)),
-                        "pseudo_score": float(score["pseudo_score"]),
-                        "asr": float(score["asr"]),
-                        "alr": float(score["alr"]),
-                        **extras,
-                    }
-                )
+                item = {
+                    "dataset_key": dataset_key,
+                    "question_id": qid,
+                    "item_index": item_index,
+                    "split": score["split"],
+                    "features": features,
+                    "text": text,
+                    "q1": str(score.get("q1", record.q1)),
+                    **extras,
+                }
+                missing_target = False
+                for target_name in target_names:
+                    value = score.get(target_name)
+                    if value is None and target_name == "asr":
+                        value = record.asr
+                    if value is None and target_name == "alr":
+                        value = record.alr
+                    if value is None:
+                        missing_target = True
+                        break
+                    item[target_name] = float(value)
+                if not missing_target:
+                    rows.append(item)
                 if max_rows is not None and len(rows) >= max_rows:
                     return rows
     return rows
@@ -174,6 +188,8 @@ def main() -> None:
     parser.add_argument("--max-features", type=int, default=30000)
     parser.add_argument("--max-rows", type=int, default=None)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--train-datasets", default=None, help="逗号分隔；默认使用 scores 中全部训练集。")
+    parser.add_argument("--test-datasets", default=None, help="逗号分隔；默认使用 scores 中全部测试集。")
     parser.add_argument(
         "--shuffle-responses-within-question",
         action="store_true",
@@ -183,13 +199,24 @@ def main() -> None:
 
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    target_names = [x.strip() for x in args.targets.split(",") if x.strip()]
+    train_datasets = {x.strip() for x in args.train_datasets.split(",") if x.strip()} if args.train_datasets else None
+    test_datasets = {x.strip() for x in args.test_datasets.split(",") if x.strip()} if args.test_datasets else None
     all_results: dict[str, dict] = {}
     for sample_size in [int(x) for x in args.sample_sizes.split(",") if x.strip()]:
-        rows = load_rows(args.scores, sample_size, args.seed, args.max_rows)
+        rows = load_rows(args.scores, sample_size, args.seed, args.max_rows, target_names)
         if args.shuffle_responses_within_question:
             rows = shuffle_response_views(rows, args.seed + sample_size)
-        train = [row for row in rows if row["split"] == "train"]
-        test = [row for row in rows if row["split"] == "test"]
+        train = [
+            row for row in rows
+            if row["split"] == "train" and (train_datasets is None or row["dataset_key"] in train_datasets)
+        ]
+        test = [
+            row for row in rows
+            if row["split"] == "test" and (test_datasets is None or row["dataset_key"] in test_datasets)
+        ]
+        if not train or not test:
+            raise ValueError("训练集或测试集为空，请检查 train/test dataset 过滤条件。")
         groups = [(row["dataset_key"], row["question_id"]) for row in test]
         sample_result = {
             "训练记录数": len(train),
@@ -202,7 +229,7 @@ def main() -> None:
         if "tfidf" in args.methods:
             for view in [x.strip() for x in args.text_views.split(",") if x.strip()]:
                 tfidf_matrices[view] = build_tfidf_matrices(train, test, args.max_features, view)
-        for target in [x.strip() for x in args.targets.split(",") if x.strip()]:
+        for target in target_names:
             y_train = np.asarray([row[target] for row in train])
             y_test = np.asarray([row[target] for row in test])
             target_result = {}
@@ -235,6 +262,8 @@ def main() -> None:
         "methods": args.methods,
         "text_views": args.text_views,
         "shuffle_responses_within_question": args.shuffle_responses_within_question,
+        "train_datasets": sorted(train_datasets) if train_datasets else "全部",
+        "test_datasets": sorted(test_datasets) if test_datasets else "全部",
         "sample_sizes": args.sample_sizes,
         "results": all_results,
     }

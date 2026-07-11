@@ -103,6 +103,7 @@ def main() -> None:
                         "tx": record.tx,
                         "txl": record.txl,
                         "tot_qa": record.tot_qa,
+                        "asr": record.asr,
                         "alr": record.alr,
                         **derived.to_dict(),
                     }
