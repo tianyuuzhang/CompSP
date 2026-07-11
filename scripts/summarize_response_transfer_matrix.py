@@ -17,9 +17,16 @@ def read_cell(path: Path, target: str) -> dict | None:
         return None
     report = json.loads(report_file.read_text(encoding="utf-8"))
     try:
-        return report["results"]["1"]["目标"][target]["TFIDF_Ridge_response"]["评估"]["合并"]
+        target_results = report["results"]["1"]["目标"][target]
     except KeyError:
         return None
+    for method_name, method_result in target_results.items():
+        if method_name.startswith("TFIDF_Ridge_"):
+            try:
+                return method_result["评估"]["合并"]
+            except KeyError:
+                return None
+    return None
 
 
 def main() -> None:
@@ -74,4 +81,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

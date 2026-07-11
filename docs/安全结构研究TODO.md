@@ -70,9 +70,13 @@
 - [x] 单回答 Llama 最后层 embedding 初验；结果未超过黑盒 TF-IDF。
 - [x] 实现 Jeffreys ASR、判定 hazard、首票/延迟 unsafe、三票全 safe 和错误票率。
 - [x] 验证 Llama 三攻击替代指标的相关性、分辨率和重建一致率。
-- [ ] 扩展到 Qwen、4omini、DeepSeek 与 HarmBench，按目标模型分别报告。
-- [ ] 训练单模型嗅探器并做 OFA/PAIR/DrAttack 跨攻击迁移矩阵。
-- [ ] 做跨模型迁移矩阵；禁止拿源模型 ASR 当目标模型标签。
+- [x] 扩展到 Qwen、4omini、DeepSeek 的 OFA 跨模型矩阵，按目标模型自身标签报告；HarmBench 仍待补。
+- [x] 训练单模型嗅探器并做 OFA/PAIR/DrAttack 跨攻击迁移矩阵。
+- [x] 做跨模型迁移矩阵；禁止拿源模型 ASR 当目标模型标签。
+- [x] 增加 OFA 跨模型 `q1-only` baseline，用于检验回答文本是否提供输入之外的增量信号。
+- [x] 严格前缀/后缀拆分：只用前 k 条回答文本预测未使用后缀 ASR。
+- [ ] 对跨模型矩阵增加去拒绝词、去长度、去列表/格式特征后的残差版本。
+- [ ] 用新采样或不同温度回答复验少回答文本预测后续 ASR，避免历史 20 次内部拆分的偶然性。
 - [ ] 抽样重新进行完整三票判定，比较 any-unsafe、majority-unsafe 与概率加权标签。
 - [ ] 增加 Brier、ECE、可靠性曲线及 Beta/二项置信区间覆盖。
 - [ ] 设计序贯采样，在固定预算下评估低 ASR 区分能力。
