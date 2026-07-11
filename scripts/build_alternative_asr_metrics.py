@@ -49,7 +49,22 @@ def summarize(rows: list[dict]) -> dict:
             "reconstruction_match_rate": float(
                 np.mean([row["reconstructed_unsafe_answers"] == row["tx"] for row in items])
             ),
+            "metrics": {},
         }
+        empirical_items = [row["empirical_asr"] for row in items]
+        for metric_key in METRIC_KEYS:
+            values = np.asarray([row[metric_key] for row in items], dtype=float)
+            finite = values[np.isfinite(values)]
+            report["datasets"][dataset_key]["metrics"][metric_key] = {
+                "finite_rows": int(len(finite)),
+                "distinct_values": int(len(np.unique(finite))),
+                "mean": float(np.mean(finite)) if len(finite) else float("nan"),
+                "p05": float(np.quantile(finite, 0.05)) if len(finite) else float("nan"),
+                "p50": float(np.quantile(finite, 0.50)) if len(finite) else float("nan"),
+                "p95": float(np.quantile(finite, 0.95)) if len(finite) else float("nan"),
+                "pearson_with_empirical_asr": safe_corr(empirical_items, values.tolist(), "pearson"),
+                "spearman_with_empirical_asr": safe_corr(empirical_items, values.tolist(), "spearman"),
+            }
     empirical = [row["empirical_asr"] for row in rows]
     for key in METRIC_KEYS[1:]:
         values = [row[key] for row in rows]
@@ -103,4 +118,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
