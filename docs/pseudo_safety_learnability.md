@@ -114,6 +114,15 @@ CUDA_VISIBLE_DEVICES=1 nohup scripts/run_pseudo_safety_learnability.sh \
 SMOKE=1 CUDA_VISIBLE_DEVICES=1 scripts/run_pseudo_safety_learnability.sh
 ```
 
+ASR 辅助实验使用可续跑启动器：
+
+```bash
+CUDA_VISIBLE_DEVICES=1 scripts/launch_pseudo_safety_asr.sh
+```
+
+启动器设置 `METRIC=asr` 和 `SKIP_EXISTING=1`。方向分数、pair 数据或某个攻击方案的
+`train_summary.json` 已存在时，会逐阶段跳过，避免中断后重复长时间计算。
+
 ## 第一轮实验顺序
 
 1. 混合 OFA+PAIR+DrAttack 训练 ALR-Ridge 主方向。
