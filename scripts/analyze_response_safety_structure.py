@@ -43,6 +43,20 @@ def metrics(y: np.ndarray, pred: np.ndarray, groups: list[tuple[str, int]]) -> d
     }
 
 
+def sliced_metrics(
+    test: list[dict], y: np.ndarray, pred: np.ndarray, groups: list[tuple[str, int]]
+) -> dict[str, dict[str, float]]:
+    """同时报告三种攻击方案的分项结果，防止模板差异形成伪相关。"""
+
+    result = {"合并": metrics(y, pred, groups)}
+    for dataset_key in sorted({row["dataset_key"] for row in test}):
+        mask = np.asarray([row["dataset_key"] == dataset_key for row in test], dtype=bool)
+        result[dataset_key] = metrics(
+            y[mask], pred[mask], [group for group, keep in zip(groups, mask.tolist()) if keep]
+        )
+    return result
+
+
 def load_rows(score_file: str, sample_size: int, seed: int, max_rows: int | None) -> list[dict]:
     score_rows = read_jsonl(score_file)
     score_map = {
@@ -79,14 +93,25 @@ def load_rows(score_file: str, sample_size: int, seed: int, max_rows: int | None
     return rows
 
 
-def fit_handcrafted(train: list[dict], test: list[dict], target: str, alpha: float) -> tuple[np.ndarray, dict]:
+def fit_handcrafted(
+    train: list[dict],
+    test: list[dict],
+    target: str,
+    alpha: float,
+    base_feature_indices: list[int] | None = None,
+) -> tuple[np.ndarray, dict]:
     x_train = np.stack([row["features"] for row in train])
     x_test = np.stack([row["features"] for row in test])
     y_train = np.asarray([row[target] for row in train])
+    names = [f"{stat}_{name}" for stat in ("均值", "标准差", "最小值", "最大值") for name in FEATURE_NAMES]
+    if base_feature_indices is not None:
+        indices = [offset * len(FEATURE_NAMES) + index for offset in range(4) for index in base_feature_indices]
+        x_train = x_train[:, indices]
+        x_test = x_test[:, indices]
+        names = [names[index] for index in indices]
     scaler = StandardScaler().fit(x_train)
     model = Ridge(alpha=alpha).fit(scaler.transform(x_train), y_train)
     pred = model.predict(scaler.transform(x_test))
-    names = [f"{stat}_{name}" for stat in ("均值", "标准差", "最小值", "最大值") for name in FEATURE_NAMES]
     largest = np.argsort(np.abs(model.coef_))[-12:][::-1]
     return pred, {"主要系数": [{"特征": names[i], "系数": float(model.coef_[i])} for i in largest]}
 
@@ -136,11 +161,23 @@ def main() -> None:
             y_test = np.asarray([row[target] for row in test])
             target_result = {}
             if "handcrafted" in args.methods:
-                pred, details = fit_handcrafted(train, test, target, args.alpha)
-                target_result["手工特征_Ridge"] = {**metrics(y_test, pred, groups), **details}
+                feature_sets = {
+                    "仅长度_Ridge": [0, 1, 4],
+                    "仅拒绝形式_Ridge": [5, 6, 7],
+                    "内容风格_去长度拒绝_Ridge": [2, 3, 8, 9, 10, 11, 12, 13],
+                    "全部手工特征_Ridge": None,
+                }
+                for method_name, indices in feature_sets.items():
+                    pred, details = fit_handcrafted(train, test, target, args.alpha, indices)
+                    target_result[method_name] = {
+                        "评估": sliced_metrics(test, y_test, pred, groups),
+                        **details,
+                    }
             if "tfidf" in args.methods:
                 pred = fit_tfidf(train, test, target, args.alpha, args.max_features)
-                target_result["去拒绝前缀_TFIDF_Ridge"] = metrics(y_test, pred, groups)
+                target_result["去拒绝前缀_TFIDF_Ridge"] = {
+                    "评估": sliced_metrics(test, y_test, pred, groups)
+                }
             sample_result["目标"][target] = target_result
         all_results[str(sample_size)] = sample_result
         print(f"完成 sample_size={sample_size}: train={len(train)}, test={len(test)}", flush=True)
@@ -159,4 +196,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
