@@ -1,0 +1,1666 @@
+{
+  "说明": "只在 prefix-zero 样本内训练/评估，目标是后缀 ASR 是否超过阈值。",
+  "datasets": [
+    "jbb-llama-ofa",
+    "jbb-llama-pair",
+    "jbb-llama-drattack"
+  ],
+  "high_threshold": 0.5,
+  "top_fraction": 0.2,
+  "text_view": "q1",
+  "sample_sizes": {
+    "1": {
+      "records": 2219,
+      "positive": 319,
+      "positive_rate": 0.1437584497521406,
+      "strategies": {
+        "random": {
+          "roc_auc": 0.5077907935984162,
+          "average_precision": 0.14703265885096484,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.1463963963963964,
+            "recall": 0.20376175548589343
+          },
+          "max_f1": 0.25385632437197003
+        },
+        "base_logistic": {
+          "roc_auc": 0.7497063190892591,
+          "average_precision": 0.2993689078113125,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.3063063063063063,
+            "recall": 0.4263322884012539
+          },
+          "max_f1": 0.45101663585951934
+        },
+        "base_ridge": {
+          "roc_auc": 0.7488516746411482,
+          "average_precision": 0.29749646569442545,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.30405405405405406,
+            "recall": 0.4231974921630094
+          },
+          "max_f1": 0.4529750479846449
+        },
+        "text_logistic": {
+          "roc_auc": 0.6211409008414452,
+          "average_precision": 0.2380757515816253,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.24774774774774774,
+            "recall": 0.3448275862068966
+          },
+          "max_f1": 0.2971428571428571
+        },
+        "text_ridge": {
+          "roc_auc": 0.5723420227685201,
+          "average_precision": 0.21560524460884667,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.240990990990991,
+            "recall": 0.335423197492163
+          },
+          "max_f1": 0.30014025245441794
+        }
+      },
+      "text_explanations": {
+        "text_logistic": {
+          "positive": [
+            {
+              "term": "article",
+              "weight": 2.5313209493308353
+            },
+            {
+              "term": "impact",
+              "weight": 2.3943371962496403
+            },
+            {
+              "term": "addiction",
+              "weight": 2.115884412472883
+            },
+            {
+              "term": "gambling",
+              "weight": 1.8798477252131163
+            },
+            {
+              "term": "post",
+              "weight": 1.7630503974276748
+            },
+            {
+              "term": "network",
+              "weight": 1.6667464038379793
+            },
+            {
+              "term": "security measures",
+              "weight": 1.6621743941810958
+            },
+            {
+              "term": "financial",
+              "weight": 1.6553990458697845
+            },
+            {
+              "term": "slot",
+              "weight": 1.6493406612767971
+            },
+            {
+              "term": "consequences",
+              "weight": 1.5906125790576031
+            },
+            {
+              "term": "plagiarism",
+              "weight": 1.5349630179204063
+            },
+            {
+              "term": "discrimination",
+              "weight": 1.518544546962287
+            },
+            {
+              "term": "unconventional",
+              "weight": 1.5051954914705532
+            },
+            {
+              "term": "detail",
+              "weight": 1.469946910626146
+            },
+            {
+              "term": "business network",
+              "weight": 1.4435694044235647
+            },
+            {
+              "term": "definition",
+              "weight": 1.4375635469905597
+            },
+            {
+              "term": "draft instructions",
+              "weight": 1.4308461367233585
+            },
+            {
+              "term": "write blog",
+              "weight": 1.4231788808663905
+            },
+            {
+              "term": "plagiarism detection",
+              "weight": 1.4104897338478846
+            },
+            {
+              "term": "slot machines",
+              "weight": 1.3846904905673987
+            },
+            {
+              "term": "post question",
+              "weight": 1.3836691050523247
+            },
+            {
+              "term": "purpose",
+              "weight": 1.381961175055827
+            },
+            {
+              "term": "denial",
+              "weight": 1.353108705750395
+            },
+            {
+              "term": "ethical",
+              "weight": 1.3482595002122544
+            },
+            {
+              "term": "find",
+              "weight": 1.327983256879814
+            },
+            {
+              "term": "importance",
+              "weight": 1.3257710197229937
+            },
+            {
+              "term": "encryption",
+              "weight": 1.3065146119556346
+            },
+            {
+              "term": "describe",
+              "weight": 1.30159950789678
+            },
+            {
+              "term": "business",
+              "weight": 1.2927953204651943
+            },
+            {
+              "term": "relationship",
+              "weight": 1.2772043176841283
+            }
+          ],
+          "negative": [
+            {
+              "term": "theory",
+              "weight": -1.9934193193909449
+            },
+            {
+              "term": "evidence",
+              "weight": -1.9049226188180404
+            },
+            {
+              "term": "earth",
+              "weight": -1.8829992544553091
+            },
+            {
+              "term": "guide",
+              "weight": -1.8341486864031085
+            },
+            {
+              "term": "flat",
+              "weight": -1.8229800430103675
+            },
+            {
+              "term": "insider",
+              "weight": -1.6481256209133672
+            },
+            {
+              "term": "pornographic",
+              "weight": -1.5953638739668363
+            },
+            {
+              "term": "creation",
+              "weight": -1.4680637092866333
+            },
+            {
+              "term": "hoax",
+              "weight": -1.4018100376063731
+            },
+            {
+              "term": "date rape",
+              "weight": -1.3958528850897316
+            },
+            {
+              "term": "date",
+              "weight": -1.3958528850897316
+            },
+            {
+              "term": "rape",
+              "weight": -1.3958528850897316
+            },
+            {
+              "term": "promoting",
+              "weight": -1.3645977479371274
+            },
+            {
+              "term": "shape",
+              "weight": -1.3393619366497123
+            },
+            {
+              "term": "instructions",
+              "weight": -1.330931017662477
+            },
+            {
+              "term": "football",
+              "weight": -1.2997018643990415
+            },
+            {
+              "term": "ransomware",
+              "weight": -1.2671812859158627
+            },
+            {
+              "term": "pedophilia",
+              "weight": -1.2383047586700717
+            },
+            {
+              "term": "email question",
+              "weight": -1.2338094491574896
+            },
+            {
+              "term": "tips",
+              "weight": -1.2290851653451222
+            },
+            {
+              "term": "adult",
+              "weight": -1.218887174522075
+            },
+            {
+              "term": "rape drug",
+              "weight": -1.2170468013185296
+            },
+            {
+              "term": "poem",
+              "weight": -1.2158325848681246
+            },
+            {
+              "term": "theories",
+              "weight": -1.1916169771189888
+            },
+            {
+              "term": "11",
+              "weight": -1.1789951950790531
+            },
+            {
+              "term": "drug",
+              "weight": -1.1707328430619866
+            },
+            {
+              "term": "sports",
+              "weight": -1.1682583893389988
+            },
+            {
+              "term": "maximizing",
+              "weight": -1.1669275424936658
+            },
+            {
+              "term": "strategies",
+              "weight": -1.164819168010779
+            },
+            {
+              "term": "scientific",
+              "weight": -1.1530696254585784
+            }
+          ]
+        },
+        "text_ridge": {
+          "positive": [
+            {
+              "term": "article",
+              "weight": 0.2518207618824582
+            },
+            {
+              "term": "impact",
+              "weight": 0.24045147648540624
+            },
+            {
+              "term": "post",
+              "weight": 0.2161895306056056
+            },
+            {
+              "term": "addiction",
+              "weight": 0.2091314688994031
+            },
+            {
+              "term": "gambling",
+              "weight": 0.18677778394708283
+            },
+            {
+              "term": "kiwi",
+              "weight": 0.15487423227447378
+            },
+            {
+              "term": "post question",
+              "weight": 0.14857728109802276
+            },
+            {
+              "term": "security measures",
+              "weight": 0.14679526270912127
+            },
+            {
+              "term": "slot",
+              "weight": 0.14259693536638163
+            },
+            {
+              "term": "blog",
+              "weight": 0.1414412270256565
+            },
+            {
+              "term": "write blog",
+              "weight": 0.13982177283700156
+            },
+            {
+              "term": "slot machines",
+              "weight": 0.13700970002077564
+            },
+            {
+              "term": "ethical",
+              "weight": 0.13273011511849275
+            },
+            {
+              "term": "financial",
+              "weight": 0.12329703550893653
+            },
+            {
+              "term": "plagiarism",
+              "weight": 0.12089591401773071
+            },
+            {
+              "term": "social",
+              "weight": 0.12066991368880148
+            },
+            {
+              "term": "machines",
+              "weight": 0.12052183734909022
+            },
+            {
+              "term": "gambling addiction",
+              "weight": 0.12017526876435908
+            },
+            {
+              "term": "denial",
+              "weight": 0.1193506447516509
+            },
+            {
+              "term": "business network",
+              "weight": 0.11784533347353172
+            },
+            {
+              "term": "historical",
+              "weight": 0.11774241534855519
+            },
+            {
+              "term": "media",
+              "weight": 0.1172052132081338
+            },
+            {
+              "term": "blog post",
+              "weight": 0.11657279967698297
+            },
+            {
+              "term": "plagiarism detection",
+              "weight": 0.11468377275781626
+            },
+            {
+              "term": "character",
+              "weight": 0.11396130567262286
+            },
+            {
+              "term": "importance",
+              "weight": 0.11299460888980692
+            },
+            {
+              "term": "consequences",
+              "weight": 0.11278098627910803
+            },
+            {
+              "term": "network",
+              "weight": 0.11167638601859294
+            },
+            {
+              "term": "social media",
+              "weight": 0.11078980790746341
+            },
+            {
+              "term": "describe",
+              "weight": 0.11031749278526312
+            }
+          ],
+          "negative": [
+            {
+              "term": "guide",
+              "weight": -0.1778206075429315
+            },
+            {
+              "term": "evidence",
+              "weight": -0.1647952328348038
+            },
+            {
+              "term": "creation",
+              "weight": -0.161296203273343
+            },
+            {
+              "term": "earth",
+              "weight": -0.16112177382395018
+            },
+            {
+              "term": "plan",
+              "weight": -0.15340698018872517
+            },
+            {
+              "term": "instructions",
+              "weight": -0.14972537539264322
+            },
+            {
+              "term": "animal torture",
+              "weight": -0.14446830750724082
+            },
+            {
+              "term": "flat",
+              "weight": -0.1430724479644714
+            },
+            {
+              "term": "insider",
+              "weight": -0.12938484293136868
+            },
+            {
+              "term": "football",
+              "weight": -0.1256819013245449
+            },
+            {
+              "term": "child",
+              "weight": -0.12298650233672169
+            },
+            {
+              "term": "date rape",
+              "weight": -0.12244524411841175
+            },
+            {
+              "term": "date",
+              "weight": -0.12244524411841175
+            },
+            {
+              "term": "rape",
+              "weight": -0.12244524411841175
+            },
+            {
+              "term": "insider tips",
+              "weight": -0.11856162147369145
+            },
+            {
+              "term": "pedophilia",
+              "weight": -0.11841767229676939
+            },
+            {
+              "term": "steps",
+              "weight": -0.11330963190964637
+            },
+            {
+              "term": "ransomware",
+              "weight": -0.11193353870555448
+            },
+            {
+              "term": "animal",
+              "weight": -0.1114224588397174
+            },
+            {
+              "term": "promoting",
+              "weight": -0.11012883296998136
+            },
+            {
+              "term": "child pornography",
+              "weight": -0.10863610777813808
+            },
+            {
+              "term": "theory",
+              "weight": -0.10688895538805206
+            },
+            {
+              "term": "rape drug",
+              "weight": -0.10593381997125413
+            },
+            {
+              "term": "pornography",
+              "weight": -0.10435988945555344
+            },
+            {
+              "term": "sports",
+              "weight": -0.10419920337260052
+            },
+            {
+              "term": "preparation",
+              "weight": -0.10210053064360607
+            },
+            {
+              "term": "email question",
+              "weight": -0.10069179803248206
+            },
+            {
+              "term": "poem",
+              "weight": -0.10032167305994846
+            },
+            {
+              "term": "shape",
+              "weight": -0.1002843130566665
+            },
+            {
+              "term": "suicide",
+              "weight": -0.0995228835667857
+            }
+          ]
+        }
+      }
+    },
+    "2": {
+      "records": 1846,
+      "positive": 101,
+      "positive_rate": 0.05471289274106175,
+      "strategies": {
+        "random": {
+          "roc_auc": 0.5095520440296178,
+          "average_precision": 0.06037667624776897,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.05420054200542006,
+            "recall": 0.19801980198019803
+          },
+          "max_f1": 0.10752688172043011
+        },
+        "base_logistic": {
+          "roc_auc": 0.7351385854917869,
+          "average_precision": 0.12182203878554707,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.13550135501355012,
+            "recall": 0.49504950495049505
+          },
+          "max_f1": 0.22789115646258506
+        },
+        "base_ridge": {
+          "roc_auc": 0.7295214048625493,
+          "average_precision": 0.11326968308378803,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.11924119241192412,
+            "recall": 0.43564356435643564
+          },
+          "max_f1": 0.22448979591836737
+        },
+        "text_logistic": {
+          "roc_auc": 0.6117733836420891,
+          "average_precision": 0.1266953142235348,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.07859078590785908,
+            "recall": 0.2871287128712871
+          },
+          "max_f1": 0.22040816326530613
+        },
+        "text_ridge": {
+          "roc_auc": 0.5593009730772505,
+          "average_precision": 0.06058447646289078,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.06504065040650407,
+            "recall": 0.2376237623762376
+          },
+          "max_f1": 0.12981744421906694
+        }
+      },
+      "text_explanations": {
+        "text_logistic": {
+          "positive": [
+            {
+              "term": "gambling",
+              "weight": 2.410178061083582
+            },
+            {
+              "term": "article",
+              "weight": 2.236751648257402
+            },
+            {
+              "term": "addiction",
+              "weight": 2.166841631190677
+            },
+            {
+              "term": "machine",
+              "weight": 1.7611295560898719
+            },
+            {
+              "term": "relationship",
+              "weight": 1.7449828214890033
+            },
+            {
+              "term": "character",
+              "weight": 1.714355153577275
+            },
+            {
+              "term": "opinion",
+              "weight": 1.64332162928717
+            },
+            {
+              "term": "slot",
+              "weight": 1.6264544173168929
+            },
+            {
+              "term": "romantic",
+              "weight": 1.6083376787612693
+            },
+            {
+              "term": "discrimination",
+              "weight": 1.5986086951325038
+            },
+            {
+              "term": "impact",
+              "weight": 1.5941122612604937
+            },
+            {
+              "term": "plagiarism detection",
+              "weight": 1.5907304002621365
+            },
+            {
+              "term": "medieval",
+              "weight": 1.552894497663061
+            },
+            {
+              "term": "gender",
+              "weight": 1.5460562246428071
+            },
+            {
+              "term": "post",
+              "weight": 1.5275346715964313
+            },
+            {
+              "term": "consequences",
+              "weight": 1.521092203944026
+            },
+            {
+              "term": "introduction",
+              "weight": 1.488589521976776
+            },
+            {
+              "term": "techniques",
+              "weight": 1.4657890025276203
+            },
+            {
+              "term": "graphic",
+              "weight": 1.4552155484145217
+            },
+            {
+              "term": "plagiarism",
+              "weight": 1.447904113606253
+            },
+            {
+              "term": "machines tips",
+              "weight": 1.3962554172010144
+            },
+            {
+              "term": "implications fill",
+              "weight": 1.3812738807106602
+            },
+            {
+              "term": "winning",
+              "weight": 1.3788526294154562
+            },
+            {
+              "term": "preparing banana",
+              "weight": 1.3552820072983591
+            },
+            {
+              "term": "one",
+              "weight": 1.3550862552387692
+            },
+            {
+              "term": "the story",
+              "weight": 1.3464578611960831
+            },
+            {
+              "term": "business network",
+              "weight": 1.3457248686693395
+            },
+            {
+              "term": "behavior",
+              "weight": 1.3411857484053065
+            },
+            {
+              "term": "remarks",
+              "weight": 1.34071045935512
+            },
+            {
+              "term": "historical",
+              "weight": 1.3243929178821052
+            }
+          ],
+          "negative": [
+            {
+              "term": "creation",
+              "weight": -1.8586075423442325
+            },
+            {
+              "term": "insider",
+              "weight": -1.747017915386667
+            },
+            {
+              "term": "earth",
+              "weight": -1.717115147834392
+            },
+            {
+              "term": "instructions",
+              "weight": -1.6875719040501715
+            },
+            {
+              "term": "flat",
+              "weight": -1.562835384937265
+            },
+            {
+              "term": "theory",
+              "weight": -1.4975218825770131
+            },
+            {
+              "term": "provide",
+              "weight": -1.4507649819230815
+            },
+            {
+              "term": "guide",
+              "weight": -1.3933940291390656
+            },
+            {
+              "term": "steps",
+              "weight": -1.3700038924415883
+            },
+            {
+              "term": "target audience",
+              "weight": -1.3129440425068732
+            },
+            {
+              "term": "control",
+              "weight": -1.3095984371077987
+            },
+            {
+              "term": "pornographic",
+              "weight": -1.2949790489983137
+            },
+            {
+              "term": "avoiding detection",
+              "weight": -1.272361906162069
+            },
+            {
+              "term": "shape",
+              "weight": -1.2421504624565376
+            },
+            {
+              "term": "they",
+              "weight": -1.2319370882821434
+            },
+            {
+              "term": "animal",
+              "weight": -1.2201576408704993
+            },
+            {
+              "term": "execution",
+              "weight": -1.2025116837092718
+            },
+            {
+              "term": "football",
+              "weight": -1.1758475148444283
+            },
+            {
+              "term": "preparation",
+              "weight": -1.1728980565006304
+            },
+            {
+              "term": "animal torture",
+              "weight": -1.166212253005847
+            },
+            {
+              "term": "hoax",
+              "weight": -1.1564738089267699
+            },
+            {
+              "term": "who is",
+              "weight": -1.152276763833351
+            },
+            {
+              "term": "legal",
+              "weight": -1.1379240702307114
+            },
+            {
+              "term": "betting",
+              "weight": -1.1092054859555776
+            },
+            {
+              "term": "are an",
+              "weight": -1.0894019250808546
+            },
+            {
+              "term": "ransomware",
+              "weight": -1.0511819888355374
+            },
+            {
+              "term": "consultant",
+              "weight": -1.0456532151615983
+            },
+            {
+              "term": "question for",
+              "weight": -1.039301221313778
+            },
+            {
+              "term": "you provide",
+              "weight": -1.0334769736394775
+            },
+            {
+              "term": "rape",
+              "weight": -1.0332687700647853
+            }
+          ]
+        },
+        "text_ridge": {
+          "positive": [
+            {
+              "term": "article",
+              "weight": 0.1582625821092513
+            },
+            {
+              "term": "addiction",
+              "weight": 0.13174374732099364
+            },
+            {
+              "term": "gambling",
+              "weight": 0.1288932707716538
+            },
+            {
+              "term": "impact",
+              "weight": 0.11358553087190845
+            },
+            {
+              "term": "kiwi",
+              "weight": 0.10575354468672118
+            },
+            {
+              "term": "post",
+              "weight": 0.10543050424445222
+            },
+            {
+              "term": "slot",
+              "weight": 0.1043719312792583
+            },
+            {
+              "term": "machines",
+              "weight": 0.09560660126124
+            },
+            {
+              "term": "write blog",
+              "weight": 0.09549808930493965
+            },
+            {
+              "term": "story",
+              "weight": 0.0931992629054534
+            },
+            {
+              "term": "slot machines",
+              "weight": 0.09137116618653028
+            },
+            {
+              "term": "negative",
+              "weight": 0.09038139214471208
+            },
+            {
+              "term": "gender",
+              "weight": 0.09032348307443906
+            },
+            {
+              "term": "post question",
+              "weight": 0.09017034152802476
+            },
+            {
+              "term": "refusal_term refusal_term",
+              "weight": 0.08977803244759153
+            },
+            {
+              "term": "behavior",
+              "weight": 0.08909491580933798
+            },
+            {
+              "term": "medieval",
+              "weight": 0.08797210643935445
+            },
+            {
+              "term": "winning",
+              "weight": 0.08452057046797531
+            },
+            {
+              "term": "machines tips",
+              "weight": 0.07991300074201796
+            },
+            {
+              "term": "q1_generation_failed_a0_error",
+              "weight": 0.07990356387181245
+            },
+            {
+              "term": "q1_generation_failed_a0_error refusal_term",
+              "weight": 0.07990356387181245
+            },
+            {
+              "term": "health",
+              "weight": 0.07950767992524706
+            },
+            {
+              "term": "discrimination",
+              "weight": 0.0793709795477112
+            },
+            {
+              "term": "blog",
+              "weight": 0.0785564325955251
+            },
+            {
+              "term": "communication",
+              "weight": 0.0782167097550178
+            },
+            {
+              "term": "graphic",
+              "weight": 0.07726686242792391
+            },
+            {
+              "term": "the story",
+              "weight": 0.07634096276435093
+            },
+            {
+              "term": "financial security",
+              "weight": 0.0761779697225879
+            },
+            {
+              "term": "gambling addiction",
+              "weight": 0.07074115633580011
+            },
+            {
+              "term": "with that",
+              "weight": 0.06859060934964395
+            }
+          ],
+          "negative": [
+            {
+              "term": "creation",
+              "weight": -0.1206144794088583
+            },
+            {
+              "term": "instructions",
+              "weight": -0.11737671463102328
+            },
+            {
+              "term": "guide",
+              "weight": -0.09872123766273899
+            },
+            {
+              "term": "earth",
+              "weight": -0.0980687062958411
+            },
+            {
+              "term": "plan",
+              "weight": -0.09565818984580969
+            },
+            {
+              "term": "animal torture",
+              "weight": -0.08617561230711625
+            },
+            {
+              "term": "football",
+              "weight": -0.08505639237501904
+            },
+            {
+              "term": "insider",
+              "weight": -0.08407278631208775
+            },
+            {
+              "term": "steps",
+              "weight": -0.08228992633200613
+            },
+            {
+              "term": "flat",
+              "weight": -0.07934279266776144
+            },
+            {
+              "term": "insider tips",
+              "weight": -0.07748759158019997
+            },
+            {
+              "term": "animal",
+              "weight": -0.07265838537119314
+            },
+            {
+              "term": "child",
+              "weight": -0.07186610688285575
+            },
+            {
+              "term": "target audience",
+              "weight": -0.06814190030426308
+            },
+            {
+              "term": "date",
+              "weight": -0.06809856008673897
+            },
+            {
+              "term": "rape",
+              "weight": -0.06809856008673897
+            },
+            {
+              "term": "date rape",
+              "weight": -0.06809856008673897
+            },
+            {
+              "term": "campaign",
+              "weight": -0.06781317185175306
+            },
+            {
+              "term": "evidence",
+              "weight": -0.06672420677668879
+            },
+            {
+              "term": "sports",
+              "weight": -0.06327731051077612
+            },
+            {
+              "term": "making",
+              "weight": -0.0625662191347236
+            },
+            {
+              "term": "drug",
+              "weight": -0.06249753052572667
+            },
+            {
+              "term": "pornography",
+              "weight": -0.06240563048517167
+            },
+            {
+              "term": "distribution",
+              "weight": -0.062252930147549006
+            },
+            {
+              "term": "child pornography",
+              "weight": -0.06194631219202075
+            },
+            {
+              "term": "apple",
+              "weight": -0.061903475091026755
+            },
+            {
+              "term": "to",
+              "weight": -0.06182640384025277
+            },
+            {
+              "term": "rape drug",
+              "weight": -0.06106821908555068
+            },
+            {
+              "term": "pedophilia",
+              "weight": -0.060934633731009775
+            },
+            {
+              "term": "target",
+              "weight": -0.06062795220528672
+            }
+          ]
+        }
+      }
+    },
+    "4": {
+      "records": 1568,
+      "positive": 16,
+      "positive_rate": 0.01020408163265306,
+      "strategies": {
+        "random": {
+          "roc_auc": 0.39614207474226804,
+          "average_precision": 0.008424502550057547,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "max_f1": 0.020915032679738564
+        },
+        "base_logistic": {
+          "roc_auc": 0.6916478737113403,
+          "average_precision": 0.031224688526354013,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.025477707006369428,
+            "recall": 0.5
+          },
+          "max_f1": 0.09090909090909091
+        },
+        "base_ridge": {
+          "roc_auc": 0.7380798969072165,
+          "average_precision": 0.04403094434603327,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.028662420382165606,
+            "recall": 0.5625
+          },
+          "max_f1": 0.10526315789473684
+        },
+        "text_logistic": {
+          "roc_auc": 0.4435003221649484,
+          "average_precision": 0.009111810933943858,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.0031847133757961785,
+            "recall": 0.0625
+          },
+          "max_f1": 0.022075055187637967
+        },
+        "text_ridge": {
+          "roc_auc": 0.46879027061855666,
+          "average_precision": 0.009447836504163438,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.0031847133757961785,
+            "recall": 0.0625
+          },
+          "max_f1": 0.023154848046309698
+        }
+      },
+      "text_explanations": {
+        "text_logistic": {
+          "positive": [
+            {
+              "term": "scientific evidence",
+              "weight": 2.225708216155002
+            },
+            {
+              "term": "slot machines",
+              "weight": 2.185571976849005
+            },
+            {
+              "term": "environment",
+              "weight": 2.164402565450687
+            },
+            {
+              "term": "slot",
+              "weight": 2.13778341230181
+            },
+            {
+              "term": "article",
+              "weight": 2.069484061595699
+            },
+            {
+              "term": "medieval",
+              "weight": 2.0404616794728865
+            },
+            {
+              "term": "introduction",
+              "weight": 2.035915205688647
+            },
+            {
+              "term": "tragic",
+              "weight": 1.9461270064041478
+            },
+            {
+              "term": "machines",
+              "weight": 1.7858542420553767
+            },
+            {
+              "term": "effects on",
+              "weight": 1.7619996913929319
+            },
+            {
+              "term": "blog",
+              "weight": 1.7600341694739547
+            },
+            {
+              "term": "refusal_term refusal_term",
+              "weight": 1.7468236697596915
+            },
+            {
+              "term": "challenges",
+              "weight": 1.7433725853541482
+            },
+            {
+              "term": "struggling",
+              "weight": 1.7128418445020825
+            },
+            {
+              "term": "kiwi",
+              "weight": 1.6585746861017434
+            },
+            {
+              "term": "technical",
+              "weight": 1.6257706627975215
+            },
+            {
+              "term": "techniques",
+              "weight": 1.5989615989510149
+            },
+            {
+              "term": "communication",
+              "weight": 1.5828156573001453
+            },
+            {
+              "term": "design an",
+              "weight": 1.580160927772341
+            },
+            {
+              "term": "anonymity",
+              "weight": 1.578874858397849
+            },
+            {
+              "term": "stealing",
+              "weight": 1.5505780603333104
+            },
+            {
+              "term": "expert opinion",
+              "weight": 1.5502461126395781
+            },
+            {
+              "term": "scene",
+              "weight": 1.5487611055978439
+            },
+            {
+              "term": "myth",
+              "weight": 1.5405051629537285
+            },
+            {
+              "term": "art",
+              "weight": 1.52519995579082
+            },
+            {
+              "term": "journalist",
+              "weight": 1.505436912000643
+            },
+            {
+              "term": "documents",
+              "weight": 1.503618661450173
+            },
+            {
+              "term": "q1_generation_failed_a0_error refusal_term",
+              "weight": 1.4761415768125836
+            },
+            {
+              "term": "q1_generation_failed_a0_error",
+              "weight": 1.4761415768125836
+            },
+            {
+              "term": "set",
+              "weight": 1.4555393208674339
+            }
+          ],
+          "negative": [
+            {
+              "term": "instructions",
+              "weight": -1.8204099299703735
+            },
+            {
+              "term": "earth",
+              "weight": -1.4669668300904093
+            },
+            {
+              "term": "legal",
+              "weight": -1.4237703823187362
+            },
+            {
+              "term": "world",
+              "weight": -1.2824335374376896
+            },
+            {
+              "term": "risks",
+              "weight": -1.2665579723614484
+            },
+            {
+              "term": "step",
+              "weight": -1.1683206018397765
+            },
+            {
+              "term": "insider",
+              "weight": -1.1519057904829042
+            },
+            {
+              "term": "control",
+              "weight": -1.1517608716489995
+            },
+            {
+              "term": "creation",
+              "weight": -1.0766656424280936
+            },
+            {
+              "term": "analysis",
+              "weight": -1.0649976381584816
+            },
+            {
+              "term": "guide",
+              "weight": -1.0493193443083404
+            },
+            {
+              "term": "influence",
+              "weight": -1.0423977090667365
+            },
+            {
+              "term": "theory",
+              "weight": -1.037152491061196
+            },
+            {
+              "term": "promoting",
+              "weight": -1.0317105689328223
+            },
+            {
+              "term": "creative",
+              "weight": -1.020135066725148
+            },
+            {
+              "term": "media",
+              "weight": -0.9914816520267344
+            },
+            {
+              "term": "flat",
+              "weight": -0.9892990614813126
+            },
+            {
+              "term": "by",
+              "weight": -0.9844258863296895
+            },
+            {
+              "term": "animal torture",
+              "weight": -0.97787469741454
+            },
+            {
+              "term": "hoax",
+              "weight": -0.971547147204637
+            },
+            {
+              "term": "apply the",
+              "weight": -0.9578953293447493
+            },
+            {
+              "term": "to apply",
+              "weight": -0.9308585971844943
+            },
+            {
+              "term": "claims",
+              "weight": -0.9225574432671324
+            },
+            {
+              "term": "social media",
+              "weight": -0.8983884688401204
+            },
+            {
+              "term": "for the",
+              "weight": -0.8649736704876089
+            },
+            {
+              "term": "risk",
+              "weight": -0.8609597062934912
+            },
+            {
+              "term": "banana",
+              "weight": -0.8498921296384165
+            },
+            {
+              "term": "shape",
+              "weight": -0.8424763243233732
+            },
+            {
+              "term": "research",
+              "weight": -0.8401116416696118
+            },
+            {
+              "term": "development",
+              "weight": -0.8219910081817079
+            }
+          ]
+        },
+        "text_ridge": {
+          "positive": [
+            {
+              "term": "refusal_term refusal_term",
+              "weight": 0.09836830269286023
+            },
+            {
+              "term": "q1_generation_failed_a0_error refusal_term",
+              "weight": 0.0909317393703725
+            },
+            {
+              "term": "q1_generation_failed_a0_error",
+              "weight": 0.0909317393703725
+            },
+            {
+              "term": "with that",
+              "weight": 0.08072009414422844
+            },
+            {
+              "term": "article",
+              "weight": 0.08064215263161836
+            },
+            {
+              "term": "refusal_term with",
+              "weight": 0.07865495610239685
+            },
+            {
+              "term": "machines",
+              "weight": 0.06923733400809302
+            },
+            {
+              "term": "kiwi",
+              "weight": 0.06180540365959991
+            },
+            {
+              "term": "refusal_term",
+              "weight": 0.06045980432159411
+            },
+            {
+              "term": "medieval",
+              "weight": 0.05961323892850642
+            },
+            {
+              "term": "scientific evidence",
+              "weight": 0.0584943271619622
+            },
+            {
+              "term": "autism",
+              "weight": 0.05766024118709094
+            },
+            {
+              "term": "slot machines",
+              "weight": 0.057133535222503536
+            },
+            {
+              "term": "slot",
+              "weight": 0.05598840225092636
+            },
+            {
+              "term": "impact",
+              "weight": 0.05309281342026298
+            },
+            {
+              "term": "scene",
+              "weight": 0.05002884827019873
+            },
+            {
+              "term": "vaccines",
+              "weight": 0.04773639209721173
+            },
+            {
+              "term": "events",
+              "weight": 0.04671507342759952
+            },
+            {
+              "term": "story",
+              "weight": 0.04659230030487288
+            },
+            {
+              "term": "are kiwi",
+              "weight": 0.04401101685366059
+            },
+            {
+              "term": "winning",
+              "weight": 0.04279110821009664
+            },
+            {
+              "term": "article question",
+              "weight": 0.04246410233445269
+            },
+            {
+              "term": "historical",
+              "weight": 0.04223165454445299
+            },
+            {
+              "term": "expert",
+              "weight": 0.04176812119147631
+            },
+            {
+              "term": "importance",
+              "weight": 0.04121842132358628
+            },
+            {
+              "term": "covid",
+              "weight": 0.04106242182621064
+            },
+            {
+              "term": "stealing",
+              "weight": 0.041027387069797916
+            },
+            {
+              "term": "exams",
+              "weight": 0.0408750764937594
+            },
+            {
+              "term": "19",
+              "weight": 0.039711343347067316
+            },
+            {
+              "term": "covid 19",
+              "weight": 0.039711343347067316
+            }
+          ],
+          "negative": [
+            {
+              "term": "creation",
+              "weight": -0.06340643033021458
+            },
+            {
+              "term": "instructions",
+              "weight": -0.05974341987509856
+            },
+            {
+              "term": "plan",
+              "weight": -0.05470288792156857
+            },
+            {
+              "term": "earth",
+              "weight": -0.04957625733765028
+            },
+            {
+              "term": "animal torture",
+              "weight": -0.049144470205588736
+            },
+            {
+              "term": "campaign",
+              "weight": -0.044722498754033835
+            },
+            {
+              "term": "football",
+              "weight": -0.044182677641769016
+            },
+            {
+              "term": "making",
+              "weight": -0.04372949508185645
+            },
+            {
+              "term": "guide",
+              "weight": -0.04360260274410385
+            },
+            {
+              "term": "insider tips",
+              "weight": -0.043107632676061595
+            },
+            {
+              "term": "animal",
+              "weight": -0.04087959626916974
+            },
+            {
+              "term": "step",
+              "weight": -0.04053967727995908
+            },
+            {
+              "term": "insider",
+              "weight": -0.03810434066697604
+            },
+            {
+              "term": "flat",
+              "weight": -0.03728332528096516
+            },
+            {
+              "term": "date",
+              "weight": -0.036213153045554336
+            },
+            {
+              "term": "date rape",
+              "weight": -0.036213153045554336
+            },
+            {
+              "term": "rape",
+              "weight": -0.036213153045554336
+            },
+            {
+              "term": "steps",
+              "weight": -0.03532610160772025
+            },
+            {
+              "term": "legal",
+              "weight": -0.034407338617510705
+            },
+            {
+              "term": "drug",
+              "weight": -0.03391937590573897
+            },
+            {
+              "term": "child",
+              "weight": -0.03369980143498898
+            },
+            {
+              "term": "rape drug",
+              "weight": -0.03319095897349343
+            },
+            {
+              "term": "for",
+              "weight": -0.033058684639317965
+            },
+            {
+              "term": "preparation",
+              "weight": -0.03269191783285459
+            },
+            {
+              "term": "financial",
+              "weight": -0.032061459927872016
+            },
+            {
+              "term": "recruitment",
+              "weight": -0.03188898096057348
+            },
+            {
+              "term": "identify",
+              "weight": -0.03178318597163647
+            },
+            {
+              "term": "apple",
+              "weight": -0.031600724264023106
+            },
+            {
+              "term": "to",
+              "weight": -0.03150238175494661
+            },
+            {
+              "term": "message",
+              "weight": -0.03144343753616998
+            }
+          ]
+        }
+      }
+    }
+  }
+}

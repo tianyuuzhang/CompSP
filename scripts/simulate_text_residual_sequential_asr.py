@@ -128,6 +128,7 @@ def build_rows(
                         "dataset_key": dataset_key,
                         "question_id": qid,
                         "item_index": item_index,
+                        "q1": record.q1,
                         "split": split_by_qid.get(qid, "test"),
                         "future_asr": future_tx / len(suffix),
                         "prefix_empirical_asr": metrics.empirical_asr,

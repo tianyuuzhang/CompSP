@@ -50,8 +50,29 @@ def top_fraction_metrics(y_true: np.ndarray, score: np.ndarray, top_fraction: fl
     }
 
 
-def build_tfidf(train: list[dict], test: list[dict], max_features: int, cleaning: str, use_char_ngrams: bool):
-    """为 prefix-zero 前缀回答拟合 TF-IDF。"""
+def row_text(row: dict, text_view: str, cleaning: str) -> str:
+    """按 response/q1/joint 视图取文本，并应用同一清理口径。"""
+
+    if text_view == "response":
+        text = row["text"]
+    elif text_view == "q1":
+        text = row.get("q1", "")
+    elif text_view == "joint":
+        text = f"<指令>\n{row.get('q1', '')}\n<回答>\n{row['text']}"
+    else:
+        raise ValueError(f"未知文本视图: {text_view}")
+    return clean_text(text, cleaning)
+
+
+def build_tfidf(
+    train: list[dict],
+    test: list[dict],
+    max_features: int,
+    cleaning: str,
+    use_char_ngrams: bool,
+    text_view: str,
+):
+    """为 prefix-zero 样本拟合指定文本视图的 TF-IDF。"""
 
     if use_char_ngrams:
         vectorizer = FeatureUnion(
@@ -62,8 +83,8 @@ def build_tfidf(train: list[dict], test: list[dict], max_features: int, cleaning
         )
     else:
         vectorizer = TfidfVectorizer(ngram_range=(1, 2), min_df=3, max_features=max_features, sublinear_tf=True)
-    x_train = vectorizer.fit_transform([clean_text(row["text"], cleaning) for row in train])
-    x_test = vectorizer.transform([clean_text(row["text"], cleaning) for row in test])
+    x_train = vectorizer.fit_transform([row_text(row, text_view, cleaning) for row in train])
+    x_test = vectorizer.transform([row_text(row, text_view, cleaning) for row in test])
     return vectorizer, x_train, x_test
 
 
@@ -95,6 +116,7 @@ def fit_scores(
     cleaning: str,
     use_char_ngrams: bool,
     top_terms: int,
+    text_view: str,
 ):
     """拟合手工特征、文本分类器和文本回归器三类分数。"""
 
@@ -113,7 +135,7 @@ def fit_scores(
     base_reg = Ridge(alpha=10.0).fit(xb_train, np.asarray([row["future_asr"] for row in train], dtype=float))
     scores["base_ridge"] = base_reg.predict(xb_test)
 
-    vectorizer, x_text_train, x_text_test = build_tfidf(train, test, max_features, cleaning, use_char_ngrams)
+    vectorizer, x_text_train, x_text_test = build_tfidf(train, test, max_features, cleaning, use_char_ngrams, text_view)
     explanations = {}
     if len(np.unique(y_train)) >= 2:
         text_clf = LogisticRegression(max_iter=1000, class_weight="balanced", solver="liblinear").fit(x_text_train, y_train)
@@ -164,6 +186,12 @@ def main() -> None:
     parser.add_argument("--length-threshold", type=int, default=500)
     parser.add_argument("--max-features", type=int, default=8000)
     parser.add_argument("--top-terms", type=int, default=30)
+    parser.add_argument(
+        "--text-view",
+        default="response",
+        choices=("response", "q1", "joint"),
+        help="TF-IDF 输入视图：仅回答、仅原始攻击指令，或二者拼接。",
+    )
     parser.add_argument("--text-cleaning", default="mask_refusal_hazard_terms", choices=("none", "mask_refusal_terms", "mask_refusal_hazard_terms"))
     parser.add_argument("--use-char-ngrams", action="store_true")
     parser.add_argument("--output", required=True)
@@ -180,6 +208,7 @@ def main() -> None:
         "datasets": dataset_keys,
         "high_threshold": args.high_threshold,
         "top_fraction": args.top_fraction,
+        "text_view": args.text_view,
         "sample_sizes": {},
     }
     for k in [int(value) for value in args.sample_sizes.split(",") if value.strip()]:
@@ -199,6 +228,7 @@ def main() -> None:
                 args.text_cleaning,
                 args.use_char_ngrams,
                 args.top_terms,
+                args.text_view,
             )
             seed_report = evaluate_scores(test, scores, args.high_threshold, args.top_fraction)
             seed_report["text_explanations"] = explanations
@@ -212,6 +242,7 @@ def main() -> None:
 
     lines = ["# Prefix-zero 隐蔽高风险二阶段模型", ""]
     lines.append(f"高风险阈值：后缀 ASR >= {args.high_threshold}；选择比例：top {args.top_fraction:.0%}。")
+    lines.append(f"文本视图：`{args.text_view}`。")
     lines.append("")
     for k, k_report in report["sample_sizes"].items():
         if isinstance(k_report, list):
