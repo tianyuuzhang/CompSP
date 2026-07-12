@@ -64,10 +64,38 @@ def build_tfidf(train: list[dict], test: list[dict], max_features: int, cleaning
         vectorizer = TfidfVectorizer(ngram_range=(1, 2), min_df=3, max_features=max_features, sublinear_tf=True)
     x_train = vectorizer.fit_transform([clean_text(row["text"], cleaning) for row in train])
     x_test = vectorizer.transform([clean_text(row["text"], cleaning) for row in test])
-    return x_train, x_test
+    return vectorizer, x_train, x_test
 
 
-def fit_scores(train: list[dict], test: list[dict], high_threshold: float, max_features: int, cleaning: str, use_char_ngrams: bool):
+def top_weight_terms(vectorizer, weights: np.ndarray, top_n: int) -> dict:
+    """导出文本模型最强的正向和负向词项，便于判断信号来源。"""
+
+    if hasattr(vectorizer, "get_feature_names_out"):
+        names = np.asarray(vectorizer.get_feature_names_out())
+    else:
+        names = []
+        for prefix, transformer in vectorizer.transformer_list:
+            for feature in transformer.get_feature_names_out():
+                names.append(f"{prefix}:{feature}")
+        names = np.asarray(names)
+    weights = np.asarray(weights, dtype=float).reshape(-1)
+    top_pos = np.argsort(weights)[::-1][:top_n]
+    top_neg = np.argsort(weights)[:top_n]
+    return {
+        "positive": [{"term": str(names[idx]), "weight": float(weights[idx])} for idx in top_pos],
+        "negative": [{"term": str(names[idx]), "weight": float(weights[idx])} for idx in top_neg],
+    }
+
+
+def fit_scores(
+    train: list[dict],
+    test: list[dict],
+    high_threshold: float,
+    max_features: int,
+    cleaning: str,
+    use_char_ngrams: bool,
+    top_terms: int,
+):
     """拟合手工特征、文本分类器和文本回归器三类分数。"""
 
     y_train = np.asarray([row["future_asr"] >= high_threshold for row in train], dtype=int)
@@ -85,15 +113,18 @@ def fit_scores(train: list[dict], test: list[dict], high_threshold: float, max_f
     base_reg = Ridge(alpha=10.0).fit(xb_train, np.asarray([row["future_asr"] for row in train], dtype=float))
     scores["base_ridge"] = base_reg.predict(xb_test)
 
-    x_text_train, x_text_test = build_tfidf(train, test, max_features, cleaning, use_char_ngrams)
+    vectorizer, x_text_train, x_text_test = build_tfidf(train, test, max_features, cleaning, use_char_ngrams)
+    explanations = {}
     if len(np.unique(y_train)) >= 2:
         text_clf = LogisticRegression(max_iter=1000, class_weight="balanced", solver="liblinear").fit(x_text_train, y_train)
         scores["text_logistic"] = text_clf.predict_proba(x_text_test)[:, 1]
+        explanations["text_logistic"] = top_weight_terms(vectorizer, text_clf.coef_[0], top_terms)
     else:
         scores["text_logistic"] = np.zeros(len(test), dtype=float)
     text_reg = Ridge(alpha=10.0, solver="lsqr").fit(x_text_train, np.asarray([row["future_asr"] for row in train], dtype=float))
     scores["text_ridge"] = text_reg.predict(x_text_test)
-    return scores
+    explanations["text_ridge"] = top_weight_terms(vectorizer, text_reg.coef_, top_terms)
+    return scores, explanations
 
 
 def evaluate_scores(test: list[dict], scores: dict[str, np.ndarray], high_threshold: float, top_fraction: float) -> dict:
@@ -132,6 +163,7 @@ def main() -> None:
     parser.add_argument("--top-fraction", type=float, default=0.2)
     parser.add_argument("--length-threshold", type=int, default=500)
     parser.add_argument("--max-features", type=int, default=8000)
+    parser.add_argument("--top-terms", type=int, default=30)
     parser.add_argument("--text-cleaning", default="mask_refusal_hazard_terms", choices=("none", "mask_refusal_terms", "mask_refusal_hazard_terms"))
     parser.add_argument("--use-char-ngrams", action="store_true")
     parser.add_argument("--output", required=True)
@@ -159,8 +191,18 @@ def main() -> None:
             if not train or not test:
                 raise ValueError("prefix-zero 训练集或测试集为空。")
             print(f"开始 k={k}, seed={seed}: prefix-zero train={len(train)}, test={len(test)}", flush=True)
-            scores = fit_scores(train, test, args.high_threshold, args.max_features, args.text_cleaning, args.use_char_ngrams)
-            seed_reports.append(evaluate_scores(test, scores, args.high_threshold, args.top_fraction))
+            scores, explanations = fit_scores(
+                train,
+                test,
+                args.high_threshold,
+                args.max_features,
+                args.text_cleaning,
+                args.use_char_ngrams,
+                args.top_terms,
+            )
+            seed_report = evaluate_scores(test, scores, args.high_threshold, args.top_fraction)
+            seed_report["text_explanations"] = explanations
+            seed_reports.append(seed_report)
             print(f"完成 k={k}, seed={seed}", flush=True)
         report["sample_sizes"][str(k)] = seed_reports[0] if len(seed_reports) == 1 else seed_reports
 
@@ -189,6 +231,15 @@ def main() -> None:
                 f"{top['precision']:.3f} | {top['recall']:.3f} | {result['max_f1']:.3f} |"
             )
         lines.append("")
+        explanations = k_report.get("text_explanations", {})
+        for model_name in ("text_ridge", "text_logistic"):
+            if model_name not in explanations:
+                continue
+            lines.extend([f"### {model_name} 高权重词项", "", "正向词项："])
+            lines.append(", ".join(item["term"] for item in explanations[model_name]["positive"][:15]))
+            lines.extend(["", "负向词项："])
+            lines.append(", ".join(item["term"] for item in explanations[model_name]["negative"][:15]))
+            lines.append("")
     md_path = output.with_suffix(".md")
     md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"结果已写入 {output}")

@@ -63,6 +63,500 @@
           },
           "max_f1": 0.46666666666666673
         }
+      },
+      "text_explanations": {
+        "text_logistic": {
+          "positive": [
+            {
+              "term": "and",
+              "weight": 2.1884556133031756
+            },
+            {
+              "term": "network",
+              "weight": 1.7628149886109912
+            },
+            {
+              "term": "money",
+              "weight": 1.621465122961665
+            },
+            {
+              "term": "post",
+              "weight": 1.5812832495852986
+            },
+            {
+              "term": "on human",
+              "weight": 1.446874859667437
+            },
+            {
+              "term": "social",
+              "weight": 1.407017182512565
+            },
+            {
+              "term": "pineapple",
+              "weight": 1.3817964053530372
+            },
+            {
+              "term": "so",
+              "weight": 1.3777293164054862
+            },
+            {
+              "term": "database",
+              "weight": 1.3452102194054403
+            },
+            {
+              "term": "behavior",
+              "weight": 1.3123807432402592
+            },
+            {
+              "term": "viewing",
+              "weight": 1.277992108965805
+            },
+            {
+              "term": "to",
+              "weight": 1.2322688939405966
+            },
+            {
+              "term": "tax",
+              "weight": 1.2311504440936345
+            },
+            {
+              "term": "life",
+              "weight": 1.2093771186858586
+            },
+            {
+              "term": "draft",
+              "weight": 1.2033686165051125
+            },
+            {
+              "term": "article",
+              "weight": 1.1977205332147651
+            },
+            {
+              "term": "process",
+              "weight": 1.1891671825852101
+            },
+            {
+              "term": "who",
+              "weight": 1.188877694172285
+            },
+            {
+              "term": "someone",
+              "weight": 1.1787736865521798
+            },
+            {
+              "term": "of",
+              "weight": 1.1578422128055288
+            },
+            {
+              "term": "distribute",
+              "weight": 1.1521144046560416
+            },
+            {
+              "term": "harassment",
+              "weight": 1.1381476239190176
+            },
+            {
+              "term": "content",
+              "weight": 1.1371790233360517
+            },
+            {
+              "term": "consequences",
+              "weight": 1.123759791479297
+            },
+            {
+              "term": "aged",
+              "weight": 1.11694480294021
+            },
+            {
+              "term": "social media",
+              "weight": 1.111812881196683
+            },
+            {
+              "term": "article that",
+              "weight": 1.0873460584018384
+            },
+            {
+              "term": "unauthorized access",
+              "weight": 1.0801775925302484
+            },
+            {
+              "term": "step",
+              "weight": 1.0797452952876276
+            },
+            {
+              "term": "media",
+              "weight": 1.077106731730697
+            }
+          ],
+          "negative": [
+            {
+              "term": "flat",
+              "weight": -1.8509230562198582
+            },
+            {
+              "term": "general",
+              "weight": -1.6284077178285548
+            },
+            {
+              "term": "illuminati",
+              "weight": -1.5763897731558691
+            },
+            {
+              "term": "the illuminati",
+              "weight": -1.5339743878961727
+            },
+            {
+              "term": "refusal_term",
+              "weight": -1.5132202702669095
+            },
+            {
+              "term": "team",
+              "weight": -1.4571650675105967
+            },
+            {
+              "term": "mango",
+              "weight": -1.3828594256538789
+            },
+            {
+              "term": "planet",
+              "weight": -1.3779921902797587
+            },
+            {
+              "term": "evidence",
+              "weight": -1.3244460368866837
+            },
+            {
+              "term": "global events",
+              "weight": -1.3230052801644272
+            },
+            {
+              "term": "specific",
+              "weight": -1.2771745730053172
+            },
+            {
+              "term": "date rape",
+              "weight": -1.2618228794358741
+            },
+            {
+              "term": "rape",
+              "weight": -1.2618228794358741
+            },
+            {
+              "term": "refusal_term write",
+              "weight": -1.2439700564848395
+            },
+            {
+              "term": "shape",
+              "weight": -1.2428054688301093
+            },
+            {
+              "term": "different",
+              "weight": -1.2388447617128846
+            },
+            {
+              "term": "provide",
+              "weight": -1.22224208372543
+            },
+            {
+              "term": "end_header_id refusal_term",
+              "weight": -1.2113409608656036
+            },
+            {
+              "term": "ransomware",
+              "weight": -1.1921306028145173
+            },
+            {
+              "term": "the planet",
+              "weight": -1.1837645251077185
+            },
+            {
+              "term": "new world",
+              "weight": -1.1683611666110751
+            },
+            {
+              "term": "request",
+              "weight": -1.1509505662778698
+            },
+            {
+              "term": "global",
+              "weight": -1.1299162468948043
+            },
+            {
+              "term": "theories",
+              "weight": -1.1184260557317751
+            },
+            {
+              "term": "the earth",
+              "weight": -1.1098287301571652
+            },
+            {
+              "term": "events",
+              "weight": -1.0996399188038113
+            },
+            {
+              "term": "date",
+              "weight": -1.0986173707990399
+            },
+            {
+              "term": "provide evidence",
+              "weight": -1.0948880375552381
+            },
+            {
+              "term": "pornographic",
+              "weight": -1.0938788953037022
+            },
+            {
+              "term": "that promotes",
+              "weight": -1.0908845585161622
+            }
+          ]
+        },
+        "text_ridge": {
+          "positive": [
+            {
+              "term": "social",
+              "weight": 0.146620167612735
+            },
+            {
+              "term": "and",
+              "weight": 0.14603836882695037
+            },
+            {
+              "term": "post",
+              "weight": 0.13855131830678255
+            },
+            {
+              "term": "consequences",
+              "weight": 0.13792350844982024
+            },
+            {
+              "term": "social media",
+              "weight": 0.11761803969112997
+            },
+            {
+              "term": "who",
+              "weight": 0.11633914715302673
+            },
+            {
+              "term": "step",
+              "weight": 0.1142240703951736
+            },
+            {
+              "term": "media",
+              "weight": 0.11070259653157405
+            },
+            {
+              "term": "individuals",
+              "weight": 0.10963997514641347
+            },
+            {
+              "term": "of",
+              "weight": 0.10804241490867182
+            },
+            {
+              "term": "article",
+              "weight": 0.10703406641101294
+            },
+            {
+              "term": "pineapple",
+              "weight": 0.10652904298152703
+            },
+            {
+              "term": "business",
+              "weight": 0.10606187208578843
+            },
+            {
+              "term": "their",
+              "weight": 0.10503247605805795
+            },
+            {
+              "term": "addiction",
+              "weight": 0.10349365392028012
+            },
+            {
+              "term": "network",
+              "weight": 0.10290623342455515
+            },
+            {
+              "term": "tax",
+              "weight": 0.10171105598405542
+            },
+            {
+              "term": "blog",
+              "weight": 0.09843852045380116
+            },
+            {
+              "term": "process",
+              "weight": 0.09834741878484027
+            },
+            {
+              "term": "legal",
+              "weight": 0.09725229218390004
+            },
+            {
+              "term": "using",
+              "weight": 0.09708620330601618
+            },
+            {
+              "term": "relationships",
+              "weight": 0.0968540211215531
+            },
+            {
+              "term": "target",
+              "weight": 0.09678061303726429
+            },
+            {
+              "term": "identity",
+              "weight": 0.09655852799447914
+            },
+            {
+              "term": "reputation",
+              "weight": 0.09633291192572374
+            },
+            {
+              "term": "genocide",
+              "weight": 0.09510714778599717
+            },
+            {
+              "term": "by",
+              "weight": 0.09395230173094692
+            },
+            {
+              "term": "aged",
+              "weight": 0.09330603722789947
+            },
+            {
+              "term": "blog post",
+              "weight": 0.09005702082814629
+            },
+            {
+              "term": "behavior",
+              "weight": 0.0896594196438322
+            }
+          ],
+          "negative": [
+            {
+              "term": "refusal_term",
+              "weight": -0.23099831466485926
+            },
+            {
+              "term": "end_header_id refusal_term",
+              "weight": -0.18361356644090804
+            },
+            {
+              "term": "flat",
+              "weight": -0.180868656742042
+            },
+            {
+              "term": "evidence",
+              "weight": -0.14462127342348333
+            },
+            {
+              "term": "provide",
+              "weight": -0.12389059825058793
+            },
+            {
+              "term": "refusal_term provide",
+              "weight": -0.12351872886975084
+            },
+            {
+              "term": "planet",
+              "weight": -0.1219486755392916
+            },
+            {
+              "term": "team",
+              "weight": -0.11737884950066933
+            },
+            {
+              "term": "earth",
+              "weight": -0.1130994291792223
+            },
+            {
+              "term": "illuminati",
+              "weight": -0.1123399718372936
+            },
+            {
+              "term": "shape",
+              "weight": -0.10998483565187103
+            },
+            {
+              "term": "the earth",
+              "weight": -0.10977516809857991
+            },
+            {
+              "term": "the planet",
+              "weight": -0.10869123202964838
+            },
+            {
+              "term": "the illuminati",
+              "weight": -0.10753950131131063
+            },
+            {
+              "term": "game",
+              "weight": -0.10722949688681774
+            },
+            {
+              "term": "global events",
+              "weight": -0.10402438120936772
+            },
+            {
+              "term": "refusal_term write",
+              "weight": -0.10318310895315509
+            },
+            {
+              "term": "teams",
+              "weight": -0.10229614462102474
+            },
+            {
+              "term": "provide evidence",
+              "weight": -0.10186337052893481
+            },
+            {
+              "term": "global",
+              "weight": -0.1006629585273004
+            },
+            {
+              "term": "football",
+              "weight": -0.09961526762218499
+            },
+            {
+              "term": "ransomware",
+              "weight": -0.0956542687735818
+            },
+            {
+              "term": "request",
+              "weight": -0.09469582246427856
+            },
+            {
+              "term": "that promotes",
+              "weight": -0.09439911368927942
+            },
+            {
+              "term": "different",
+              "weight": -0.09274136933732456
+            },
+            {
+              "term": "date rape",
+              "weight": -0.08794451932825252
+            },
+            {
+              "term": "rape",
+              "weight": -0.08794451932825252
+            },
+            {
+              "term": "that",
+              "weight": -0.08766350932992395
+            },
+            {
+              "term": "events",
+              "weight": -0.08649877956240946
+            },
+            {
+              "term": "self harm",
+              "weight": -0.0863598199184972
+            }
+          ]
+        }
       }
     },
     "2": {
@@ -120,6 +614,500 @@
           },
           "max_f1": 0.2745995423340961
         }
+      },
+      "text_explanations": {
+        "text_logistic": {
+          "positive": [
+            {
+              "term": "gambling",
+              "weight": 2.6061600672518797
+            },
+            {
+              "term": "materials",
+              "weight": 1.7182671165332364
+            },
+            {
+              "term": "cryptocurrency",
+              "weight": 1.6100630168618812
+            },
+            {
+              "term": "cryptocurrency mining",
+              "weight": 1.598535060230875
+            },
+            {
+              "term": "fear",
+              "weight": 1.5905831597805895
+            },
+            {
+              "term": "with 回答分隔",
+              "weight": 1.569364297266938
+            },
+            {
+              "term": "mining",
+              "weight": 1.5567125167799563
+            },
+            {
+              "term": "network",
+              "weight": 1.5338286656696005
+            },
+            {
+              "term": "and using",
+              "weight": 1.5111129256435156
+            },
+            {
+              "term": "so",
+              "weight": 1.5056241288446743
+            },
+            {
+              "term": "and",
+              "weight": 1.4373408143108097
+            },
+            {
+              "term": "individuals",
+              "weight": 1.3811353608084447
+            },
+            {
+              "term": "behavior",
+              "weight": 1.3468985079813691
+            },
+            {
+              "term": "ideology",
+              "weight": 1.3384872222260447
+            },
+            {
+              "term": "eliminating",
+              "weight": 1.3329133698884073
+            },
+            {
+              "term": "using",
+              "weight": 1.2967503570897048
+            },
+            {
+              "term": "information is",
+              "weight": 1.2900820545726035
+            },
+            {
+              "term": "process",
+              "weight": 1.2798108772427992
+            },
+            {
+              "term": "process of",
+              "weight": 1.270945936834319
+            },
+            {
+              "term": "answer",
+              "weight": 1.2395513220217782
+            },
+            {
+              "term": "used",
+              "weight": 1.1880295741983027
+            },
+            {
+              "term": "stereotypes",
+              "weight": 1.1368010690035324
+            },
+            {
+              "term": "here",
+              "weight": 1.1365355222410656
+            },
+            {
+              "term": "share",
+              "weight": 1.1234178569485396
+            },
+            {
+              "term": "counterfeit",
+              "weight": 1.1218492861828397
+            },
+            {
+              "term": "consequences",
+              "weight": 1.107870004420842
+            },
+            {
+              "term": "our",
+              "weight": 1.1043774688902825
+            },
+            {
+              "term": "content",
+              "weight": 1.0935791022116068
+            },
+            {
+              "term": "only",
+              "weight": 1.0931848431337843
+            },
+            {
+              "term": "but",
+              "weight": 1.08046691585811
+            }
+          ],
+          "negative": [
+            {
+              "term": "request is",
+              "weight": -1.8109981679876748
+            },
+            {
+              "term": "ransomware",
+              "weight": -1.6475229648500684
+            },
+            {
+              "term": "refusal_term with",
+              "weight": -1.5452599802944524
+            },
+            {
+              "term": "on how",
+              "weight": -1.535169149708956
+            },
+            {
+              "term": "including animal",
+              "weight": -1.4984079829222723
+            },
+            {
+              "term": "including hacking",
+              "weight": -1.4964488391418505
+            },
+            {
+              "term": "with that",
+              "weight": -1.3778413771749227
+            },
+            {
+              "term": "planet",
+              "weight": -1.3587346470562882
+            },
+            {
+              "term": "pornography is",
+              "weight": -1.350562357335138
+            },
+            {
+              "term": "animal torture",
+              "weight": -1.3197722226586044
+            },
+            {
+              "term": "cannibalism",
+              "weight": -1.3002057745576279
+            },
+            {
+              "term": "flat",
+              "weight": -1.2978105191066072
+            },
+            {
+              "term": "animal",
+              "weight": -1.2787928225906646
+            },
+            {
+              "term": "creation of",
+              "weight": -1.2514354416080111
+            },
+            {
+              "term": "global events",
+              "weight": -1.2480937745375604
+            },
+            {
+              "term": "illuminati",
+              "weight": -1.241778735542472
+            },
+            {
+              "term": "the illuminati",
+              "weight": -1.2152506257148339
+            },
+            {
+              "term": "the planet",
+              "weight": -1.2119240001430769
+            },
+            {
+              "term": "email",
+              "weight": -1.1902137427357196
+            },
+            {
+              "term": "to help",
+              "weight": -1.1751375978296854
+            },
+            {
+              "term": "cannibalism is",
+              "weight": -1.174808399260014
+            },
+            {
+              "term": "events",
+              "weight": -1.12968729598924
+            },
+            {
+              "term": "on creating",
+              "weight": -1.100575630001594
+            },
+            {
+              "term": "refusal_term write",
+              "weight": -1.0615779118381061
+            },
+            {
+              "term": "data",
+              "weight": -1.0518412593146997
+            },
+            {
+              "term": "team",
+              "weight": -1.0433177297100535
+            },
+            {
+              "term": "assist you",
+              "weight": -1.020980188198617
+            },
+            {
+              "term": "refusal_term",
+              "weight": -1.0190874064962296
+            },
+            {
+              "term": "human",
+              "weight": -1.0065065260290276
+            },
+            {
+              "term": "including human",
+              "weight": -0.9888546157623705
+            }
+          ]
+        },
+        "text_ridge": {
+          "positive": [
+            {
+              "term": "post",
+              "weight": 0.0898536025841355
+            },
+            {
+              "term": "consequences",
+              "weight": 0.08664450715405371
+            },
+            {
+              "term": "social",
+              "weight": 0.0790341432585848
+            },
+            {
+              "term": "addiction",
+              "weight": 0.07827166506674049
+            },
+            {
+              "term": "it",
+              "weight": 0.069487946870335
+            },
+            {
+              "term": "individuals",
+              "weight": 0.06656755570062525
+            },
+            {
+              "term": "using",
+              "weight": 0.06648083770257555
+            },
+            {
+              "term": "blog",
+              "weight": 0.06519102603392544
+            },
+            {
+              "term": "kiwi",
+              "weight": 0.06397999195522582
+            },
+            {
+              "term": "erotic",
+              "weight": 0.06356326589297676
+            },
+            {
+              "term": "by",
+              "weight": 0.06331817895322867
+            },
+            {
+              "term": "movie",
+              "weight": 0.062972839048328
+            },
+            {
+              "term": "behavior",
+              "weight": 0.06276506687639026
+            },
+            {
+              "term": "gambling",
+              "weight": 0.06271704927725484
+            },
+            {
+              "term": "consequences of",
+              "weight": 0.062464027625502655
+            },
+            {
+              "term": "reputation",
+              "weight": 0.06243618950982196
+            },
+            {
+              "term": "article",
+              "weight": 0.06169608071258861
+            },
+            {
+              "term": "long",
+              "weight": 0.06022053195631064
+            },
+            {
+              "term": "error",
+              "weight": 0.05891314794063844
+            },
+            {
+              "term": "issue",
+              "weight": 0.058799748054050076
+            },
+            {
+              "term": "emotional",
+              "weight": 0.05824108583788866
+            },
+            {
+              "term": "blog post",
+              "weight": 0.057736835433736644
+            },
+            {
+              "term": "content",
+              "weight": 0.05700654168561652
+            },
+            {
+              "term": "who",
+              "weight": 0.05651750130069756
+            },
+            {
+              "term": "their",
+              "weight": 0.0563136192304969
+            },
+            {
+              "term": "negative",
+              "weight": 0.05529895120653657
+            },
+            {
+              "term": "and",
+              "weight": 0.05506066000711065
+            },
+            {
+              "term": "environment",
+              "weight": 0.05499851816175552
+            },
+            {
+              "term": "social media",
+              "weight": 0.0549168424722597
+            },
+            {
+              "term": "cyber",
+              "weight": 0.05479344714250433
+            }
+          ],
+          "negative": [
+            {
+              "term": "refusal_term",
+              "weight": -0.1271792073425208
+            },
+            {
+              "term": "end_header_id refusal_term",
+              "weight": -0.10691860647037608
+            },
+            {
+              "term": "flat",
+              "weight": -0.09656982474848581
+            },
+            {
+              "term": "refusal_term write",
+              "weight": -0.0852991183247377
+            },
+            {
+              "term": "planet",
+              "weight": -0.07126523179662454
+            },
+            {
+              "term": "refusal_term provide",
+              "weight": -0.06569894138273456
+            },
+            {
+              "term": "earth",
+              "weight": -0.06493528614201093
+            },
+            {
+              "term": "the planet",
+              "weight": -0.06480508702579568
+            },
+            {
+              "term": "evidence",
+              "weight": -0.06456745023538303
+            },
+            {
+              "term": "that promotes",
+              "weight": -0.061294516771112514
+            },
+            {
+              "term": "football",
+              "weight": -0.06103054167161842
+            },
+            {
+              "term": "team",
+              "weight": -0.058238620107130684
+            },
+            {
+              "term": "date",
+              "weight": -0.05724488031084945
+            },
+            {
+              "term": "assistant refusal_term",
+              "weight": -0.05718552499568625
+            },
+            {
+              "term": "teams",
+              "weight": -0.0570465109206973
+            },
+            {
+              "term": "on how",
+              "weight": -0.05651261260289173
+            },
+            {
+              "term": "the earth",
+              "weight": -0.05537011652982114
+            },
+            {
+              "term": "email",
+              "weight": -0.05521336946884197
+            },
+            {
+              "term": "provide",
+              "weight": -0.05475566853168934
+            },
+            {
+              "term": "illuminati",
+              "weight": -0.05461123563769407
+            },
+            {
+              "term": "ransomware",
+              "weight": -0.05414574550186583
+            },
+            {
+              "term": "pedophilia",
+              "weight": -0.05406212898311102
+            },
+            {
+              "term": "including the",
+              "weight": -0.05401751216889463
+            },
+            {
+              "term": "refusal_term create",
+              "weight": -0.053474761170006456
+            },
+            {
+              "term": "global events",
+              "weight": -0.0533631449797206
+            },
+            {
+              "term": "advice",
+              "weight": -0.05331096924375405
+            },
+            {
+              "term": "promotes",
+              "weight": -0.053036561472877886
+            },
+            {
+              "term": "provide evidence",
+              "weight": -0.05267154142568686
+            },
+            {
+              "term": "the illuminati",
+              "weight": -0.052410569547665105
+            },
+            {
+              "term": "shape",
+              "weight": -0.05119719100605866
+            }
+          ]
+        }
       }
     },
     "4": {
@@ -176,6 +1164,500 @@
             "recall": 0.8125
           },
           "max_f1": 0.2
+        }
+      },
+      "text_explanations": {
+        "text_logistic": {
+          "positive": [
+            {
+              "term": "information is",
+              "weight": 3.5953902565294644
+            },
+            {
+              "term": "enslaving",
+              "weight": 3.250697848280429
+            },
+            {
+              "term": "tax",
+              "weight": 3.205142045437808
+            },
+            {
+              "term": "refusal_term you",
+              "weight": 2.708701306250989
+            },
+            {
+              "term": "individuals",
+              "weight": 2.566621708909173
+            },
+            {
+              "term": "manipulation",
+              "weight": 2.5036328988777807
+            },
+            {
+              "term": "atm",
+              "weight": 2.187629669590647
+            },
+            {
+              "term": "form of",
+              "weight": 2.083458923750773
+            },
+            {
+              "term": "that 回答分隔",
+              "weight": 2.0394303575820514
+            },
+            {
+              "term": "form",
+              "weight": 1.96573533291365
+            },
+            {
+              "term": "deceive",
+              "weight": 1.8651970104804725
+            },
+            {
+              "term": "including how",
+              "weight": 1.8635998714518485
+            },
+            {
+              "term": "including suicide",
+              "weight": 1.7247205725757853
+            },
+            {
+              "term": "content is",
+              "weight": 1.609968787430944
+            },
+            {
+              "term": "fulfill that",
+              "weight": 1.5928825890226663
+            },
+            {
+              "term": "code",
+              "weight": 1.589703716743792
+            },
+            {
+              "term": "questions",
+              "weight": 1.5594849960336774
+            },
+            {
+              "term": "create explicit",
+              "weight": 1.5507794974214917
+            },
+            {
+              "term": "cold",
+              "weight": 1.536346399023169
+            },
+            {
+              "term": "erotic",
+              "weight": 1.4674126357942796
+            },
+            {
+              "term": "others",
+              "weight": 1.4479396752502325
+            },
+            {
+              "term": "fulfill",
+              "weight": 1.4201677608104366
+            },
+            {
+              "term": "that topic",
+              "weight": 1.4163314938647276
+            },
+            {
+              "term": "refusal_term fulfill",
+              "weight": 1.3936213209760813
+            },
+            {
+              "term": "explicit",
+              "weight": 1.3932288208645633
+            },
+            {
+              "term": "an",
+              "weight": 1.3520234576163623
+            },
+            {
+              "term": "you with",
+              "weight": 1.3267325930246319
+            },
+            {
+              "term": "issue",
+              "weight": 1.2803970738115256
+            },
+            {
+              "term": "causing",
+              "weight": 1.201789387546647
+            },
+            {
+              "term": "where",
+              "weight": 1.1549540573230033
+            }
+          ],
+          "negative": [
+            {
+              "term": "refusal_term with",
+              "weight": -2.097125646224694
+            },
+            {
+              "term": "that",
+              "weight": -1.7360259903819524
+            },
+            {
+              "term": "ransomware",
+              "weight": -1.5403745966772886
+            },
+            {
+              "term": "including the",
+              "weight": -1.5118311374708022
+            },
+            {
+              "term": "with that",
+              "weight": -1.4979689808622676
+            },
+            {
+              "term": "on how",
+              "weight": -1.4373139792332001
+            },
+            {
+              "term": "that promotes",
+              "weight": -1.4276501212891322
+            },
+            {
+              "term": "that is",
+              "weight": -1.4257655757818977
+            },
+            {
+              "term": "promotes",
+              "weight": -1.3543705732257765
+            },
+            {
+              "term": "refusal_term provide",
+              "weight": -1.1813183743075857
+            },
+            {
+              "term": "content that",
+              "weight": -1.0141431863683126
+            },
+            {
+              "term": "earth",
+              "weight": -0.992089797531875
+            },
+            {
+              "term": "refusal_term write",
+              "weight": -0.9859200331121871
+            },
+            {
+              "term": "flat",
+              "weight": -0.9829668567897825
+            },
+            {
+              "term": "real",
+              "weight": -0.9792662308123419
+            },
+            {
+              "term": "ransomware is",
+              "weight": -0.9691683211821251
+            },
+            {
+              "term": "with something",
+              "weight": -0.9616935888566474
+            },
+            {
+              "term": "assist you",
+              "weight": -0.9276994066903893
+            },
+            {
+              "term": "ll",
+              "weight": -0.9179303009944829
+            },
+            {
+              "term": "planet",
+              "weight": -0.8952778260662768
+            },
+            {
+              "term": "request",
+              "weight": -0.8839340920368753
+            },
+            {
+              "term": "create content",
+              "weight": -0.8611270345638914
+            },
+            {
+              "term": "the error",
+              "weight": -0.8515968657419528
+            },
+            {
+              "term": "could be",
+              "weight": -0.850250554817836
+            },
+            {
+              "term": "the creation",
+              "weight": -0.8498330080819826
+            },
+            {
+              "term": "illuminati",
+              "weight": -0.8410375254992071
+            },
+            {
+              "term": "information on",
+              "weight": -0.8389778689165743
+            },
+            {
+              "term": "the illuminati",
+              "weight": -0.8117835142176251
+            },
+            {
+              "term": "the earth",
+              "weight": -0.809015834545188
+            },
+            {
+              "term": "provide guidance",
+              "weight": -0.808084287678669
+            }
+          ]
+        },
+        "text_ridge": {
+          "positive": [
+            {
+              "term": "code",
+              "weight": 0.04742103313600427
+            },
+            {
+              "term": "error",
+              "weight": 0.04475940038552649
+            },
+            {
+              "term": "issue",
+              "weight": 0.04383191194358918
+            },
+            {
+              "term": "kiwi",
+              "weight": 0.04303417582298255
+            },
+            {
+              "term": "it",
+              "weight": 0.04298750401414404
+            },
+            {
+              "term": "manipulation",
+              "weight": 0.04240469082289846
+            },
+            {
+              "term": "context",
+              "weight": 0.04156959694776071
+            },
+            {
+              "term": "article",
+              "weight": 0.04013800048349721
+            },
+            {
+              "term": "hacking is",
+              "weight": 0.04006644473982483
+            },
+            {
+              "term": "encountered",
+              "weight": 0.03780347342284209
+            },
+            {
+              "term": "error code",
+              "weight": 0.03709469120454509
+            },
+            {
+              "term": "using",
+              "weight": 0.03690657157555807
+            },
+            {
+              "term": "is are",
+              "weight": 0.0368706312025296
+            },
+            {
+              "term": "an article",
+              "weight": 0.036666746283831764
+            },
+            {
+              "term": "more",
+              "weight": 0.03545406034443374
+            },
+            {
+              "term": "include",
+              "weight": 0.03528561015076344
+            },
+            {
+              "term": "this",
+              "weight": 0.03464744479599776
+            },
+            {
+              "term": "q1_generation_failed_a0_error",
+              "weight": 0.03438948370718157
+            },
+            {
+              "term": "the issue",
+              "weight": 0.03406270417093419
+            },
+            {
+              "term": "tools",
+              "weight": 0.033764210010841664
+            },
+            {
+              "term": "this error",
+              "weight": 0.03358088740067107
+            },
+            {
+              "term": "provide more",
+              "weight": 0.033366493130421525
+            },
+            {
+              "term": "to the",
+              "weight": 0.03325550912499704
+            },
+            {
+              "term": "trust",
+              "weight": 0.03310988303220984
+            },
+            {
+              "term": "consequences",
+              "weight": 0.03257344426191177
+            },
+            {
+              "term": "error message",
+              "weight": 0.031981182003199965
+            },
+            {
+              "term": "xenophobic",
+              "weight": 0.0317535784361818
+            },
+            {
+              "term": "medieval",
+              "weight": 0.031619122295743415
+            },
+            {
+              "term": "question",
+              "weight": 0.031547386459417785
+            },
+            {
+              "term": "where",
+              "weight": 0.03153551267802339
+            }
+          ],
+          "negative": [
+            {
+              "term": "refusal_term",
+              "weight": -0.053803662704854836
+            },
+            {
+              "term": "refusal_term write",
+              "weight": -0.05026528757602569
+            },
+            {
+              "term": "flat",
+              "weight": -0.050068072414288074
+            },
+            {
+              "term": "end_header_id refusal_term",
+              "weight": -0.049475038111406924
+            },
+            {
+              "term": "request",
+              "weight": -0.04148833126079021
+            },
+            {
+              "term": "refusal_term provide",
+              "weight": -0.04071582749783094
+            },
+            {
+              "term": "with that",
+              "weight": -0.036235997166432936
+            },
+            {
+              "term": "that promotes",
+              "weight": -0.03568902509553078
+            },
+            {
+              "term": "refusal_term with",
+              "weight": -0.035596781985306095
+            },
+            {
+              "term": "assistant refusal_term",
+              "weight": -0.034630954763069745
+            },
+            {
+              "term": "football",
+              "weight": -0.03378902120415342
+            },
+            {
+              "term": "promotes",
+              "weight": -0.033433798801521586
+            },
+            {
+              "term": "teams",
+              "weight": -0.03320438647835752
+            },
+            {
+              "term": "that request",
+              "weight": -0.03319861826413426
+            },
+            {
+              "term": "evidence",
+              "weight": -0.032103817033750835
+            },
+            {
+              "term": "that",
+              "weight": -0.03191995689194377
+            },
+            {
+              "term": "on how",
+              "weight": -0.031128718356796457
+            },
+            {
+              "term": "including the",
+              "weight": -0.030847068168725022
+            },
+            {
+              "term": "pedophilia 回答分隔",
+              "weight": -0.029703049725937916
+            },
+            {
+              "term": "earth",
+              "weight": -0.02894263761121766
+            },
+            {
+              "term": "rape",
+              "weight": -0.027282825759337468
+            },
+            {
+              "term": "date rape",
+              "weight": -0.027282825759337468
+            },
+            {
+              "term": "advice",
+              "weight": -0.02673452251291809
+            },
+            {
+              "term": "date",
+              "weight": -0.026718295807712355
+            },
+            {
+              "term": "provide",
+              "weight": -0.026616363686366357
+            },
+            {
+              "term": "evidence that",
+              "weight": -0.02648096078985201
+            },
+            {
+              "term": "the earth",
+              "weight": -0.026276442558152983
+            },
+            {
+              "term": "write sexist",
+              "weight": -0.026074559944133616
+            },
+            {
+              "term": "animal torture",
+              "weight": -0.025881897549468635
+            },
+            {
+              "term": "how to",
+              "weight": -0.025876132707630107
+            }
+          ]
         }
       }
     }
