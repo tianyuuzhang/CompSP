@@ -1,0 +1,183 @@
+{
+  "说明": "只在 prefix-zero 样本内训练/评估，目标是后缀 ASR 是否超过阈值。",
+  "datasets": [
+    "jbb-llama-ofa",
+    "jbb-llama-pair",
+    "jbb-llama-drattack"
+  ],
+  "high_threshold": 0.5,
+  "top_fraction": 0.2,
+  "sample_sizes": {
+    "1": {
+      "records": 2219,
+      "positive": 319,
+      "positive_rate": 0.1437584497521406,
+      "strategies": {
+        "random": {
+          "roc_auc": 0.5077907935984162,
+          "average_precision": 0.14703265885096484,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.1463963963963964,
+            "recall": 0.20376175548589343
+          },
+          "max_f1": 0.25385632437197003
+        },
+        "base_logistic": {
+          "roc_auc": 0.7497063190892591,
+          "average_precision": 0.2993689078113125,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.3063063063063063,
+            "recall": 0.4263322884012539
+          },
+          "max_f1": 0.45101663585951934
+        },
+        "base_ridge": {
+          "roc_auc": 0.7488516746411482,
+          "average_precision": 0.29749646569442545,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.30405405405405406,
+            "recall": 0.4231974921630094
+          },
+          "max_f1": 0.4529750479846449
+        },
+        "text_logistic": {
+          "roc_auc": 0.7813553868998514,
+          "average_precision": 0.40166273124483926,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.3536036036036036,
+            "recall": 0.49216300940438873
+          },
+          "max_f1": 0.4574898785425101
+        },
+        "text_ridge": {
+          "roc_auc": 0.787420392674476,
+          "average_precision": 0.4142265700829836,
+          "top_fraction": {
+            "selected_n": 444,
+            "precision": 0.38963963963963966,
+            "recall": 0.542319749216301
+          },
+          "max_f1": 0.46666666666666673
+        }
+      }
+    },
+    "2": {
+      "records": 1846,
+      "positive": 101,
+      "positive_rate": 0.05471289274106175,
+      "strategies": {
+        "random": {
+          "roc_auc": 0.5095520440296178,
+          "average_precision": 0.06037667624776897,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.05420054200542006,
+            "recall": 0.19801980198019803
+          },
+          "max_f1": 0.10752688172043011
+        },
+        "base_logistic": {
+          "roc_auc": 0.7351385854917869,
+          "average_precision": 0.12182203878554707,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.13550135501355012,
+            "recall": 0.49504950495049505
+          },
+          "max_f1": 0.22789115646258506
+        },
+        "base_ridge": {
+          "roc_auc": 0.7295214048625493,
+          "average_precision": 0.11326968308378803,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.11924119241192412,
+            "recall": 0.43564356435643564
+          },
+          "max_f1": 0.22448979591836737
+        },
+        "text_logistic": {
+          "roc_auc": 0.7766887003886636,
+          "average_precision": 0.17674585481989172,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.16802168021680217,
+            "recall": 0.6138613861386139
+          },
+          "max_f1": 0.2652173913043478
+        },
+        "text_ridge": {
+          "roc_auc": 0.7854378847626883,
+          "average_precision": 0.1950466919787715,
+          "top_fraction": {
+            "selected_n": 369,
+            "precision": 0.16802168021680217,
+            "recall": 0.6138613861386139
+          },
+          "max_f1": 0.2745995423340961
+        }
+      }
+    },
+    "4": {
+      "records": 1568,
+      "positive": 16,
+      "positive_rate": 0.01020408163265306,
+      "strategies": {
+        "random": {
+          "roc_auc": 0.39614207474226804,
+          "average_precision": 0.008424502550057547,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "max_f1": 0.020915032679738564
+        },
+        "base_logistic": {
+          "roc_auc": 0.6916478737113403,
+          "average_precision": 0.031224688526354013,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.025477707006369428,
+            "recall": 0.5
+          },
+          "max_f1": 0.09090909090909091
+        },
+        "base_ridge": {
+          "roc_auc": 0.7380798969072165,
+          "average_precision": 0.04403094434603327,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.028662420382165606,
+            "recall": 0.5625
+          },
+          "max_f1": 0.10526315789473684
+        },
+        "text_logistic": {
+          "roc_auc": 0.7897873711340206,
+          "average_precision": 0.11966750148799409,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.03503184713375796,
+            "recall": 0.6875
+          },
+          "max_f1": 0.19047619047619047
+        },
+        "text_ridge": {
+          "roc_auc": 0.842421069587629,
+          "average_precision": 0.14148680921949577,
+          "top_fraction": {
+            "selected_n": 314,
+            "precision": 0.041401273885350316,
+            "recall": 0.8125
+          },
+          "max_f1": 0.2
+        }
+      }
+    }
+  }
+}
