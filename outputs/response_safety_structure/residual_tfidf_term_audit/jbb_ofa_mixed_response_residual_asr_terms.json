@@ -1,0 +1,829 @@
+{
+  "说明": "正系数表示该词组对应更高的长度/格式残差目标；负系数表示更低。仅用于诊断，不代表因果。",
+  "scores": "outputs/alternative_asr/all_14_datasets/alternative_asr_scores.jsonl",
+  "target": "asr",
+  "sample_size": 1,
+  "text_view": "response",
+  "text_cleaning": "mask_refusal_hazard_terms",
+  "feature_set": "长度拒绝格式",
+  "train_datasets": [
+    "jbb-4omini-ofa",
+    "jbb-deepseek-ofa",
+    "jbb-llama-ofa",
+    "jbb-qwen-ofa"
+  ],
+  "train_records": 24000,
+  "alpha_base": 10.0,
+  "alpha_text": 10.0,
+  "max_features": 30000,
+  "residual_summary": {
+    "mean": 1.6429667671597297e-06,
+    "std": 0.32398509941755393,
+    "min": -1.4684534072875977,
+    "max": 1.2720566987991333
+  },
+  "top_positive": [
+    {
+      "feature": "char: ##",
+      "coef": 0.24536808147545167
+    },
+    {
+      "feature": "char:## ",
+      "coef": 0.24536808147545167
+    },
+    {
+      "feature": "char:###",
+      "coef": 0.22853512163276454
+    },
+    {
+      "feature": "word:we",
+      "coef": 0.22688832190447092
+    },
+    {
+      "feature": "char: ### ",
+      "coef": 0.22228667348070136
+    },
+    {
+      "feature": "char: ###",
+      "coef": 0.21991743611970876
+    },
+    {
+      "feature": "char:### ",
+      "coef": 0.21991743611970876
+    },
+    {
+      "feature": "word:but refusal_term",
+      "coef": 0.20401924412289196
+    },
+    {
+      "feature": "word:to",
+      "coef": 0.1885228322399341
+    },
+    {
+      "feature": "word:this",
+      "coef": 0.1884969259006437
+    },
+    {
+      "feature": "char: ## ",
+      "coef": 0.18471606890609488
+    },
+    {
+      "feature": "word:our",
+      "coef": 0.17654315829450135
+    },
+    {
+      "feature": "word:course here",
+      "coef": 0.17638566131533231
+    },
+    {
+      "feature": "word:towards",
+      "coef": 0.17504822104997014
+    },
+    {
+      "feature": "word:of course",
+      "coef": 0.15810195786972192
+    },
+    {
+      "feature": "word:course",
+      "coef": 0.1433008693041355
+    },
+    {
+      "feature": "word:for the",
+      "coef": 0.13652758525329003
+    },
+    {
+      "feature": "word:their",
+      "coef": 0.13517616874135546
+    },
+    {
+      "feature": "word:the filled",
+      "coef": 0.13194570125862531
+    },
+    {
+      "feature": "word:what",
+      "coef": 0.12966780491075156
+    },
+    {
+      "feature": "word:this can",
+      "coef": 0.1296671004528657
+    },
+    {
+      "feature": "word:the provided",
+      "coef": 0.1225973464145368
+    },
+    {
+      "feature": "word:is the",
+      "coef": 0.12098527466831366
+    },
+    {
+      "feature": "word:filled in",
+      "coef": 0.12030134368766839
+    },
+    {
+      "feature": "word:would",
+      "coef": 0.11833072370309872
+    },
+    {
+      "feature": "word:here is",
+      "coef": 0.11482102571704382
+    },
+    {
+      "feature": "char: we ",
+      "coef": 0.11262039998974986
+    },
+    {
+      "feature": "word:this includes",
+      "coef": 0.1121997068304517
+    },
+    {
+      "feature": "word:of",
+      "coef": 0.11174472624688024
+    },
+    {
+      "feature": "word:the",
+      "coef": 0.11161514969231881
+    },
+    {
+      "feature": "word:in content",
+      "coef": 0.10976513234241685
+    },
+    {
+      "feature": "word:filled",
+      "coef": 0.10708268258296164
+    },
+    {
+      "feature": "char:we ",
+      "coef": 0.1067225477107031
+    },
+    {
+      "feature": "char:to ",
+      "coef": 0.10540429188065034
+    },
+    {
+      "feature": "word:leading",
+      "coef": 0.10206512751280938
+    },
+    {
+      "feature": "char: # ",
+      "coef": 0.10192082051041991
+    },
+    {
+      "feature": "char: to ",
+      "coef": 0.09993921028622685
+    },
+    {
+      "feature": "word:disinformation",
+      "coef": 0.09976814344943222
+    },
+    {
+      "feature": "word:my",
+      "coef": 0.09922827735693354
+    },
+    {
+      "feature": "word:timing",
+      "coef": 0.09877868196354378
+    },
+    {
+      "feature": "char:his ",
+      "coef": 0.09830720956879974
+    },
+    {
+      "feature": "word:target audience",
+      "coef": 0.09772048387273803
+    },
+    {
+      "feature": "char: * ",
+      "coef": 0.09711848665164662
+    },
+    {
+      "feature": "char:this",
+      "coef": 0.09689210768694041
+    },
+    {
+      "feature": "char: this",
+      "coef": 0.09675953443810104
+    },
+    {
+      "feature": "word:the refusal_term",
+      "coef": 0.09660272232182594
+    },
+    {
+      "feature": "char: to",
+      "coef": 0.09644752745824603
+    },
+    {
+      "feature": "char: ta",
+      "coef": 0.09629978926939038
+    },
+    {
+      "feature": "char:this ",
+      "coef": 0.0957247763442678
+    },
+    {
+      "feature": "word:get",
+      "coef": 0.09554600402211877
+    },
+    {
+      "feature": "word:as",
+      "coef": 0.09424002810249359
+    },
+    {
+      "feature": "word:undermine",
+      "coef": 0.09421940705687745
+    },
+    {
+      "feature": "word:to the",
+      "coef": 0.09413216048772448
+    },
+    {
+      "feature": "word:reviews",
+      "coef": 0.09209234003349759
+    },
+    {
+      "feature": "word:to avoid",
+      "coef": 0.09165008053353124
+    },
+    {
+      "feature": "char: thi",
+      "coef": 0.09160876595529548
+    },
+    {
+      "feature": "word:sections",
+      "coef": 0.09076284168978596
+    },
+    {
+      "feature": "word:create",
+      "coef": 0.0902299940919711
+    },
+    {
+      "feature": "char:his",
+      "coef": 0.0900794125446586
+    },
+    {
+      "feature": "word:about the",
+      "coef": 0.0892386443591253
+    },
+    {
+      "feature": "word:provided outline",
+      "coef": 0.08898767007417961
+    },
+    {
+      "feature": "char: our",
+      "coef": 0.08864605389506851
+    },
+    {
+      "feature": "char: our ",
+      "coef": 0.08861480805550803
+    },
+    {
+      "feature": "word:can",
+      "coef": 0.08763646549812701
+    },
+    {
+      "feature": "char:#### ",
+      "coef": 0.08730172807350556
+    },
+    {
+      "feature": "char: ####",
+      "coef": 0.08730172807350556
+    },
+    {
+      "feature": "word:the email",
+      "coef": 0.08631482115372277
+    },
+    {
+      "feature": "word:this may",
+      "coef": 0.08628500401485205
+    },
+    {
+      "feature": "word:questions",
+      "coef": 0.08601154250880366
+    },
+    {
+      "feature": "char: in",
+      "coef": 0.08600013669648801
+    },
+    {
+      "feature": "word:their reputation",
+      "coef": 0.08595482902032246
+    },
+    {
+      "feature": "word:table",
+      "coef": 0.08575803142974955
+    },
+    {
+      "feature": "word:ddos attacks",
+      "coef": 0.08570510276788372
+    },
+    {
+      "feature": "word:within",
+      "coef": 0.08570005242042604
+    },
+    {
+      "feature": "word:the victim",
+      "coef": 0.08562638924198286
+    },
+    {
+      "feature": "word:scripts",
+      "coef": 0.08548555981808283
+    },
+    {
+      "feature": "word:profound",
+      "coef": 0.08519149790449433
+    },
+    {
+      "feature": "word:to societal",
+      "coef": 0.08480087059658646
+    },
+    {
+      "feature": "word:audience to",
+      "coef": 0.0845108507535568
+    },
+    {
+      "feature": "char: co",
+      "coef": 0.08415127818751043
+    },
+    {
+      "feature": "word:intention",
+      "coef": 0.08348761684009375
+    },
+    {
+      "feature": "word:fundamentally",
+      "coef": 0.08298418808842158
+    },
+    {
+      "feature": "char: scr",
+      "coef": 0.08294659144457746
+    },
+    {
+      "feature": "word:may use",
+      "coef": 0.08251023655675196
+    },
+    {
+      "feature": "word:the impact",
+      "coef": 0.08233095986242303
+    },
+    {
+      "feature": "word:attackers may",
+      "coef": 0.08227000324659393
+    },
+    {
+      "feature": "word:negative",
+      "coef": 0.08150992444137314
+    },
+    {
+      "feature": "word:better world",
+      "coef": 0.08125176554619037
+    },
+    {
+      "feature": "word:of six",
+      "coef": 0.08066091223792574
+    },
+    {
+      "feature": "word:this is",
+      "coef": 0.0804598340657535
+    },
+    {
+      "feature": "word:practices that",
+      "coef": 0.08028052705992457
+    },
+    {
+      "feature": "word:publishing",
+      "coef": 0.08020803004738748
+    },
+    {
+      "feature": "word:tools like",
+      "coef": 0.08016105507748272
+    },
+    {
+      "feature": "word:creating an",
+      "coef": 0.07979723677613075
+    },
+    {
+      "feature": "word:or misleading",
+      "coef": 0.07959457761077848
+    },
+    {
+      "feature": "char: the",
+      "coef": 0.07959228249027046
+    },
+    {
+      "feature": "char:ing",
+      "coef": 0.07940083259447933
+    },
+    {
+      "feature": "char:the",
+      "coef": 0.07917217949459215
+    },
+    {
+      "feature": "word:undermine the",
+      "coef": 0.07901639708434154
+    },
+    {
+      "feature": "word:cults",
+      "coef": 0.07853180897783646
+    }
+  ],
+  "top_negative": [
+    {
+      "feature": "word:end_header_id can",
+      "coef": -0.42874299285842893
+    },
+    {
+      "feature": "word:end_header_id refusal_term",
+      "coef": -0.3151946006217961
+    },
+    {
+      "feature": "word:can provide",
+      "coef": -0.3109824477576446
+    },
+    {
+      "feature": "word:especially",
+      "coef": -0.2416701305787588
+    },
+    {
+      "feature": "word:earth",
+      "coef": -0.20167943093218368
+    },
+    {
+      "feature": "word:toward",
+      "coef": -0.1996267410662862
+    },
+    {
+      "feature": "char: --- ",
+      "coef": -0.19295212024364108
+    },
+    {
+      "feature": "word:especially when",
+      "coef": -0.1891858172268855
+    },
+    {
+      "feature": "char: --",
+      "coef": -0.18884845588565224
+    },
+    {
+      "feature": "char: ---",
+      "coef": -0.18865682713027326
+    },
+    {
+      "feature": "char:--- ",
+      "coef": -0.18799071372339637
+    },
+    {
+      "feature": "char:-- ",
+      "coef": -0.18769456496707818
+    },
+    {
+      "feature": "char:---",
+      "coef": -0.1865089265750937
+    },
+    {
+      "feature": "word:ads",
+      "coef": -0.18508438415654688
+    },
+    {
+      "feature": "word:ll",
+      "coef": -0.1805751376654361
+    },
+    {
+      "feature": "word:illuminati",
+      "coef": -0.18046682231596817
+    },
+    {
+      "feature": "word:provide general",
+      "coef": -0.17847450182054547
+    },
+    {
+      "feature": "word:emphasize that",
+      "coef": -0.17809647989885807
+    },
+    {
+      "feature": "word:tailored",
+      "coef": -0.16809437471817226
+    },
+    {
+      "feature": "word:provide",
+      "coef": -0.16317886651532448
+    },
+    {
+      "feature": "char: i ",
+      "coef": -0.16301057500866503
+    },
+    {
+      "feature": "word:even",
+      "coef": -0.1590501459063508
+    },
+    {
+      "feature": "word:betting",
+      "coef": -0.15869025061361267
+    },
+    {
+      "feature": "word:this tailored",
+      "coef": -0.15598302485844015
+    },
+    {
+      "feature": "word:information on",
+      "coef": -0.15547250324983672
+    },
+    {
+      "feature": "char: - ",
+      "coef": -0.15501619940557929
+    },
+    {
+      "feature": "word:evidence",
+      "coef": -0.15425410860451064
+    },
+    {
+      "feature": "word:tailored to",
+      "coef": -0.151830872057744
+    },
+    {
+      "feature": "word:the illuminati",
+      "coef": -0.14826471949173256
+    },
+    {
+      "feature": "word:like this",
+      "coef": -0.14818548130042078
+    },
+    {
+      "feature": "word:odds",
+      "coef": -0.14355712420242478
+    },
+    {
+      "feature": "word:emphasize",
+      "coef": -0.14209052639037856
+    },
+    {
+      "feature": "word:note that",
+      "coef": -0.1414859927479288
+    },
+    {
+      "feature": "word:only",
+      "coef": -0.13905091603464922
+    },
+    {
+      "feature": "word:pornographic",
+      "coef": -0.13824435542806918
+    },
+    {
+      "feature": "word:please note",
+      "coef": -0.1357833537998815
+    },
+    {
+      "feature": "word:characters",
+      "coef": -0.13549002241925268
+    },
+    {
+      "feature": "word:intent",
+      "coef": -0.13438008392612422
+    },
+    {
+      "feature": "word:inclusive",
+      "coef": -0.1334999036112166
+    },
+    {
+      "feature": "word:topic but",
+      "coef": -0.13248808741851614
+    },
+    {
+      "feature": "word:general",
+      "coef": -0.1281252201327087
+    },
+    {
+      "feature": "word:theories",
+      "coef": -0.12651362677297645
+    },
+    {
+      "feature": "word:shape",
+      "coef": -0.12647198849852845
+    },
+    {
+      "feature": "word:to specific",
+      "coef": -0.12614058274806922
+    },
+    {
+      "feature": "word:conclusion",
+      "coef": -0.12501395234860702
+    },
+    {
+      "feature": "word:one of",
+      "coef": -0.12218877023907689
+    },
+    {
+      "feature": "word:when",
+      "coef": -0.1219940592767792
+    },
+    {
+      "feature": "word:request",
+      "coef": -0.12190923480790268
+    },
+    {
+      "feature": "word:flat",
+      "coef": -0.12136493518977956
+    },
+    {
+      "feature": "word:general information",
+      "coef": -0.12088065113132734
+    },
+    {
+      "feature": "word:know if",
+      "coef": -0.11951786530225195
+    },
+    {
+      "feature": "word:global events",
+      "coef": -0.11948755243842014
+    },
+    {
+      "feature": "word:and even",
+      "coef": -0.11795675069738941
+    },
+    {
+      "feature": "char:ciall",
+      "coef": -0.11793407290172457
+    },
+    {
+      "feature": "word:role in",
+      "coef": -0.11782193473582529
+    },
+    {
+      "feature": "word:gender",
+      "coef": -0.11608942695997011
+    },
+    {
+      "feature": "word:scientific",
+      "coef": -0.1146756578638871
+    },
+    {
+      "feature": "word:global",
+      "coef": -0.11377284959750898
+    },
+    {
+      "feature": "word:responsible",
+      "coef": -0.11358913751761082
+    },
+    {
+      "feature": "word:essential in",
+      "coef": -0.11325546874001736
+    },
+    {
+      "feature": "word:the topic",
+      "coef": -0.11230240434525324
+    },
+    {
+      "feature": "char:.3.",
+      "coef": -0.11229308347331482
+    },
+    {
+      "feature": "word:sexually suggestive",
+      "coef": -0.112196808512996
+    },
+    {
+      "feature": "word:bankroll",
+      "coef": -0.11164167543130338
+    },
+    {
+      "feature": "char:nclus",
+      "coef": -0.11151774897247732
+    },
+    {
+      "feature": "char:ecia",
+      "coef": -0.11132641020338589
+    },
+    {
+      "feature": "word:purposes only",
+      "coef": -0.11123170255941131
+    },
+    {
+      "feature": "word:and ethical",
+      "coef": -0.11120881000139204
+    },
+    {
+      "feature": "char:espec",
+      "coef": -0.11098726264108605
+    },
+    {
+      "feature": "char:pecia",
+      "coef": -0.11092693550923444
+    },
+    {
+      "feature": "char:ecial",
+      "coef": -0.11092693550923444
+    },
+    {
+      "feature": "char:sor",
+      "coef": -0.11062759947496997
+    },
+    {
+      "feature": "word:want to",
+      "coef": -0.1104929532965508
+    },
+    {
+      "feature": "word:communication",
+      "coef": -0.10976635777738183
+    },
+    {
+      "feature": "word:reader",
+      "coef": -0.1096667546928041
+    },
+    {
+      "feature": "word:your bets",
+      "coef": -0.10910351910139368
+    },
+    {
+      "feature": "word:the story",
+      "coef": -0.10837668325624879
+    },
+    {
+      "feature": "word:educational",
+      "coef": -0.10824873587686501
+    },
+    {
+      "feature": "word:the earth",
+      "coef": -0.10717742935829033
+    },
+    {
+      "feature": "word:educational purposes",
+      "coef": -0.10653270127487963
+    },
+    {
+      "feature": "word:story",
+      "coef": -0.10645337346684886
+    },
+    {
+      "feature": "word:approximately six",
+      "coef": -0.10555522280865474
+    },
+    {
+      "feature": "word:expert",
+      "coef": -0.10517929019251611
+    },
+    {
+      "feature": "char:ati ",
+      "coef": -0.10447975704560027
+    },
+    {
+      "feature": "char:nati ",
+      "coef": -0.10447975704560027
+    },
+    {
+      "feature": "word:you like",
+      "coef": -0.1041238418197598
+    },
+    {
+      "feature": "char:clusi",
+      "coef": -0.1037921999923303
+    },
+    {
+      "feature": "char:clus",
+      "coef": -0.10376815619098814
+    },
+    {
+      "feature": "word:and legal",
+      "coef": -0.10346200556665384
+    },
+    {
+      "feature": "word:educators",
+      "coef": -0.10314893760111637
+    },
+    {
+      "feature": "char:ti ",
+      "coef": -0.10299414736075276
+    },
+    {
+      "feature": "word:political dissidents",
+      "coef": -0.10293774157327647
+    },
+    {
+      "feature": "word:however",
+      "coef": -0.10288967624950035
+    },
+    {
+      "feature": "word:is for",
+      "coef": -0.10262653010994163
+    },
+    {
+      "feature": "word:individuals based",
+      "coef": -0.10252203600552758
+    },
+    {
+      "feature": "word:normalize",
+      "coef": -0.1024756501750556
+    },
+    {
+      "feature": "word:encouraging",
+      "coef": -0.10236726360545718
+    },
+    {
+      "feature": "word:informative",
+      "coef": -0.10204776590307621
+    },
+    {
+      "feature": "word:transparency",
+      "coef": -0.10161326515002282
+    },
+    {
+      "feature": "word:bets",
+      "coef": -0.10148246576606318
+    }
+  ]
+}

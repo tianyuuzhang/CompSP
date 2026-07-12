@@ -1,0 +1,829 @@
+{
+  "说明": "正系数表示该词组对应更高的长度/格式残差目标；负系数表示更低。仅用于诊断，不代表因果。",
+  "scores": "outputs/alternative_asr/all_14_datasets/alternative_asr_scores.jsonl",
+  "target": "alr",
+  "sample_size": 1,
+  "text_view": "response",
+  "text_cleaning": "mask_refusal_hazard_terms",
+  "feature_set": "长度拒绝格式",
+  "train_datasets": [
+    "jbb-4omini-ofa",
+    "jbb-deepseek-ofa",
+    "jbb-llama-ofa",
+    "jbb-qwen-ofa"
+  ],
+  "train_records": 24000,
+  "alpha_base": 10.0,
+  "alpha_text": 10.0,
+  "max_features": 30000,
+  "residual_summary": {
+    "mean": -8.996466795612908e-07,
+    "std": 0.183477248526995,
+    "min": -1.3863811492919922,
+    "max": 1.1615566253662108
+  },
+  "top_positive": [
+    {
+      "feature": "char: - ",
+      "coef": 0.16067836981575548
+    },
+    {
+      "feature": "word:and",
+      "coef": 0.13432276863403594
+    },
+    {
+      "feature": "word:explicit content",
+      "coef": 0.1315350975051333
+    },
+    {
+      "feature": "word:to",
+      "coef": 0.1232239008593132
+    },
+    {
+      "feature": "char: * ",
+      "coef": 0.1156276251541071
+    },
+    {
+      "feature": "word:the",
+      "coef": 0.11127505348209889
+    },
+    {
+      "feature": "word:creating content",
+      "coef": 0.10513227213601022
+    },
+    {
+      "feature": "word:of",
+      "coef": 0.1045296707032332
+    },
+    {
+      "feature": "word:content is",
+      "coef": 0.09675428336363377
+    },
+    {
+      "feature": "char: co",
+      "coef": 0.09497430214532669
+    },
+    {
+      "feature": "word:sexual assault",
+      "coef": 0.0945321822461558
+    },
+    {
+      "feature": "word:would",
+      "coef": 0.09076347439335974
+    },
+    {
+      "feature": "char:ent",
+      "coef": 0.08845618441946917
+    },
+    {
+      "feature": "word:my",
+      "coef": 0.08829281583316245
+    },
+    {
+      "feature": "word:what",
+      "coef": 0.08603807879619081
+    },
+    {
+      "feature": "word:assault",
+      "coef": 0.08020092525318043
+    },
+    {
+      "feature": "word:pornographic story",
+      "coef": 0.07696483506908784
+    },
+    {
+      "feature": "word:information about",
+      "coef": 0.07678264033472246
+    },
+    {
+      "feature": "char:the",
+      "coef": 0.07295404628601389
+    },
+    {
+      "feature": "char: **",
+      "coef": 0.07214180086450374
+    },
+    {
+      "feature": "word:in virtually",
+      "coef": 0.07163597216743321
+    },
+    {
+      "feature": "char:** ",
+      "coef": 0.07100790598549256
+    },
+    {
+      "feature": "char: 1.",
+      "coef": 0.06978890276008855
+    },
+    {
+      "feature": "char:and",
+      "coef": 0.06957950515863952
+    },
+    {
+      "feature": "char: the",
+      "coef": 0.06899437881939582
+    },
+    {
+      "feature": "word:content that",
+      "coef": 0.06846909187640846
+    },
+    {
+      "feature": "word:about how",
+      "coef": 0.06808555808136466
+    },
+    {
+      "feature": "char:con",
+      "coef": 0.06634553149775894
+    },
+    {
+      "feature": "char:nd ",
+      "coef": 0.06553268229506694
+    },
+    {
+      "feature": "word:and refusal_term",
+      "coef": 0.06417151434192643
+    },
+    {
+      "feature": "word:any of",
+      "coef": 0.0641645127025409
+    },
+    {
+      "feature": "word:my purpose",
+      "coef": 0.06405532722387985
+    },
+    {
+      "feature": "char:ati",
+      "coef": 0.06386199992452089
+    },
+    {
+      "feature": "char:es ",
+      "coef": 0.06363571338253945
+    },
+    {
+      "feature": "char:and ",
+      "coef": 0.06357503063923159
+    },
+    {
+      "feature": "word:helpful and",
+      "coef": 0.06334127005561428
+    },
+    {
+      "feature": "word:and harmless",
+      "coef": 0.06325712056252801
+    },
+    {
+      "feature": "char: in",
+      "coef": 0.06321737047183755
+    },
+    {
+      "feature": "word:facilitate",
+      "coef": 0.06212071494303947
+    },
+    {
+      "feature": "word:purpose is",
+      "coef": 0.061996832510951776
+    },
+    {
+      "feature": "char: and",
+      "coef": 0.06144119866557907
+    },
+    {
+      "feature": "char: and ",
+      "coef": 0.061396564689440644
+    },
+    {
+      "feature": "char: con",
+      "coef": 0.06125707830301434
+    },
+    {
+      "feature": "word:refusal_term dumping",
+      "coef": 0.06108204199412268
+    },
+    {
+      "feature": "word:be helpful",
+      "coef": 0.06084506475978484
+    },
+    {
+      "feature": "word:virtually",
+      "coef": 0.060683313334638465
+    },
+    {
+      "feature": "word:sexual abuse",
+      "coef": 0.05984983608922239
+    },
+    {
+      "feature": "char: of",
+      "coef": 0.05918464631802819
+    },
+    {
+      "feature": "char:ing",
+      "coef": 0.05893513356847221
+    },
+    {
+      "feature": "word:pornographic",
+      "coef": 0.0571046011227248
+    },
+    {
+      "feature": "word:why",
+      "coef": 0.05680337848847622
+    },
+    {
+      "feature": "char:s, ",
+      "coef": 0.056754255406575846
+    },
+    {
+      "feature": "word:what is",
+      "coef": 0.056655336439168216
+    },
+    {
+      "feature": "word:helpful",
+      "coef": 0.056535018047388357
+    },
+    {
+      "feature": "word:you ve",
+      "coef": 0.05624637412959082
+    },
+    {
+      "feature": "char:al ",
+      "coef": 0.05585911358225434
+    },
+    {
+      "feature": "char:to ",
+      "coef": 0.05583494253272297
+    },
+    {
+      "feature": "word:harmless and",
+      "coef": 0.055237220825551964
+    },
+    {
+      "feature": "char:ons",
+      "coef": 0.05498866129313432
+    },
+    {
+      "feature": "word:interested",
+      "coef": 0.05466631104321313
+    },
+    {
+      "feature": "char:ate",
+      "coef": 0.05447576977520161
+    },
+    {
+      "feature": "char:ed ",
+      "coef": 0.05427470548414957
+    },
+    {
+      "feature": "word:interested in",
+      "coef": 0.05426179136026466
+    },
+    {
+      "feature": "char:the ",
+      "coef": 0.05416259929051226
+    },
+    {
+      "feature": "char:he ",
+      "coef": 0.05405179213239118
+    },
+    {
+      "feature": "char:atio",
+      "coef": 0.05394092079569514
+    },
+    {
+      "feature": "char:ation",
+      "coef": 0.053918644707896285
+    },
+    {
+      "feature": "word:enable",
+      "coef": 0.05375462495955124
+    },
+    {
+      "feature": "char:tion",
+      "coef": 0.0535360691992299
+    },
+    {
+      "feature": "char:tio",
+      "coef": 0.052975198716457034
+    },
+    {
+      "feature": "word:to facilitate",
+      "coef": 0.05249322411800013
+    },
+    {
+      "feature": "char: the ",
+      "coef": 0.05248877505972665
+    },
+    {
+      "feature": "char: to ",
+      "coef": 0.05162282289240807
+    },
+    {
+      "feature": "word:concerned",
+      "coef": 0.05127361909476424
+    },
+    {
+      "feature": "char:for",
+      "coef": 0.0512481656336949
+    },
+    {
+      "feature": "char:of ",
+      "coef": 0.051092319234985716
+    },
+    {
+      "feature": "word:which is",
+      "coef": 0.051023723789979845
+    },
+    {
+      "feature": "word:mature",
+      "coef": 0.05067303101875221
+    },
+    {
+      "feature": "char:ng ",
+      "coef": 0.05052442033113865
+    },
+    {
+      "feature": "char:ion",
+      "coef": 0.05038733443129329
+    },
+    {
+      "feature": "char: of ",
+      "coef": 0.050317285254729026
+    },
+    {
+      "feature": "word:happy to",
+      "coef": 0.05018501417686241
+    },
+    {
+      "feature": "word:definition",
+      "coef": 0.049975246354348093
+    },
+    {
+      "feature": "char:on ",
+      "coef": 0.049118869139567076
+    },
+    {
+      "feature": "char:ing ",
+      "coef": 0.04880274660214904
+    },
+    {
+      "feature": "word:this topic",
+      "coef": 0.0485571147689067
+    },
+    {
+      "feature": "word:child sexual",
+      "coef": 0.04850947054708359
+    },
+    {
+      "feature": "char: ** ",
+      "coef": 0.04847384898011502
+    },
+    {
+      "feature": "char:would",
+      "coef": 0.04840719566559798
+    },
+    {
+      "feature": "char:woul",
+      "coef": 0.04840719566559798
+    },
+    {
+      "feature": "char: to",
+      "coef": 0.04828689176204152
+    },
+    {
+      "feature": "char: woul",
+      "coef": 0.04785182306094661
+    },
+    {
+      "feature": "word:team",
+      "coef": 0.047615137926217264
+    },
+    {
+      "feature": "word:ve",
+      "coef": 0.047484656483950165
+    },
+    {
+      "feature": "word:outlines",
+      "coef": 0.04717508691437812
+    },
+    {
+      "feature": "word:for legitimate",
+      "coef": 0.047134599856257495
+    },
+    {
+      "feature": "word:causes",
+      "coef": 0.0469413910526348
+    },
+    {
+      "feature": "word:descriptions",
+      "coef": 0.04691937206027257
+    },
+    {
+      "feature": "word:illuminati is",
+      "coef": 0.04691351824898132
+    },
+    {
+      "feature": "word:would be",
+      "coef": 0.04691098443847851
+    }
+  ],
+  "top_negative": [
+    {
+      "feature": "word:end_header_id can",
+      "coef": -0.304144168325048
+    },
+    {
+      "feature": "word:end_header_id refusal_term",
+      "coef": -0.24169866410916604
+    },
+    {
+      "feature": "char: i ",
+      "coef": -0.19674958144989482
+    },
+    {
+      "feature": "word:retries",
+      "coef": -0.1747617057328553
+    },
+    {
+      "feature": "word:request failed",
+      "coef": -0.1747617057328553
+    },
+    {
+      "feature": "word:after retries",
+      "coef": -0.1747617057328553
+    },
+    {
+      "feature": "word:failed after",
+      "coef": -0.1747617057328553
+    },
+    {
+      "feature": "word:request if",
+      "coef": -0.1743432503690735
+    },
+    {
+      "feature": "word:information on",
+      "coef": -0.17165993753114786
+    },
+    {
+      "feature": "word:emphasize that",
+      "coef": -0.15548924852390136
+    },
+    {
+      "feature": "char: --- ",
+      "coef": -0.15328128237204178
+    },
+    {
+      "feature": "char: ---",
+      "coef": -0.1524446801364633
+    },
+    {
+      "feature": "char: --",
+      "coef": -0.15224416380867228
+    },
+    {
+      "feature": "char:--- ",
+      "coef": -0.1521850592547676
+    },
+    {
+      "feature": "char:---",
+      "coef": -0.15216356589375046
+    },
+    {
+      "feature": "char:-- ",
+      "coef": -0.1517636470950799
+    },
+    {
+      "feature": "word:can provide",
+      "coef": -0.14788754559704448
+    },
+    {
+      "feature": "word:purposes only",
+      "coef": -0.1387323877573241
+    },
+    {
+      "feature": "word:note",
+      "coef": -0.13749385948989054
+    },
+    {
+      "feature": "word:with that",
+      "coef": -0.1374097004809834
+    },
+    {
+      "feature": "word:request",
+      "coef": -0.13617951159299066
+    },
+    {
+      "feature": "word:note that",
+      "coef": -0.13405169428530375
+    },
+    {
+      "feature": "word:provide information",
+      "coef": -0.1311335750092248
+    },
+    {
+      "feature": "word:failed",
+      "coef": -0.13048561550090923
+    },
+    {
+      "feature": "word:topic but",
+      "coef": -0.12958973198131618
+    },
+    {
+      "feature": "word:refusal_term with",
+      "coef": -0.12627970651027098
+    },
+    {
+      "feature": "word:is for",
+      "coef": -0.12345946222946705
+    },
+    {
+      "feature": "char:.3.",
+      "coef": -0.12144801317540203
+    },
+    {
+      "feature": "char:hat. ",
+      "coef": -0.120836320905031
+    },
+    {
+      "feature": "word:know how",
+      "coef": -0.12062415951638487
+    },
+    {
+      "feature": "char:hat.",
+      "coef": -0.1205275392753004
+    },
+    {
+      "feature": "word:with this",
+      "coef": -0.11661898018145368
+    },
+    {
+      "feature": "word:please note",
+      "coef": -0.11586134927191073
+    },
+    {
+      "feature": "word:provide",
+      "coef": -0.11502906425894505
+    },
+    {
+      "feature": "word:want to",
+      "coef": -0.11437164747073418
+    },
+    {
+      "feature": "word:refusal_term provide",
+      "coef": -0.11331062204348123
+    },
+    {
+      "feature": "word:general information",
+      "coef": -0.11245563551543561
+    },
+    {
+      "feature": "char:at.",
+      "coef": -0.1096584057624492
+    },
+    {
+      "feature": "char:at. ",
+      "coef": -0.10961029198271421
+    },
+    {
+      "feature": "char:1.3.",
+      "coef": -0.10698931567112575
+    },
+    {
+      "feature": "word:for educational",
+      "coef": -0.10681636600506575
+    },
+    {
+      "feature": "word:educational purposes",
+      "coef": -0.10513328540667037
+    },
+    {
+      "feature": "word:of child",
+      "coef": -0.10386199403317287
+    },
+    {
+      "feature": "word:provide general",
+      "coef": -0.10081481870694382
+    },
+    {
+      "feature": "word:can assist",
+      "coef": -0.09708752336434509
+    },
+    {
+      "feature": "word:emphasize",
+      "coef": -0.09653746589630316
+    },
+    {
+      "feature": "word:ll",
+      "coef": -0.0952318511120011
+    },
+    {
+      "feature": "word:but",
+      "coef": -0.0945199951855439
+    },
+    {
+      "feature": "word:want",
+      "coef": -0.09435420690291135
+    },
+    {
+      "feature": "word:the topic",
+      "coef": -0.09428128989703702
+    },
+    {
+      "feature": "word:general",
+      "coef": -0.09408620795725217
+    },
+    {
+      "feature": "word:any",
+      "coef": -0.0931127626745576
+    },
+    {
+      "feature": "word:including the",
+      "coef": -0.0917410929266463
+    },
+    {
+      "feature": "word:pornography is",
+      "coef": -0.09090670135782736
+    },
+    {
+      "feature": "word:animal torture",
+      "coef": -0.09051305469424041
+    },
+    {
+      "feature": "word:animal",
+      "coef": -0.08928741404890148
+    },
+    {
+      "feature": "word:activities including",
+      "coef": -0.08643813195966767
+    },
+    {
+      "feature": "word:date rape",
+      "coef": -0.08605182056178741
+    },
+    {
+      "feature": "word:or use",
+      "coef": -0.0841093813201899
+    },
+    {
+      "feature": "word:this request",
+      "coef": -0.08333490089033065
+    },
+    {
+      "feature": "word:help with",
+      "coef": -0.08324846206516877
+    },
+    {
+      "feature": "word:you have",
+      "coef": -0.0832351379205453
+    },
+    {
+      "feature": "char:tries",
+      "coef": -0.08217857965966553
+    },
+    {
+      "feature": "char:ed: ",
+      "coef": -0.08215413983389741
+    },
+    {
+      "feature": "word:to emphasize",
+      "coef": -0.08174083373674336
+    },
+    {
+      "feature": "char: retr",
+      "coef": -0.07967588654909852
+    },
+    {
+      "feature": "word:creation",
+      "coef": -0.07895125502868876
+    },
+    {
+      "feature": "word:rape drugs",
+      "coef": -0.07877790521880211
+    },
+    {
+      "feature": "char:retr",
+      "coef": -0.07857163173527273
+    },
+    {
+      "feature": "word:child pornography",
+      "coef": -0.07718495993503811
+    },
+    {
+      "feature": "word:distribution of",
+      "coef": -0.07716620352847442
+    },
+    {
+      "feature": "char:ed:",
+      "coef": -0.07706010234283882
+    },
+    {
+      "feature": "char:trie",
+      "coef": -0.07600017613488956
+    },
+    {
+      "feature": "word:distribution",
+      "coef": -0.07526414234273188
+    },
+    {
+      "feature": "word:or guidance",
+      "coef": -0.07490113701146299
+    },
+    {
+      "feature": "word:health professional",
+      "coef": -0.07464744373444197
+    },
+    {
+      "feature": "word:the creation",
+      "coef": -0.07391895462211981
+    },
+    {
+      "feature": "char:t. ",
+      "coef": -0.0732719321044008
+    },
+    {
+      "feature": "word:start_header_id assistant",
+      "coef": -0.07323096921188225
+    },
+    {
+      "feature": "word:start_header_id",
+      "coef": -0.07323096921188225
+    },
+    {
+      "feature": "word:only",
+      "coef": -0.07318485067323645
+    },
+    {
+      "feature": "word:trusted",
+      "coef": -0.07255455889197793
+    },
+    {
+      "feature": "word:assistant",
+      "coef": -0.07240318192736755
+    },
+    {
+      "feature": "char:d: ",
+      "coef": -0.07160659167147874
+    },
+    {
+      "feature": "word:informative",
+      "coef": -0.07126528539967376
+    },
+    {
+      "feature": "word:sensitive and",
+      "coef": -0.07107500104519916
+    },
+    {
+      "feature": "word:end_header_id",
+      "coef": -0.07090065016920281
+    },
+    {
+      "feature": "word:assistant end_header_id",
+      "coef": -0.07090065016920281
+    },
+    {
+      "feature": "word:pornography",
+      "coef": -0.07068158677237198
+    },
+    {
+      "feature": "word:assist",
+      "coef": -0.06995948513467942
+    },
+    {
+      "feature": "word:rape",
+      "coef": -0.06866971937309961
+    },
+    {
+      "feature": "char:etri",
+      "coef": -0.06816421992547131
+    },
+    {
+      "feature": "word:professional or",
+      "coef": -0.06785862200310615
+    },
+    {
+      "feature": "word:only and",
+      "coef": -0.06734844147952064
+    },
+    {
+      "feature": "word:unprotected",
+      "coef": -0.06707522267806998
+    },
+    {
+      "feature": "word:but refusal_term",
+      "coef": -0.06702293322581038
+    },
+    {
+      "feature": "word:unprotected sex",
+      "coef": -0.06626455115578643
+    },
+    {
+      "feature": "word:after",
+      "coef": -0.0662117181495173
+    },
+    {
+      "feature": "word:topic",
+      "coef": -0.06533470213366545
+    },
+    {
+      "feature": "word:date",
+      "coef": -0.06520224984383508
+    }
+  ]
+}
