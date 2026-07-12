@@ -214,6 +214,43 @@ def select_within_groups(rows: list[dict], score_key: str, top_fraction: float, 
     return selected
 
 
+def select_hybrid_with_prefix_zero_quota(
+    rows: list[dict],
+    primary_score: str,
+    hidden_score: str,
+    top_fraction: float,
+    hidden_quota: float,
+    rng: np.random.Generator,
+) -> list[dict]:
+    """混合选择策略：为 prefix-zero 样本保留一部分名额。
+
+    该策略用于测试一个具体失败点：普通 ASR 前缀策略几乎不会选择前 k 次均未
+    出现 unsafe 的样本，因此会漏掉“低频成功但仍高风险”的指令。这里在同数据集、
+    同问题内先从 prefix-zero 子集按 ``hidden_score`` 选择保留名额，再用
+    ``primary_score`` 填满剩余 top fraction。
+    """
+
+    groups: dict[tuple[str, int], list[dict]] = {}
+    for row in rows:
+        groups.setdefault((row["dataset_key"], row["question_id"]), []).append(row)
+    selected: list[dict] = []
+    for group_rows in groups.values():
+        total_count = max(1, int(round(len(group_rows) * top_fraction)))
+        hidden_count = max(0, min(total_count, int(round(total_count * hidden_quota))))
+        prefix_zero = [row for row in group_rows if row["prefix_zero"]]
+        hidden_ranked = sorted(prefix_zero, key=lambda item: (item[hidden_score], rng.random()), reverse=True)
+        group_selected = hidden_ranked[:hidden_count]
+        selected_ids = {(row["dataset_key"], row["question_id"], row["item_index"]) for row in group_selected}
+        remaining = [
+            row for row in group_rows
+            if (row["dataset_key"], row["question_id"], row["item_index"]) not in selected_ids
+        ]
+        primary_ranked = sorted(remaining, key=lambda item: (item[primary_score], rng.random()), reverse=True)
+        group_selected.extend(primary_ranked[: max(0, total_count - len(group_selected))])
+        selected.extend(group_selected)
+    return selected
+
+
 def evaluate_selection(rows: list[dict], selected: list[dict], high_threshold: float) -> dict:
     """评估被选择集合的未来 ASR 和隐蔽高风险召回。"""
 
@@ -256,6 +293,11 @@ def main() -> None:
     parser.add_argument("--sample-sizes", default="1,2,4")
     parser.add_argument("--seeds", type=int, default=3)
     parser.add_argument("--top-fraction", type=float, default=0.2)
+    parser.add_argument(
+        "--hidden-quotas",
+        default="0.25,0.5",
+        help="混合策略中为 prefix-zero 样本保留的 top 名额比例，逗号分隔。",
+    )
     parser.add_argument("--high-threshold", type=float, default=0.5)
     parser.add_argument("--length-threshold", type=int, default=500)
     parser.add_argument("--max-features", type=int, default=30000)
@@ -280,19 +322,26 @@ def main() -> None:
         "model_text_residual",
         "model_base_plus_text_residual",
     ]
+    hidden_quotas = [float(value) for value in args.hidden_quotas.split(",") if value.strip()]
+    hybrid_keys = [
+        f"hybrid_hazard_plus_text_hidden_q{quota:g}" for quota in hidden_quotas
+    ] + [
+        f"hybrid_hazard_plus_base_hidden_q{quota:g}" for quota in hidden_quotas
+    ]
     report = {
         "说明": "训练问题拟合前缀回答到后缀 ASR；测试问题按同题 top fraction 选择候选。",
         "datasets": dataset_keys,
         "train_questions": train_qids,
         "test_questions": test_qids,
         "top_fraction": args.top_fraction,
+        "hidden_quotas": hidden_quotas,
         "high_threshold": args.high_threshold,
         "text_cleaning": args.text_cleaning,
         "use_char_ngrams": args.use_char_ngrams,
         "sample_sizes": {},
     }
     for k in [int(value) for value in args.sample_sizes.split(",") if value.strip()]:
-        seed_reports = {score: [] for score in score_keys}
+        seed_reports = {score: [] for score in score_keys + hybrid_keys}
         train_counts = []
         test_counts = []
         for seed in range(args.seeds):
@@ -325,6 +374,29 @@ def main() -> None:
             for score in score_keys:
                 selected = select_within_groups(test_scored, score, args.top_fraction, rng)
                 seed_reports[score].append(evaluate_selection(test_scored, selected, args.high_threshold))
+            for quota in hidden_quotas:
+                selected = select_hybrid_with_prefix_zero_quota(
+                    test_scored,
+                    primary_score="prefix_hazard_weighted_asr",
+                    hidden_score="model_base_plus_text_residual",
+                    top_fraction=args.top_fraction,
+                    hidden_quota=quota,
+                    rng=rng,
+                )
+                seed_reports[f"hybrid_hazard_plus_text_hidden_q{quota:g}"].append(
+                    evaluate_selection(test_scored, selected, args.high_threshold)
+                )
+                selected = select_hybrid_with_prefix_zero_quota(
+                    test_scored,
+                    primary_score="prefix_hazard_weighted_asr",
+                    hidden_score="model_base_features",
+                    top_fraction=args.top_fraction,
+                    hidden_quota=quota,
+                    rng=rng,
+                )
+                seed_reports[f"hybrid_hazard_plus_base_hidden_q{quota:g}"].append(
+                    evaluate_selection(test_scored, selected, args.high_threshold)
+                )
             print(f"完成 k={k}, seed={seed}", flush=True)
         report["sample_sizes"][str(k)] = {
             "train_records": {"mean": float(np.mean(train_counts)), "std": float(np.std(train_counts))},
