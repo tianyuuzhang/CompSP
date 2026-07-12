@@ -247,3 +247,23 @@ ASR-Ridge 方向下，`jbb-llama-pair` 的新 CompSP 训练已经完成：
 
 初始 ETA：参考 ALR-DrAttack 实测 27.44 小时训练和约 1.3 小时最终评估，ASR-DrAttack
 预计约 28~32 小时。等训练 tqdm 正式出现后，以日志 ETA 为准。
+
+## 2026-07-12 续档：ASR-DrAttack 进入训练阶段
+
+`jbb-llama-drattack` 已结束初始 evaluation 并进入 LoRA 训练。日志：
+`logs/pseudo_safety_asr_20260711_013330.log`。
+
+2026-07-12 00:40（北京时间）检查时，训练 tqdm 约为 `6277/14490`，进度约 `43%`，
+速度约 `6.1s/step`，剩余时间约 `14h`。训练完成后还会进行最终 evaluation/save，
+按测试集 `48,417` 个 pair 估计另需约 `1.3~1.7h`。保守预计完整结束还需 `15~16h`。
+
+当前已有 ASR 结果：
+
+| 数据集 | final accuracy | macro-F1 | AUC |
+|---|---:|---:|---:|
+| jbb-llama-ofa | 0.6103 | 0.6103 | 0.6580 |
+| jbb-llama-pair | 0.6485 | 0.6484 | 0.7086 |
+| jbb-llama-drattack | 训练中 | 训练中 | 训练中 |
+
+阶段性判断：ASR 伪方向比 ALR 方向更难被 CompSP 拟合，但 OFA/PAIR 均显著高于随机。
+DrAttack 需等待最终结果；鉴于 ALR-DrAttack 曾接近随机，不能预设 ASR-DrAttack 会成功。
