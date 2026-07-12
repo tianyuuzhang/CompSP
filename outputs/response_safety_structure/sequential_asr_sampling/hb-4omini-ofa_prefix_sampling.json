@@ -1,0 +1,845 @@
+{
+  "说明": "前缀只用于选择追加采样候选；评估目标是未使用后缀 ASR。",
+  "datasets": [
+    "hb-4omini-ofa"
+  ],
+  "records": 2200,
+  "top_fraction": 0.2,
+  "high_threshold": 0.5,
+  "sample_sizes": {
+    "1": {
+      "random": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6703875598086124,
+          "std": 0.000244628191983939
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.6729186602870814,
+          "std": 0.008189579127834596
+        },
+        "future_asr_lift": {
+          "mean": 0.0025311004784689395,
+          "std": 0.008296358222908695
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.7104545454545454,
+          "std": 0.011642044068059737
+        },
+        "high_recall": {
+          "mean": 0.20018077248547614,
+          "std": 0.0033429322024646057
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 211.6,
+          "std": 12.387090053761618
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 43.0,
+          "std": 6.841052550594828
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.20208710444994024,
+          "std": 0.02014602320522521
+        }
+      },
+      "prefix_empirical_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6703875598086124,
+          "std": 0.000244628191983939
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7606459330143541,
+          "std": 0.003221236565351698
+        },
+        "future_asr_lift": {
+          "mean": 0.09025837320574168,
+          "std": 0.0033961653730814755
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8077272727272726,
+          "std": 0.0023177361425421876
+        },
+        "high_recall": {
+          "mean": 0.22758737685606797,
+          "std": 0.000604138761509659
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 211.6,
+          "std": 12.387090053761618
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.8,
+          "std": 0.7483314773547883
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.003685856627033098,
+          "std": 0.0034122892432810648
+        }
+      },
+      "prefix_jeffreys_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6703875598086124,
+          "std": 0.000244628191983939
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7583014354066986,
+          "std": 0.004604626190958655
+        },
+        "future_asr_lift": {
+          "mean": 0.08791387559808617,
+          "std": 0.004822064546935678
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8027272727272727,
+          "std": 0.006803013430498075
+        },
+        "high_recall": {
+          "mean": 0.22618105208886527,
+          "std": 0.0021753324649067653
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 211.6,
+          "std": 12.387090053761618
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.4,
+          "std": 0.48989794855663565
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0017707782413664767,
+          "std": 0.0021696359988345503
+        }
+      },
+      "prefix_alr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6703875598086124,
+          "std": 0.000244628191983939
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7501913875598086,
+          "std": 0.0038401414299787176
+        },
+        "future_asr_lift": {
+          "mean": 0.07980382775119625,
+          "std": 0.0036928811163250666
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.7981818181818182,
+          "std": 0.005821022034029832
+        },
+        "high_recall": {
+          "mean": 0.2249005566547881,
+          "std": 0.001964201481568896
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 211.6,
+          "std": 12.387090053761618
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 38.4,
+          "std": 6.711184694225007
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.180693979086103,
+          "std": 0.02455432967169655
+        }
+      },
+      "prefix_judge_hazard": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6703875598086124,
+          "std": 0.000244628191983939
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7642583732057415,
+          "std": 0.006259719212029188
+        },
+        "future_asr_lift": {
+          "mean": 0.09387081339712924,
+          "std": 0.0064659261024011365
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8081818181818182,
+          "std": 0.00927094457016871
+        },
+        "high_recall": {
+          "mean": 0.22771804547391747,
+          "std": 0.002816292442972687
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 211.6,
+          "std": 12.387090053761618
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.6,
+          "std": 0.48989794855663565
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.002780879251467487,
+          "std": 0.0022828067787985878
+        }
+      },
+      "prefix_hazard_weighted_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6703875598086124,
+          "std": 0.000244628191983939
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7598325358851674,
+          "std": 0.00566859453382577
+        },
+        "future_asr_lift": {
+          "mean": 0.089444976076555,
+          "std": 0.005852545053356273
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8081818181818182,
+          "std": 0.010224747162910917
+        },
+        "high_recall": {
+          "mean": 0.2277202585845363,
+          "std": 0.003228405839596357
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 211.6,
+          "std": 12.387090053761618
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.2,
+          "std": 0.4000000000000001
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0009049773755656109,
+          "std": 0.0018099547511312216
+        }
+      }
+    },
+    "2": {
+      "random": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6704848484848485,
+          "std": 0.0007469626965748903
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.6729292929292929,
+          "std": 0.00808183389953519
+        },
+        "future_asr_lift": {
+          "mean": 0.0024444444444444045,
+          "std": 0.008524444645526243
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.7227272727272727,
+          "std": 0.012281141896460259
+        },
+        "high_recall": {
+          "mean": 0.20055322260126998,
+          "std": 0.003231525333999906
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 67.6,
+          "std": 6.118823416311343
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 13.6,
+          "std": 1.7435595774162693
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.20260197866502727,
+          "std": 0.029373084527023422
+        }
+      },
+      "prefix_empirical_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6704848484848485,
+          "std": 0.0007469626965748903
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7758333333333334,
+          "std": 0.003958771301467821
+        },
+        "future_asr_lift": {
+          "mean": 0.10534848484848489,
+          "std": 0.003969562030245689
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.833181818181818,
+          "std": 0.010424859037436106
+        },
+        "high_recall": {
+          "mean": 0.23120355789335725,
+          "std": 0.002582353298740976
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 67.6,
+          "std": 6.118823416311343
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.2,
+          "std": 0.4
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0029850746268656717,
+          "std": 0.005970149253731343
+        }
+      },
+      "prefix_jeffreys_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6704848484848485,
+          "std": 0.0007469626965748903
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7778535353535354,
+          "std": 0.0011111111111111228
+        },
+        "future_asr_lift": {
+          "mean": 0.10736868686868684,
+          "std": 0.0014685944700208076
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.834090909090909,
+          "std": 0.001437398936440164
+        },
+        "high_recall": {
+          "mean": 0.23145979732003452,
+          "std": 0.0005549404573900645
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 67.6,
+          "std": 6.118823416311343
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "prefix_alr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6704848484848485,
+          "std": 0.0007469626965748903
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7618939393939393,
+          "std": 0.007665046208219879
+        },
+        "future_asr_lift": {
+          "mean": 0.09140909090909088,
+          "std": 0.007151030058306776
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8204545454545453,
+          "std": 0.007740630166330189
+        },
+        "high_recall": {
+          "mean": 0.22767219185916118,
+          "std": 0.0017789413609966857
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 67.6,
+          "std": 6.118823416311343
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 12.0,
+          "std": 3.03315017762062
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.17668806994774414,
+          "std": 0.035775594272382666
+        }
+      },
+      "prefix_judge_hazard": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6704848484848485,
+          "std": 0.0007469626965748903
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.766969696969697,
+          "std": 0.004306721753256591
+        },
+        "future_asr_lift": {
+          "mean": 0.0964848484848485,
+          "std": 0.004453743714927624
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8195454545454546,
+          "std": 0.0072727272727272614
+        },
+        "high_recall": {
+          "mean": 0.22742387759727375,
+          "std": 0.0020999408091607686
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 67.6,
+          "std": 6.118823416311343
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.2,
+          "std": 0.4
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0029850746268656717,
+          "std": 0.005970149253731343
+        }
+      },
+      "prefix_hazard_weighted_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6704848484848485,
+          "std": 0.0007469626965748903
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7847222222222221,
+          "std": 0.003097940441006384
+        },
+        "future_asr_lift": {
+          "mean": 0.11423737373737372,
+          "std": 0.003047819742561044
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8390909090909091,
+          "std": 0.004853217387286969
+        },
+        "high_recall": {
+          "mean": 0.23284424776801416,
+          "std": 0.0007388262187528006
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 67.6,
+          "std": 6.118823416311343
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      }
+    },
+    "4": {
+      "random": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6698465909090909,
+          "std": 0.0010356818431184484
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.6723579545454547,
+          "std": 0.00771901714748325
+        },
+        "future_asr_lift": {
+          "mean": 0.0025113636363636393,
+          "std": 0.008252410116279503
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.7254545454545455,
+          "std": 0.015306780218620667
+        },
+        "high_recall": {
+          "mean": 0.20107448391681465,
+          "std": 0.0037030988790427172
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 12.8,
+          "std": 4.707440918375928
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 3.4,
+          "std": 1.624807680927192
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.2579901960784314,
+          "std": 0.05050865834165513
+        }
+      },
+      "prefix_empirical_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6698465909090909,
+          "std": 0.0010356818431184484
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7889204545454545,
+          "std": 0.0029917349129320115
+        },
+        "future_asr_lift": {
+          "mean": 0.11907386363636366,
+          "std": 0.002273976929166254
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8440909090909091,
+          "std": 0.004679831882266841
+        },
+        "high_recall": {
+          "mean": 0.23397112745129284,
+          "std": 0.0015668818523446944
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 12.8,
+          "std": 4.707440918375928
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "prefix_jeffreys_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6698465909090909,
+          "std": 0.0010356818431184484
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7895454545454547,
+          "std": 0.0013493570553452365
+        },
+        "future_asr_lift": {
+          "mean": 0.11969886363636364,
+          "std": 0.0009879830652344537
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8427272727272728,
+          "std": 0.005821022034029888
+        },
+        "high_recall": {
+          "mean": 0.2335928953971155,
+          "std": 0.0018032791035041953
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 12.8,
+          "std": 4.707440918375928
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "prefix_alr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6698465909090909,
+          "std": 0.0010356818431184484
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7651704545454545,
+          "std": 0.007932904816163747
+        },
+        "future_asr_lift": {
+          "mean": 0.09532386363636362,
+          "std": 0.007169220827448924
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8213636363636365,
+          "std": 0.005856408512147756
+        },
+        "high_recall": {
+          "mean": 0.2276661517308082,
+          "std": 0.0009892978950693972
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 12.8,
+          "std": 4.707440918375928
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 2.4,
+          "std": 1.019803902718557
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.20362745098039214,
+          "std": 0.07853032972952495
+        }
+      },
+      "prefix_judge_hazard": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6698465909090909,
+          "std": 0.0010356818431184484
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7654261363636363,
+          "std": 0.0038500345469095064
+        },
+        "future_asr_lift": {
+          "mean": 0.09557954545454546,
+          "std": 0.004615462301012316
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8068181818181819,
+          "std": 0.006428243465332261
+        },
+        "high_recall": {
+          "mean": 0.22363993970710014,
+          "std": 0.0020063439026033634
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 12.8,
+          "std": 4.707440918375928
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      },
+      "prefix_hazard_weighted_asr": {
+        "selected_n": {
+          "mean": 440.0,
+          "std": 0.0
+        },
+        "selected_fraction": {
+          "mean": 0.2,
+          "std": 0.0
+        },
+        "future_asr_mean_all": {
+          "mean": 0.6698465909090909,
+          "std": 0.0010356818431184484
+        },
+        "future_asr_mean_selected": {
+          "mean": 0.7984659090909091,
+          "std": 0.003057641828880368
+        },
+        "future_asr_lift": {
+          "mean": 0.1286193181818182,
+          "std": 0.0031790572436931077
+        },
+        "high_threshold": {
+          "mean": 0.5,
+          "std": 0.0
+        },
+        "high_precision": {
+          "mean": 0.8440909090909091,
+          "std": 0.006833316535624048
+        },
+        "high_recall": {
+          "mean": 0.2339695529267792,
+          "std": 0.0019018174300976817
+        },
+        "hidden_high_prefix_zero_total": {
+          "mean": 12.8,
+          "std": 4.707440918375928
+        },
+        "hidden_high_prefix_zero_selected": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "hidden_high_prefix_zero_recall": {
+          "mean": 0.0,
+          "std": 0.0
+        }
+      }
+    }
+  }
+}
