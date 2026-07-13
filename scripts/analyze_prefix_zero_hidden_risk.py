@@ -226,7 +226,11 @@ def main() -> None:
         choices=("none", "within_question_attack"),
         help="回答文本归属打乱负对照；只影响 response/joint 中的回答文本。",
     )
-    parser.add_argument("--text-cleaning", default="mask_refusal_hazard_terms", choices=("none", "mask_refusal_terms", "mask_refusal_hazard_terms"))
+    parser.add_argument(
+        "--text-cleaning",
+        default="mask_refusal_hazard_terms",
+        choices=("none", "mask_refusal_terms", "mask_refusal_hazard_terms", "mask_strong_artifacts"),
+    )
     parser.add_argument("--use-char-ngrams", action="store_true")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()

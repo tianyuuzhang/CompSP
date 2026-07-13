@@ -44,6 +44,32 @@ HAZARD_TERMS = (
     "unsafe",
 )
 
+ARTIFACT_TERMS = (
+    "article",
+    "blog",
+    "post",
+    "write",
+    "guide",
+    "tutorial",
+    "instructions",
+    "steps",
+    "provide",
+    "response",
+    "request",
+    "assistant",
+    "user",
+    "header",
+    "end_header_id",
+    "回答分隔",
+    "refusal_term",
+    "hazard_term",
+    "watermelon",
+    "kiwi",
+    "pineapple",
+    "mango",
+    "flat",
+)
+
 BASE_FEATURE_INDICES = tuple(range(12))
 
 
@@ -81,6 +107,10 @@ def clean_text(text: str, mode: str) -> str:
     if mode == "mask_refusal_hazard_terms":
         masked = mask_terms(str(text), REFUSAL_TERMS, " <REFUSAL_TERM> ")
         return mask_terms(masked, HAZARD_TERMS, " <HAZARD_TERM> ")
+    if mode == "mask_strong_artifacts":
+        masked = mask_terms(str(text), REFUSAL_TERMS, " <REFUSAL_TERM> ")
+        masked = mask_terms(masked, HAZARD_TERMS, " <HAZARD_TERM> ")
+        return mask_terms(masked, ARTIFACT_TERMS, " <ARTIFACT_TERM> ")
     raise ValueError(f"未知文本清理模式: {mode}")
 
 
@@ -303,7 +333,11 @@ def main() -> None:
     parser.add_argument("--length-threshold", type=int, default=500)
     parser.add_argument("--max-features", type=int, default=30000)
     parser.add_argument("--use-char-ngrams", action="store_true", help="同时使用字符 n-gram；更慢，适合长跑。")
-    parser.add_argument("--text-cleaning", default="mask_refusal_hazard_terms", choices=("none", "mask_refusal_terms", "mask_refusal_hazard_terms"))
+    parser.add_argument(
+        "--text-cleaning",
+        default="mask_refusal_hazard_terms",
+        choices=("none", "mask_refusal_terms", "mask_refusal_hazard_terms", "mask_strong_artifacts"),
+    )
     parser.add_argument("--alpha-base", type=float, default=10.0)
     parser.add_argument("--alpha-text", type=float, default=10.0)
     parser.add_argument("--output", required=True)
