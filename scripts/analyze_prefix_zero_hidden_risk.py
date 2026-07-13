@@ -64,6 +64,34 @@ def row_text(row: dict, text_view: str, cleaning: str) -> str:
     return clean_text(text, cleaning)
 
 
+def shuffle_response_texts(rows: list[dict], seed: int, mode: str) -> list[dict]:
+    """打乱回答文本归属，用作回答内容增量的负对照。
+
+    `within_question_attack` 在同一数据集、同一问题、同一 split 内打乱 `text`，
+    保留 q1、标签和手工特征不变。这个对照保留题目/攻击方案边际分布，但破坏
+    具体 q1 与具体回答之间的对应关系。
+    """
+
+    if mode == "none":
+        return rows
+    if mode != "within_question_attack":
+        raise ValueError(f"未知回答打乱模式: {mode}")
+    copied = [dict(row) for row in rows]
+    groups: dict[tuple[str, int, str], list[int]] = {}
+    for index, row in enumerate(copied):
+        key = (row["dataset_key"], int(row["question_id"]), row["split"])
+        groups.setdefault(key, []).append(index)
+    rng = np.random.default_rng(20260713 + seed * 1009)
+    for indices in groups.values():
+        if len(indices) <= 1:
+            continue
+        texts = [copied[index]["text"] for index in indices]
+        shuffled = list(rng.permutation(texts))
+        for index, text in zip(indices, shuffled):
+            copied[index]["text"] = str(text)
+    return copied
+
+
 def build_tfidf(
     train: list[dict],
     test: list[dict],
@@ -192,6 +220,12 @@ def main() -> None:
         choices=("response", "q1", "joint"),
         help="TF-IDF 输入视图：仅回答、仅原始攻击指令，或二者拼接。",
     )
+    parser.add_argument(
+        "--response-shuffle",
+        default="none",
+        choices=("none", "within_question_attack"),
+        help="回答文本归属打乱负对照；只影响 response/joint 中的回答文本。",
+    )
     parser.add_argument("--text-cleaning", default="mask_refusal_hazard_terms", choices=("none", "mask_refusal_terms", "mask_refusal_hazard_terms"))
     parser.add_argument("--use-char-ngrams", action="store_true")
     parser.add_argument("--output", required=True)
@@ -209,6 +243,7 @@ def main() -> None:
         "high_threshold": args.high_threshold,
         "top_fraction": args.top_fraction,
         "text_view": args.text_view,
+        "response_shuffle": args.response_shuffle,
         "sample_sizes": {},
     }
     for k in [int(value) for value in args.sample_sizes.split(",") if value.strip()]:
@@ -219,6 +254,9 @@ def main() -> None:
             test = [row for row in rows if row["split"] == "test" and row["prefix_zero"]]
             if not train or not test:
                 raise ValueError("prefix-zero 训练集或测试集为空。")
+            if args.response_shuffle != "none":
+                train = shuffle_response_texts(train, seed, args.response_shuffle)
+                test = shuffle_response_texts(test, seed + 10_000, args.response_shuffle)
             print(f"开始 k={k}, seed={seed}: prefix-zero train={len(train)}, test={len(test)}", flush=True)
             scores, explanations = fit_scores(
                 train,
@@ -243,6 +281,7 @@ def main() -> None:
     lines = ["# Prefix-zero 隐蔽高风险二阶段模型", ""]
     lines.append(f"高风险阈值：后缀 ASR >= {args.high_threshold}；选择比例：top {args.top_fraction:.0%}。")
     lines.append(f"文本视图：`{args.text_view}`。")
+    lines.append(f"回答归属打乱：`{args.response_shuffle}`。")
     lines.append("")
     for k, k_report in report["sample_sizes"].items():
         if isinstance(k_report, list):
