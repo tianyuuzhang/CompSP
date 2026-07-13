@@ -19,7 +19,10 @@ def load_report(path: Path) -> dict:
 
 
 def metric_cell(report: dict, k: str, strategy: str) -> dict:
-    result = report["sample_sizes"][k]["strategies"][strategy]
+    k_report = report["sample_sizes"][k]
+    if isinstance(k_report, list):
+        return aggregate_metric_cells(k_report, strategy)
+    result = k_report["strategies"][strategy]
     top = result["top_fraction"]
     return {
         "roc_auc": float(result["roc_auc"]),
@@ -30,8 +33,44 @@ def metric_cell(report: dict, k: str, strategy: str) -> dict:
     }
 
 
+def aggregate_metric_cells(k_reports: list[dict], strategy: str) -> dict:
+    """对多 seed 结果取均值和标准差，主表使用均值。"""
+
+    values = []
+    for report in k_reports:
+        result = report["strategies"][strategy]
+        top = result["top_fraction"]
+        values.append(
+            {
+                "roc_auc": float(result["roc_auc"]),
+                "ap": float(result["average_precision"]),
+                "top_precision": float(top["precision"]),
+                "top_recall": float(top["recall"]),
+                "max_f1": float(result["max_f1"]),
+            }
+        )
+    keys = values[0].keys()
+    cell = {}
+    for key in keys:
+        arr = [item[key] for item in values]
+        cell[key] = float(sum(arr) / len(arr))
+        if len(arr) > 1:
+            mean = cell[key]
+            cell[f"{key}_std"] = float((sum((x - mean) ** 2 for x in arr) / (len(arr) - 1)) ** 0.5)
+        else:
+            cell[f"{key}_std"] = 0.0
+    cell["seeds"] = len(values)
+    return cell
+
+
 def fmt(value: float) -> str:
     return f"{value:.3f}"
+
+
+def fmt_with_std(cell: dict, key: str) -> str:
+    if cell.get("seeds", 1) > 1:
+        return f"{cell[key]:.3f}±{cell.get(key + '_std', 0.0):.3f}"
+    return fmt(cell[key])
 
 
 def main() -> None:
@@ -86,6 +125,8 @@ def main() -> None:
         "`response-q1` 为正时，说明回答文本相对原始攻击指令提供额外信号；"
         "`joint-best` 为正时，说明联合视图超过最强单视图。"
     )
+    if any(summary["sample_sizes"][k]["views"]["response"].get("seeds", 1) > 1 for k in sample_sizes):
+        lines.append("多 seed 结果以 `均值±样本标准差` 形式展示。")
     lines.append("")
     lines.extend(
         [
@@ -97,8 +138,8 @@ def main() -> None:
         for view in ("response", "q1", "joint"):
             cell = summary["sample_sizes"][k]["views"][view]
             lines.append(
-                f"| {k} | {view} | {fmt(cell['roc_auc'])} | {fmt(cell['ap'])} | "
-                f"{fmt(cell['top_precision'])} | {fmt(cell['top_recall'])} | {fmt(cell['max_f1'])} |"
+                f"| {k} | {view} | {fmt_with_std(cell, 'roc_auc')} | {fmt_with_std(cell, 'ap')} | "
+                f"{fmt_with_std(cell, 'top_precision')} | {fmt_with_std(cell, 'top_recall')} | {fmt_with_std(cell, 'max_f1')} |"
             )
     lines.append("")
     lines.extend(

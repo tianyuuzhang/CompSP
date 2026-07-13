@@ -16,6 +16,8 @@ SAMPLE_SIZES="${SAMPLE_SIZES:-1,2,4}"
 SEEDS="${SEEDS:-1}"
 MAX_FEATURES="${MAX_FEATURES:-8000}"
 OUTPUT_DIR="${OUTPUT_DIR:-outputs/response_safety_structure/sequential_asr_sampling}"
+PREFIX="${PREFIX:-llama_three_attack_prefix_zero_hidden_risk}"
+SUFFIX="${SUFFIX:-fast}"
 
 mkdir -p "$OUTPUT_DIR" logs
 
@@ -31,13 +33,15 @@ for TEXT_VIEW in response q1 joint; do
     --top-fraction 0.2 \
     --max-features "$MAX_FEATURES" \
     --text-view "$TEXT_VIEW" \
-    --output "$OUTPUT_DIR/llama_three_attack_prefix_zero_hidden_risk_${TEXT_VIEW}_fast.json" \
+    --output "$OUTPUT_DIR/${PREFIX}_${TEXT_VIEW}_${SUFFIX}.json" \
     2>&1 | tee "logs/prefix_zero_text_view_${TEXT_VIEW}_${START_TS}.log"
 done
 
 PYTHONPATH="$PWD/src:$PWD/scripts" "$PYTHON_BIN" \
   scripts/summarize_prefix_zero_text_view_ablation.py \
   --input-dir "$OUTPUT_DIR" \
-  --output "$OUTPUT_DIR/llama_three_attack_prefix_zero_hidden_risk_text_view_summary.json"
+  --prefix "$PREFIX" \
+  --suffix "$SUFFIX" \
+  --output "$OUTPUT_DIR/${PREFIX}_text_view_summary_${SUFFIX}.json"
 
 echo "prefix-zero 三视图对照完成。"
