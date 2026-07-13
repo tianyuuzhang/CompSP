@@ -62,6 +62,14 @@
 
 训练集固定为 `0~79` 中排除旧论文 20 个测试题后的 60 个问题；旧 CompSP LoRA 和旧 BTL 分数与目标模型、攻击方案、训练指标绑定，不能复用。本实验的新训练目标是白盒最后层 Ridge 伪安全方向投影的 pairwise 序关系，主证据是新训练 CompSP 在留出测试题上的 pairwise accuracy，BTL 只是可选后续分析。详见 `docs/pseudo_safety_learnability.md`。
 
+## 2026-07-13 新增：ASR 伪方向三攻击完成
+
+- [x] ASR-OFA 完成：accuracy `0.6103`，AUC `0.6580`。
+- [x] ASR-PAIR 完成：accuracy `0.6485`，AUC `0.7086`。
+- [x] ASR-DrAttack 完成：accuracy `0.5656`，AUC `0.5923`。
+- [ ] 对 ASR-DrAttack 做一次轻量稳定性复验或 bootstrap，确认弱正结果不是单次训练偶然。
+- [ ] 若资源允许，对 ASR 三攻击补非边界/同粗桶/不同粗桶分层评估，和 ALR 结果并排。
+
 ## 2026-07-11 新增：回答嗅探与替代 ASR
 
 - [x] 单/少量回答手工特征、TF-IDF 与学习曲线。

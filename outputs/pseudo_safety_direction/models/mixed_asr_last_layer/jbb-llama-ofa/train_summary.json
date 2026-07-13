@@ -1,0 +1,47 @@
+{
+  "base_model": "/remote-home/model/llama-3.1-8B/Llama-3.1-8B",
+  "train_file": "outputs/pseudo_safety_direction/pairs/mixed_asr_last_layer/jbb-llama-ofa/train_pairs.json",
+  "test_file": "outputs/pseudo_safety_direction/pairs/mixed_asr_last_layer/jbb-llama-ofa/test_pairs.json",
+  "output_dir": "outputs/pseudo_safety_direction/models/mixed_asr_last_layer/jbb-llama-ofa",
+  "epochs": 2.0,
+  "batch_size": 8,
+  "gradient_accumulation_steps": 2,
+  "learning_rate": 0.0002,
+  "initial_metrics": {
+    "eval_loss": 2.9616079330444336,
+    "eval_model_preparation_time": 0.0197,
+    "eval_accuracy": 0.49748509458497925,
+    "eval_f1_macro": 0.3322137204463159,
+    "eval_precision_macro": 0.24874254729248962,
+    "eval_recall_macro": 0.5,
+    "eval_label_0": 20276,
+    "eval_label_1": 20481,
+    "eval_auc": 0.49985078481767775,
+    "eval_runtime": 1815.818,
+    "eval_samples_per_second": 22.446,
+    "eval_steps_per_second": 2.806
+  },
+  "train_metrics": {
+    "train_runtime": 34361.7541,
+    "train_samples_per_second": 5.821,
+    "train_steps_per_second": 0.364,
+    "total_flos": 1.682420362481664e+18,
+    "train_loss": 1.016055204924193,
+    "epoch": 2.0
+  },
+  "final_metrics": {
+    "eval_loss": 1.1329336166381836,
+    "eval_model_preparation_time": 0.0197,
+    "eval_accuracy": 0.6102509998282504,
+    "eval_f1_macro": 0.6102509538410772,
+    "eval_precision_macro": 0.6102689808639779,
+    "eval_recall_macro": 0.6102681667371408,
+    "eval_label_0": 20276,
+    "eval_label_1": 20481,
+    "eval_auc": 0.658013068644455,
+    "eval_runtime": 1712.7929,
+    "eval_samples_per_second": 23.796,
+    "eval_steps_per_second": 2.975,
+    "epoch": 2.0
+  }
+}

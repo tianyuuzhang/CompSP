@@ -267,3 +267,33 @@ ASR-Ridge 方向下，`jbb-llama-pair` 的新 CompSP 训练已经完成：
 
 阶段性判断：ASR 伪方向比 ALR 方向更难被 CompSP 拟合，但 OFA/PAIR 均显著高于随机。
 DrAttack 需等待最终结果；鉴于 ALR-DrAttack 曾接近随机，不能预设 ASR-DrAttack 会成功。
+
+## 2026-07-13 落档：ASR 三攻击完整结果
+
+ASR 伪安全方向三组 CompSP 训练均已完成。训练目标为白盒 Llama 最后一层 Ridge
+ASR 伪方向投影诱导的 pairwise 序关系；测试集仍为旧论文 20 个测试题。
+
+| 攻击方案 | 初始 accuracy | 初始 AUC | 最终 accuracy | macro-F1 | AUC | 训练耗时 |
+|---|---:|---:|---:|---:|---:|---:|
+| OFA | 0.4975 | 0.4999 | 0.6103 | 0.6103 | 0.6580 | 9.54 h |
+| PAIR | 0.4971 | 0.5047 | 0.6485 | 0.6484 | 0.7086 | 9.82 h |
+| DrAttack | 0.4978 | 0.4896 | 0.5656 | 0.5640 | 0.5923 | 27.62 h |
+
+对应文件：
+
+- `outputs/pseudo_safety_direction/models/mixed_asr_last_layer/jbb-llama-ofa/train_summary.json`
+- `outputs/pseudo_safety_direction/models/mixed_asr_last_layer/jbb-llama-pair/train_summary.json`
+- `outputs/pseudo_safety_direction/models/mixed_asr_last_layer/jbb-llama-drattack/train_summary.json`
+
+解释：ASR 伪方向在 OFA 和 PAIR 上可被 CompSP 学到，PAIR 最明显；DrAttack 也高于
+随机，但幅度较弱。这个结果比 ALR-DrAttack 的近随机结果更积极，说明 ASR 方向上的
+可学习结构并不完全依赖 OFA/PAIR，不过 DrAttack 的泛化强度明显不足，不能把三攻击
+混成同一强结论。
+
+从研究叙事看，这组结果支持“安全结构可学习”的弱到中等证据链：黑盒文本代理可以在
+留出问题上拟合白盒伪安全方向诱导的序关系，但攻击方案差异很大。后续若要把它提升为
+主证据，需要补充：
+
+- 多 seed 或至少一次轻量复验，确认 DrAttack 弱正结果稳定；
+- frozen embedding / hidden state 对 response 信号的对齐实验；
+- BTL 或排序层面的可选分析，但不要把 BTL 当作结构可学习性的必要条件。
