@@ -2,6 +2,15 @@
 
 更新时间：2026-07-13
 
+## 可信度审计后的止损优先级
+
+- [ ] 将旧 20 题测试集在文档中改称 `legacy_dev`，后续只作为诊断集；新结论需要新 holdout、自然前缀或问题级交叉验证。
+- [ ] 实现自然前缀 composition-controlled：先随机排列或使用真实前 k 条，再按自然观察到的组成分层，禁止从完整 20 条回答中事后挑 safe/unsafe。
+- [ ] 实现统一增量模型：`count + q1` 对比 `count + q1 + response`，用问题级 cluster bootstrap 和 permutation test 报告 response 的条件增量。
+- [ ] 对 prefix-zero 和成分受控高分样本做 judge 漏判审计：多 judge、连续 hazard margin 和人工盲审。
+- [ ] 暂停新的 wrong-agreement/layer-sign 扫描、长时 pseudo-direction LoRA、当前 TF-IDF SVD 最佳分量叙事和 ALR 语义结构叙事。
+- [ ] 所有新增实验必须先给 ETA，并在结果中报告问题数、问题宏平均和独立性限制。
+
 ## 最高优先级
 
 - [ ] 修正白盒误差对齐评估：训练题校准 layer/sign，测试题固定评估。
@@ -166,7 +175,10 @@
 - [x] 每个样本的目标只使用未观察后缀 ASR/ALR，禁止把观察前缀计入标签。
 - [x] 每种口径都报告 count-only、q1-only、response-only、q1+response、强掩码 response 和回答归属打乱 baseline。
 - [x] 固定 `asr_small/alr_small` 后，若 response-only 仍优于 count-only 和打乱回答，才把它记为真实信息增益。
-- [ ] 按 Llama 三攻击分别报告，再做混合报告；其他目标模型只在同一模型标签下复验，不跨模型混标签。
+- [x] 按 Llama 三攻击分别报告，再做混合报告；其他目标模型只在同一模型标签下复验，不跨模型混标签。
 - [x] 预计轻量 5 seed TF-IDF 版本耗时 20-60 分钟；实际耗时约 35 分钟。
-- [ ] 对成分受控实验补 `future_alr` 目标和按攻击方案分层。
+- [x] 对成分受控实验补 `future_alr` 目标和按攻击方案分层；实际耗时约 2 小时 6 分钟。
 - [ ] 若加入 frozen embedding，预计 1-4 小时，具体以日志进度估计。
+- [ ] 对 DrAttack 的成分受控 ASR 弱结果做诊断：检查标签方差、样本数、回答归属打乱、攻击模板和问题分布。
+- [ ] 对 OFA/PAIR 的成分受控 ASR 增量做高权重词项和同题内主题控制审计，避免把固定攻击模板残片误读为安全结构。
+- [ ] 其他目标模型复验成分受控 ASR，必须使用目标模型自己的回答与标签。
