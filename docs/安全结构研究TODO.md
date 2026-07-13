@@ -4,12 +4,15 @@
 
 ## 可信度审计后的止损优先级
 
-- [ ] 将旧 20 题测试集在文档中改称 `legacy_dev`，后续只作为诊断集；新结论需要新 holdout、自然前缀或问题级交叉验证。
-- [ ] 实现自然前缀 composition-controlled：先随机排列或使用真实前 k 条，再按自然观察到的组成分层，禁止从完整 20 条回答中事后挑 safe/unsafe。
-- [ ] 实现统一增量模型：`count + q1` 对比 `count + q1 + response`，用问题级 cluster bootstrap 和 permutation test 报告 response 的条件增量。
+- [x] 将旧 20 题测试集在文档中改称 `legacy_dev`，后续只作为诊断集；新结论需要新 holdout、自然前缀或问题级交叉验证。
+- [x] 实现自然前缀 composition-controlled：先随机排列或使用真实前 k 条，再按自然观察到的组成分层，禁止从完整 20 条回答中事后挑 safe/unsafe。
+- [x] 实现统一增量模型：`count + q1` 对比 `count + q1 + response`，用问题级 cluster bootstrap 和 permutation test 报告 response 的条件增量。
 - [ ] 对 prefix-zero 和成分受控高分样本做 judge 漏判审计：多 judge、连续 hazard margin 和人工盲审。
 - [ ] 暂停新的 wrong-agreement/layer-sign 扫描、长时 pseudo-direction LoRA、当前 TF-IDF SVD 最佳分量叙事和 ALR 语义结构叙事。
 - [ ] 所有新增实验必须先给 ETA，并在结果中报告问题数、问题宏平均和独立性限制。
+- [x] 对可能影响方向的重要实验做 80 问题重抽 20 测试题级别的全局重随机复验；自然前缀增量实验已完成 split seed `20260714/20260715`。
+- [ ] 对自然前缀增量实验补 conditional permutation：在 `count+q1` 条件下置换 response，报告 delta 的置换 p 值。
+- [ ] 对自然前缀增量实验补 topic-matched 或同题近邻控制，区分回答姿态与主题复述。
 
 ## 最高优先级
 
