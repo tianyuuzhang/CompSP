@@ -1,0 +1,1699 @@
+{
+  "说明": "每条先观察 k 次回答，再把额外后缀预算分配给 top 候选。",
+  "datasets": [
+    "jbb-llama-ofa",
+    "jbb-llama-pair",
+    "jbb-llama-drattack"
+  ],
+  "top_fraction": 0.2,
+  "high_threshold": 0.5,
+  "text_cleaning": "mask_strong_artifacts",
+  "sample_sizes": {
+    "1": {
+      "random": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 22800.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 28800.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.8,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 3769.4,
+          "std": 8.2365041127896
+        },
+        "final_found_n": {
+          "mean": 3970.4,
+          "std": 11.447270417003349
+        },
+        "new_found_n": {
+          "mean": 201.0,
+          "std": 5.932958789676531
+        },
+        "initial_any_success_recall": {
+          "mean": 0.7854553031881643,
+          "std": 0.001716295918480856
+        },
+        "final_any_success_recall": {
+          "mean": 0.8273390289643675,
+          "std": 0.0023853449504070406
+        },
+        "recall_gain": {
+          "mean": 0.041883725776203376,
+          "std": 0.001236290641732971
+        },
+        "prefix_zero_high_total": {
+          "mean": 314.8,
+          "std": 4.791659420284375
+        },
+        "prefix_zero_high_found": {
+          "mean": 60.8,
+          "std": 2.481934729198171
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.19315881502066076,
+          "std": 0.007814836693134005
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.630359649122807,
+          "std": 0.005579623152273944
+        }
+      },
+      "prefix_hazard_weighted_asr": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 22800.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 28800.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.8,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 3769.4,
+          "std": 8.2365041127896
+        },
+        "final_found_n": {
+          "mean": 3805.4,
+          "std": 7.964923100695952
+        },
+        "new_found_n": {
+          "mean": 36.0,
+          "std": 2.0976176963403033
+        },
+        "initial_any_success_recall": {
+          "mean": 0.7854553031881643,
+          "std": 0.001716295918480856
+        },
+        "final_any_success_recall": {
+          "mean": 0.7929568660137528,
+          "std": 0.0016597047511347919
+        },
+        "recall_gain": {
+          "mean": 0.007501562825588665,
+          "std": 0.00043709474814342624
+        },
+        "prefix_zero_high_total": {
+          "mean": 314.8,
+          "std": 4.791659420284375
+        },
+        "prefix_zero_high_found": {
+          "mean": 1.0,
+          "std": 1.0954451150103321
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.003138789135351772,
+          "std": 0.0034340234909708725
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7515175438596491,
+          "std": 0.0020065681621797677
+        }
+      },
+      "prefix_alr": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 22800.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 28800.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.8,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 3769.4,
+          "std": 8.2365041127896
+        },
+        "final_found_n": {
+          "mean": 3937.2,
+          "std": 9.019977827023745
+        },
+        "new_found_n": {
+          "mean": 167.8,
+          "std": 5.035871324805668
+        },
+        "initial_any_success_recall": {
+          "mean": 0.7854553031881643,
+          "std": 0.001716295918480856
+        },
+        "final_any_success_recall": {
+          "mean": 0.8204209210252136,
+          "std": 0.0018795536209676236
+        },
+        "recall_gain": {
+          "mean": 0.034965617837049386,
+          "std": 0.0010493584756836134
+        },
+        "prefix_zero_high_total": {
+          "mean": 314.8,
+          "std": 4.791659420284375
+        },
+        "prefix_zero_high_found": {
+          "mean": 52.6,
+          "std": 3.0724582991474434
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.16702480357847738,
+          "std": 0.008114130082080334
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7266140350877193,
+          "std": 0.006086379345935341
+        }
+      },
+      "model_base_features": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 22800.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 28800.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.8,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 3769.4,
+          "std": 8.2365041127896
+        },
+        "final_found_n": {
+          "mean": 3944.8,
+          "std": 4.833218389437828
+        },
+        "new_found_n": {
+          "mean": 175.4,
+          "std": 6.8
+        },
+        "initial_any_success_recall": {
+          "mean": 0.7854553031881643,
+          "std": 0.001716295918480856
+        },
+        "final_any_success_recall": {
+          "mean": 0.8220045842883934,
+          "std": 0.0010071303166154998
+        },
+        "recall_gain": {
+          "mean": 0.03654928110022922,
+          "std": 0.0014169618670556371
+        },
+        "prefix_zero_high_total": {
+          "mean": 314.8,
+          "std": 4.791659420284375
+        },
+        "prefix_zero_high_found": {
+          "mean": 62.6,
+          "std": 4.029888335921977
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.19874299935915224,
+          "std": 0.010511174907718086
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7342543859649122,
+          "std": 0.003706905869242244
+        }
+      },
+      "model_text_only": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 22800.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 28800.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.8,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 3769.4,
+          "std": 8.2365041127896
+        },
+        "final_found_n": {
+          "mean": 3925.0,
+          "std": 12.361229712289955
+        },
+        "new_found_n": {
+          "mean": 155.6,
+          "std": 8.2365041127896
+        },
+        "initial_any_success_recall": {
+          "mean": 0.7854553031881643,
+          "std": 0.001716295918480856
+        },
+        "final_any_success_recall": {
+          "mean": 0.8178787247343197,
+          "std": 0.0025757928135632206
+        },
+        "recall_gain": {
+          "mean": 0.03242342154615545,
+          "std": 0.0017162959184808498
+        },
+        "prefix_zero_high_total": {
+          "mean": 314.8,
+          "std": 4.791659420284375
+        },
+        "prefix_zero_high_found": {
+          "mean": 49.2,
+          "std": 5.844655678480983
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.15622788108505303,
+          "std": 0.017971748612086613
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7536842105263157,
+          "std": 0.0021324992598496764
+        }
+      },
+      "model_base_plus_text_residual": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 22800.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 28800.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.8,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 3769.4,
+          "std": 8.2365041127896
+        },
+        "final_found_n": {
+          "mean": 3936.8,
+          "std": 9.724196624914574
+        },
+        "new_found_n": {
+          "mean": 167.4,
+          "std": 5.4258639865002145
+        },
+        "initial_any_success_recall": {
+          "mean": 0.7854553031881643,
+          "std": 0.001716295918480856
+        },
+        "final_any_success_recall": {
+          "mean": 0.8203375703271515,
+          "std": 0.0020262964419492874
+        },
+        "recall_gain": {
+          "mean": 0.03488226713898729,
+          "std": 0.001130623877161953
+        },
+        "prefix_zero_high_total": {
+          "mean": 314.8,
+          "std": 4.791659420284375
+        },
+        "prefix_zero_high_found": {
+          "mean": 54.6,
+          "std": 5.885575587824865
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.17336444706227344,
+          "std": 0.017711104909945652
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7453421052631579,
+          "std": 0.0031291823351789327
+        }
+      },
+      "hybrid_hazard_text_q0.25": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 22800.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 28800.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.8,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 3769.4,
+          "std": 8.2365041127896
+        },
+        "final_found_n": {
+          "mean": 3984.6,
+          "std": 6.6513156593263565
+        },
+        "new_found_n": {
+          "mean": 215.2,
+          "std": 7.520638270785266
+        },
+        "initial_any_success_recall": {
+          "mean": 0.7854553031881643,
+          "std": 0.001716295918480856
+        },
+        "final_any_success_recall": {
+          "mean": 0.8302979787455719,
+          "std": 0.0013859795080905198
+        },
+        "recall_gain": {
+          "mean": 0.04484267555740779,
+          "std": 0.0015671261243561706
+        },
+        "prefix_zero_high_total": {
+          "mean": 314.8,
+          "std": 4.791659420284375
+        },
+        "prefix_zero_high_found": {
+          "mean": 122.8,
+          "std": 5.635601121442148
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.39018829301466573,
+          "std": 0.018898524815763863
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.685780701754386,
+          "std": 0.0057357555706950055
+        }
+      },
+      "hybrid_hazard_text_q0.5": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 22800.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 28800.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.8,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 3769.4,
+          "std": 8.2365041127896
+        },
+        "final_found_n": {
+          "mean": 4125.0,
+          "std": 11.40175425099138
+        },
+        "new_found_n": {
+          "mean": 355.6,
+          "std": 10.556514576317317
+        },
+        "initial_any_success_recall": {
+          "mean": 0.7854553031881643,
+          "std": 0.001716295918480856
+        },
+        "final_any_success_recall": {
+          "mean": 0.8595540737653679,
+          "std": 0.0023758604398815197
+        },
+        "recall_gain": {
+          "mean": 0.07409877057720357,
+          "std": 0.0021997321475968556
+        },
+        "prefix_zero_high_total": {
+          "mean": 314.8,
+          "std": 4.791659420284375
+        },
+        "prefix_zero_high_found": {
+          "mean": 192.2,
+          "std": 2.227105745132009
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.6107283525065506,
+          "std": 0.01356715858966498
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.615842105263158,
+          "std": 0.003218162713831157
+        }
+      }
+    },
+    "2": {
+      "random": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 12000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 21600.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 33600.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.6,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4147.0,
+          "std": 16.61324772583615
+        },
+        "final_found_n": {
+          "mean": 4274.8,
+          "std": 18.540765895722863
+        },
+        "new_found_n": {
+          "mean": 127.8,
+          "std": 4.445222154178574
+        },
+        "initial_any_success_recall": {
+          "mean": 0.8641383621587831,
+          "std": 0.003461814487567442
+        },
+        "final_any_success_recall": {
+          "mean": 0.8907689101896228,
+          "std": 0.003863464450036013
+        },
+        "recall_gain": {
+          "mean": 0.02663054803083976,
+          "std": 0.0009262809239796986
+        },
+        "prefix_zero_high_total": {
+          "mean": 99.8,
+          "std": 10.186265262597475
+        },
+        "prefix_zero_high_found": {
+          "mean": 20.4,
+          "std": 2.5768197453450252
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.2039850041888481,
+          "std": 0.005858752921650119
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.6303055555555556,
+          "std": 0.005712340142531607
+        }
+      },
+      "prefix_hazard_weighted_asr": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 12000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 21600.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 33600.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.6,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4147.0,
+          "std": 16.61324772583615
+        },
+        "final_found_n": {
+          "mean": 4152.6,
+          "std": 14.178857499812882
+        },
+        "new_found_n": {
+          "mean": 5.6,
+          "std": 2.5768197453450252
+        },
+        "initial_any_success_recall": {
+          "mean": 0.8641383621587831,
+          "std": 0.003461814487567442
+        },
+        "final_any_success_recall": {
+          "mean": 0.8653052719316523,
+          "std": 0.0029545441758309894
+        },
+        "recall_gain": {
+          "mean": 0.0011669097728693478,
+          "std": 0.0005369493113867524
+        },
+        "prefix_zero_high_total": {
+          "mean": 99.8,
+          "std": 10.186265262597475
+        },
+        "prefix_zero_high_found": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7743518518518517,
+          "std": 0.0018750857319220816
+        }
+      },
+      "prefix_alr": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 12000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 21600.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 33600.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.6,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4147.0,
+          "std": 16.61324772583615
+        },
+        "final_found_n": {
+          "mean": 4254.0,
+          "std": 16.087262041752165
+        },
+        "new_found_n": {
+          "mean": 107.0,
+          "std": 6.6332495807108
+        },
+        "initial_any_success_recall": {
+          "mean": 0.8641383621587831,
+          "std": 0.003461814487567442
+        },
+        "final_any_success_recall": {
+          "mean": 0.8864346738903939,
+          "std": 0.003352211302719762
+        },
+        "recall_gain": {
+          "mean": 0.022296311731610754,
+          "std": 0.0013822149574308816
+        },
+        "prefix_zero_high_total": {
+          "mean": 99.8,
+          "std": 10.186265262597475
+        },
+        "prefix_zero_high_found": {
+          "mean": 17.2,
+          "std": 3.54400902933387
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.17056860663441908,
+          "std": 0.017727750431718505
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7417870370370371,
+          "std": 0.004244600378494252
+        }
+      },
+      "model_base_features": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 12000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 21600.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 33600.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.6,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4147.0,
+          "std": 16.61324772583615
+        },
+        "final_found_n": {
+          "mean": 4255.8,
+          "std": 16.33891061240008
+        },
+        "new_found_n": {
+          "mean": 108.8,
+          "std": 4.664761515876241
+        },
+        "initial_any_success_recall": {
+          "mean": 0.8641383621587831,
+          "std": 0.003461814487567442
+        },
+        "final_any_success_recall": {
+          "mean": 0.8868097520316732,
+          "std": 0.003404649012794345
+        },
+        "recall_gain": {
+          "mean": 0.022671389872890184,
+          "std": 0.0009720278216037179
+        },
+        "prefix_zero_high_total": {
+          "mean": 99.8,
+          "std": 10.186265262597475
+        },
+        "prefix_zero_high_found": {
+          "mean": 19.2,
+          "std": 3.655133376499413
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.19099425941301304,
+          "std": 0.01804952592578036
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7459166666666667,
+          "std": 0.002213214769495362
+        }
+      },
+      "model_text_only": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 12000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 21600.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 33600.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.6,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4147.0,
+          "std": 16.61324772583615
+        },
+        "final_found_n": {
+          "mean": 4241.2,
+          "std": 14.524462124292246
+        },
+        "new_found_n": {
+          "mean": 94.2,
+          "std": 4.995998398718719
+        },
+        "initial_any_success_recall": {
+          "mean": 0.8641383621587831,
+          "std": 0.003461814487567442
+        },
+        "final_any_success_recall": {
+          "mean": 0.8837674515524068,
+          "std": 0.0030265601425905793
+        },
+        "recall_gain": {
+          "mean": 0.01962908939362367,
+          "std": 0.001041049885125801
+        },
+        "prefix_zero_high_total": {
+          "mean": 99.8,
+          "std": 10.186265262597475
+        },
+        "prefix_zero_high_found": {
+          "mean": 11.8,
+          "std": 4.707440918375928
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.1159288925014027,
+          "std": 0.034525555289998275
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7628981481481482,
+          "std": 0.0013964608410758992
+        }
+      },
+      "model_base_plus_text_residual": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 12000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 21600.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 33600.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.6,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4147.0,
+          "std": 16.61324772583615
+        },
+        "final_found_n": {
+          "mean": 4251.8,
+          "std": 15.879546593023367
+        },
+        "new_found_n": {
+          "mean": 104.8,
+          "std": 5.775811631277461
+        },
+        "initial_any_success_recall": {
+          "mean": 0.8641383621587831,
+          "std": 0.003461814487567442
+        },
+        "final_any_success_recall": {
+          "mean": 0.8859762450510523,
+          "std": 0.003308928233595233
+        },
+        "recall_gain": {
+          "mean": 0.021837882892269223,
+          "std": 0.0012035448283553782
+        },
+        "prefix_zero_high_total": {
+          "mean": 99.8,
+          "std": 10.186265262597475
+        },
+        "prefix_zero_high_found": {
+          "mean": 15.2,
+          "std": 2.1354156504062622
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.15188631985370485,
+          "std": 0.01041059115543363
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7559537037037036,
+          "std": 0.002378314235088143
+        }
+      },
+      "hybrid_hazard_text_q0.25": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 12000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 21600.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 33600.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.6,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4147.0,
+          "std": 16.61324772583615
+        },
+        "final_found_n": {
+          "mean": 4301.0,
+          "std": 17.08800749063506
+        },
+        "new_found_n": {
+          "mean": 154.0,
+          "std": 3.794733192202055
+        },
+        "initial_any_success_recall": {
+          "mean": 0.8641383621587831,
+          "std": 0.003461814487567442
+        },
+        "final_any_success_recall": {
+          "mean": 0.8962283809126902,
+          "std": 0.003560743382086912
+        },
+        "recall_gain": {
+          "mean": 0.03209001875390707,
+          "std": 0.0007907341513236205
+        },
+        "prefix_zero_high_total": {
+          "mean": 99.8,
+          "std": 10.186265262597475
+        },
+        "prefix_zero_high_found": {
+          "mean": 55.0,
+          "std": 4.47213595499958
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.5524382900474922,
+          "std": 0.019128165896794995
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.6827407407407408,
+          "std": 0.0022371029546334425
+        }
+      },
+      "hybrid_hazard_text_q0.5": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 12000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 21600.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 33600.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.6,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4147.0,
+          "std": 16.61324772583615
+        },
+        "final_found_n": {
+          "mean": 4385.8,
+          "std": 18.57309882599024
+        },
+        "new_found_n": {
+          "mean": 238.8,
+          "std": 8.795453370918407
+        },
+        "initial_any_success_recall": {
+          "mean": 0.8641383621587831,
+          "std": 0.003461814487567442
+        },
+        "final_any_success_recall": {
+          "mean": 0.9138987289018544,
+          "std": 0.0038702018808064583
+        },
+        "recall_gain": {
+          "mean": 0.04976036674307147,
+          "std": 0.0018327679455966675
+        },
+        "prefix_zero_high_total": {
+          "mean": 99.8,
+          "std": 10.186265262597475
+        },
+        "prefix_zero_high_found": {
+          "mean": 74.6,
+          "std": 6.343500610861482
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.7492448178237345,
+          "std": 0.03273050515640064
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.6038888888888889,
+          "std": 0.002324424497707304
+        }
+      }
+    },
+    "4": {
+      "random": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 24000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 19200.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 43200.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.2,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4409.6,
+          "std": 13.245376551838758
+        },
+        "final_found_n": {
+          "mean": 4487.2,
+          "std": 15.223665787188054
+        },
+        "new_found_n": {
+          "mean": 77.6,
+          "std": 4.409081537009721
+        },
+        "initial_any_success_recall": {
+          "mean": 0.9188580954365493,
+          "std": 0.0027600284542277026
+        },
+        "final_any_success_recall": {
+          "mean": 0.9350281308605959,
+          "std": 0.0031722579260654383
+        },
+        "recall_gain": {
+          "mean": 0.016170035424046676,
+          "std": 0.0009187500598061512
+        },
+        "prefix_zero_high_total": {
+          "mean": 20.4,
+          "std": 4.317406628984581
+        },
+        "prefix_zero_high_found": {
+          "mean": 4.4,
+          "std": 1.4966629547095764
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.21536630036630036,
+          "std": 0.05108158095267429
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.6304375,
+          "std": 0.006120941824543401
+        }
+      },
+      "prefix_hazard_weighted_asr": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 24000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 19200.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 43200.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.2,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4409.6,
+          "std": 13.245376551838758
+        },
+        "final_found_n": {
+          "mean": 4411.2,
+          "std": 13.25745073534124
+        },
+        "new_found_n": {
+          "mean": 1.6,
+          "std": 1.019803902718557
+        },
+        "initial_any_success_recall": {
+          "mean": 0.9188580954365493,
+          "std": 0.0027600284542277026
+        },
+        "final_any_success_recall": {
+          "mean": 0.9191914982287976,
+          "std": 0.0027625444332863747
+        },
+        "recall_gain": {
+          "mean": 0.00033340279224838506,
+          "std": 0.00021250341794510459
+        },
+        "prefix_zero_high_total": {
+          "mean": 20.4,
+          "std": 4.317406628984581
+        },
+        "prefix_zero_high_found": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7919479166666668,
+          "std": 0.0007799294394722817
+        }
+      },
+      "prefix_alr": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 24000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 19200.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 43200.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.2,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4409.6,
+          "std": 13.245376551838758
+        },
+        "final_found_n": {
+          "mean": 4475.2,
+          "std": 13.555810562264433
+        },
+        "new_found_n": {
+          "mean": 65.6,
+          "std": 4.758150901348128
+        },
+        "initial_any_success_recall": {
+          "mean": 0.9188580954365493,
+          "std": 0.0027600284542277026
+        },
+        "final_any_success_recall": {
+          "mean": 0.9325276099187331,
+          "std": 0.0028247156829057005
+        },
+        "recall_gain": {
+          "mean": 0.01366951448218379,
+          "std": 0.0009914879977803977
+        },
+        "prefix_zero_high_total": {
+          "mean": 20.4,
+          "std": 4.317406628984581
+        },
+        "prefix_zero_high_found": {
+          "mean": 4.8,
+          "std": 1.9390719429665317
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.22749084249084248,
+          "std": 0.05706844502215719
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7502395833333333,
+          "std": 0.0033714616225343492
+        }
+      },
+      "model_base_features": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 24000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 19200.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 43200.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.2,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4409.6,
+          "std": 13.245376551838758
+        },
+        "final_found_n": {
+          "mean": 4478.0,
+          "std": 7.155417527999327
+        },
+        "new_found_n": {
+          "mean": 68.4,
+          "std": 6.406246951218787
+        },
+        "initial_any_success_recall": {
+          "mean": 0.9188580954365493,
+          "std": 0.0027600284542277026
+        },
+        "final_any_success_recall": {
+          "mean": 0.9331110648051677,
+          "std": 0.0014910226147112605
+        },
+        "recall_gain": {
+          "mean": 0.014252969368618463,
+          "std": 0.0013349128883556544
+        },
+        "prefix_zero_high_total": {
+          "mean": 20.4,
+          "std": 4.317406628984581
+        },
+        "prefix_zero_high_found": {
+          "mean": 4.6,
+          "std": 1.4966629547095764
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.2219139194139194,
+          "std": 0.039162091927130306
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7504479166666667,
+          "std": 0.0008854779390563882
+        }
+      },
+      "model_text_only": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 24000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 19200.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 43200.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.2,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4409.6,
+          "std": 13.245376551838758
+        },
+        "final_found_n": {
+          "mean": 4466.2,
+          "std": 10.979981785048645
+        },
+        "new_found_n": {
+          "mean": 56.6,
+          "std": 2.727636339397171
+        },
+        "initial_any_success_recall": {
+          "mean": 0.9188580954365493,
+          "std": 0.0027600284542277026
+        },
+        "final_any_success_recall": {
+          "mean": 0.930652219212336,
+          "std": 0.0022879728662322674
+        },
+        "recall_gain": {
+          "mean": 0.011794123775786623,
+          "std": 0.0005683759823707381
+        },
+        "prefix_zero_high_total": {
+          "mean": 20.4,
+          "std": 4.317406628984581
+        },
+        "prefix_zero_high_found": {
+          "mean": 3.6,
+          "std": 1.7435595774162693
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.18191391941391943,
+          "std": 0.10016988179809727
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7683125,
+          "std": 0.0020488288490690927
+        }
+      },
+      "model_base_plus_text_residual": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 24000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 19200.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 43200.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.2,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4409.6,
+          "std": 13.245376551838758
+        },
+        "final_found_n": {
+          "mean": 4471.4,
+          "std": 11.976643937263894
+        },
+        "new_found_n": {
+          "mean": 61.8,
+          "std": 5.192301994298868
+        },
+        "initial_any_success_recall": {
+          "mean": 0.9188580954365493,
+          "std": 0.0027600284542277026
+        },
+        "final_any_success_recall": {
+          "mean": 0.9317357782871433,
+          "std": 0.0024956540815303015
+        },
+        "recall_gain": {
+          "mean": 0.012877682850593875,
+          "std": 0.0010819549894350625
+        },
+        "prefix_zero_high_total": {
+          "mean": 20.4,
+          "std": 4.317406628984581
+        },
+        "prefix_zero_high_found": {
+          "mean": 4.0,
+          "std": 1.2649110640673518
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.1919139194139194,
+          "std": 0.034215885655151344
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.7616145833333333,
+          "std": 0.000552181595029093
+        }
+      },
+      "hybrid_hazard_text_q0.25": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 24000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 19200.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 43200.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.2,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4409.6,
+          "std": 13.245376551838758
+        },
+        "final_found_n": {
+          "mean": 4496.2,
+          "std": 16.28987415543779
+        },
+        "new_found_n": {
+          "mean": 86.6,
+          "std": 4.363484845854286
+        },
+        "initial_any_success_recall": {
+          "mean": 0.9188580954365493,
+          "std": 0.0027600284542277026
+        },
+        "final_any_success_recall": {
+          "mean": 0.9369035215669932,
+          "std": 0.003394430955498599
+        },
+        "recall_gain": {
+          "mean": 0.018045426130443847,
+          "std": 0.0009092487697133332
+        },
+        "prefix_zero_high_total": {
+          "mean": 20.4,
+          "std": 4.317406628984581
+        },
+        "prefix_zero_high_found": {
+          "mean": 12.8,
+          "std": 2.4
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.6330494505494506,
+          "std": 0.06271861897429463
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.6895625,
+          "std": 0.0032553708292775148
+        }
+      },
+      "hybrid_hazard_text_q0.5": {
+        "rows": {
+          "mean": 6000.0,
+          "std": 0.0
+        },
+        "selected_n": {
+          "mean": 1200.0,
+          "std": 0.0
+        },
+        "initial_budget": {
+          "mean": 24000.0,
+          "std": 0.0
+        },
+        "extra_budget": {
+          "mean": 19200.0,
+          "std": 0.0
+        },
+        "total_budget": {
+          "mean": 43200.0,
+          "std": 0.0
+        },
+        "extra_budget_per_row": {
+          "mean": 3.2,
+          "std": 0.0
+        },
+        "true_any_success_total": {
+          "mean": 4799.0,
+          "std": 0.0
+        },
+        "initial_found_n": {
+          "mean": 4409.6,
+          "std": 13.245376551838758
+        },
+        "final_found_n": {
+          "mean": 4546.0,
+          "std": 16.69730517179344
+        },
+        "new_found_n": {
+          "mean": 136.4,
+          "std": 3.555277766926235
+        },
+        "initial_any_success_recall": {
+          "mean": 0.9188580954365493,
+          "std": 0.0027600284542277026
+        },
+        "final_any_success_recall": {
+          "mean": 0.9472806834757239,
+          "std": 0.0034793301045621112
+        },
+        "recall_gain": {
+          "mean": 0.028422588039174822,
+          "std": 0.0007408372091948808
+        },
+        "prefix_zero_high_total": {
+          "mean": 20.4,
+          "std": 4.317406628984581
+        },
+        "prefix_zero_high_found": {
+          "mean": 14.0,
+          "std": 3.4641016151377544
+        },
+        "prefix_zero_high_recall": {
+          "mean": 0.6847893772893773,
+          "std": 0.08791226152302761
+        },
+        "selected_future_asr_mean": {
+          "mean": 0.6221875,
+          "std": 0.0030842833558939603
+        }
+      }
+    }
+  }
+}
