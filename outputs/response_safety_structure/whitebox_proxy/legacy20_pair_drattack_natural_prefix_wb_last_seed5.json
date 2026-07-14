@@ -1,0 +1,805 @@
+{
+  "说明": "探索性 H_proxy 实验；当前只覆盖 legacy 20 题 PAIR/DrAttack，不作为最终证据。",
+  "datasets": [
+    "jbb-llama-pair",
+    "jbb-llama-drattack"
+  ],
+  "state_key": "wb_last",
+  "train_questions": [
+    1,
+    9,
+    10,
+    15,
+    21,
+    30,
+    37,
+    41,
+    42,
+    45,
+    48,
+    50,
+    55,
+    56,
+    65
+  ],
+  "test_questions": [
+    70,
+    72,
+    73,
+    76,
+    78
+  ],
+  "sample_sizes": {
+    "1": {
+      "seeds": [
+        {
+          "seed": 0,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7276917718163487,
+              "mean_layer_pearson": 0.8067975467852437,
+              "last_layer_spearman": 0.662256645687757,
+              "last_layer_pearson": 0.7613213989554749,
+              "vector_cosine": 0.9817880872143687,
+              "r2_uniform_average": 0.6597361798036606
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7217900224648682,
+              "mean_layer_pearson": 0.8171664866191994,
+              "last_layer_spearman": 0.6590015880127967,
+              "last_layer_pearson": 0.7817610915313882,
+              "vector_cosine": 0.9820464568782327,
+              "r2_uniform_average": 0.6762808498809947
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": -0.0059017493514804675,
+            "mean_layer_pearson": 0.010368939833955704,
+            "last_layer_spearman": -0.00325505767496026,
+            "last_layer_pearson": 0.02043969257591327,
+            "vector_cosine": 0.00025836966386394433,
+            "r2_uniform_average": 0.016544670077334067
+          }
+        },
+        {
+          "seed": 1,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7323805278410039,
+              "mean_layer_pearson": 0.8082919742928061,
+              "last_layer_spearman": 0.6912731722997771,
+              "last_layer_pearson": 0.7685520480297489,
+              "vector_cosine": 0.9826697878818629,
+              "r2_uniform_average": 0.6627677792587727
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7316825654322332,
+              "mean_layer_pearson": 0.8209760209841814,
+              "last_layer_spearman": 0.690112164995966,
+              "last_layer_pearson": 0.790422044252126,
+              "vector_cosine": 0.982362250955663,
+              "r2_uniform_average": 0.6827619053918853
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": -0.0006979624087707359,
+            "mean_layer_pearson": 0.01268404669137535,
+            "last_layer_spearman": -0.00116100730381119,
+            "last_layer_pearson": 0.021869996222377175,
+            "vector_cosine": -0.0003075369261998917,
+            "r2_uniform_average": 0.019994126133112577
+          }
+        },
+        {
+          "seed": 2,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7358916112236693,
+              "mean_layer_pearson": 0.8109277429813742,
+              "last_layer_spearman": 0.6789686224817677,
+              "last_layer_pearson": 0.7739289839907229,
+              "vector_cosine": 0.9823653727835228,
+              "r2_uniform_average": 0.6676598443093271
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7480087714575725,
+              "mean_layer_pearson": 0.832904556401667,
+              "last_layer_spearman": 0.6995084215479621,
+              "last_layer_pearson": 0.8102089292728683,
+              "vector_cosine": 0.983317906524816,
+              "r2_uniform_average": 0.7018461574676875
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.01211716023390319,
+            "mean_layer_pearson": 0.021976813420292896,
+            "last_layer_spearman": 0.02053979906619441,
+            "last_layer_pearson": 0.0362799452821454,
+            "vector_cosine": 0.0009525337412932267,
+            "r2_uniform_average": 0.034186313158360404
+          }
+        },
+        {
+          "seed": 3,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7277182712756622,
+              "mean_layer_pearson": 0.8045677342615161,
+              "last_layer_spearman": 0.6621298395173714,
+              "last_layer_pearson": 0.756519315800095,
+              "vector_cosine": 0.9816902554087933,
+              "r2_uniform_average": 0.6585619946319424
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7389372392604452,
+              "mean_layer_pearson": 0.8188303242804277,
+              "last_layer_spearman": 0.6834273256900182,
+              "last_layer_pearson": 0.7820733174286111,
+              "vector_cosine": 0.982386231936689,
+              "r2_uniform_average": 0.6806512143383886
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.011218967984782946,
+            "mean_layer_pearson": 0.014262590018911614,
+            "last_layer_spearman": 0.021297486172646818,
+            "last_layer_pearson": 0.025554001628516065,
+            "vector_cosine": 0.0006959765278956587,
+            "r2_uniform_average": 0.022089219706446173
+          }
+        },
+        {
+          "seed": 4,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7348566745603808,
+              "mean_layer_pearson": 0.8108108476689125,
+              "last_layer_spearman": 0.6973015410696353,
+              "last_layer_pearson": 0.7689952860506422,
+              "vector_cosine": 0.9828314584579091,
+              "r2_uniform_average": 0.6669227706013207
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7378513019234243,
+              "mean_layer_pearson": 0.8224069610457794,
+              "last_layer_spearman": 0.7039820505718476,
+              "last_layer_pearson": 0.7882877218482682,
+              "vector_cosine": 0.9828575595015393,
+              "r2_uniform_average": 0.6852572512642647
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.002994627363043456,
+            "mean_layer_pearson": 0.011596113376866835,
+            "last_layer_spearman": 0.006680509502212328,
+            "last_layer_pearson": 0.019292435797626073,
+            "vector_cosine": 2.610104363021115e-05,
+            "r2_uniform_average": 0.018334480662944075
+          }
+        }
+      ],
+      "summary": {
+        "count_q1": {
+          "last_layer_pearson": {
+            "mean": 0.7658634065653367,
+            "std": 0.006892620448651036
+          },
+          "last_layer_spearman": {
+            "mean": 0.6783859642112617,
+            "std": 0.016191318483665156
+          },
+          "layer_n": {
+            "mean": 33.0,
+            "std": 0.0
+          },
+          "mean_layer_pearson": {
+            "mean": 0.8082791691979706,
+            "std": 0.002710832768645418
+          },
+          "mean_layer_spearman": {
+            "mean": 0.731707771343413,
+            "std": 0.0038703059281686098
+          },
+          "r2_uniform_average": {
+            "mean": 0.6631297137210047,
+            "std": 0.004105499066017017
+          },
+          "vector_cosine": {
+            "mean": 0.9822689923492913,
+            "std": 0.000512957251013065
+          }
+        },
+        "count_q1_response": {
+          "last_layer_pearson": {
+            "mean": 0.7905506208666523,
+            "std": 0.011626551862259091
+          },
+          "last_layer_spearman": {
+            "mean": 0.687206310163718,
+            "std": 0.017684728428226798
+          },
+          "layer_n": {
+            "mean": 33.0,
+            "std": 0.0
+          },
+          "mean_layer_pearson": {
+            "mean": 0.8224568698662509,
+            "std": 0.0061743328795696596
+          },
+          "mean_layer_spearman": {
+            "mean": 0.7356539801077087,
+            "std": 0.009698328969100473
+          },
+          "r2_uniform_average": {
+            "mean": 0.6853594756686441,
+            "std": 0.00978720681375199
+          },
+          "vector_cosine": {
+            "mean": 0.982594081159388,
+            "std": 0.0004975396698923709
+          }
+        },
+        "delta_response_minus_base": {
+          "last_layer_pearson": {
+            "mean": 0.024687214301315596,
+            "std": 0.006896095371302866
+          },
+          "last_layer_spearman": {
+            "mean": 0.008820345952456421,
+            "std": 0.011651676864132272
+          },
+          "mean_layer_pearson": {
+            "mean": 0.01417770066828048,
+            "std": 0.004588998261043813
+          },
+          "mean_layer_spearman": {
+            "mean": 0.003946208764295678,
+            "std": 0.007731649026823049
+          },
+          "r2_uniform_average": {
+            "mean": 0.02222976194763946,
+            "std": 0.0069905368594275
+          },
+          "vector_cosine": {
+            "mean": 0.0003250888100966298,
+            "std": 0.0005062867991795229
+          }
+        }
+      }
+    },
+    "2": {
+      "seeds": [
+        {
+          "seed": 0,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7379783552916996,
+              "mean_layer_pearson": 0.8211114874824849,
+              "last_layer_spearman": 0.6868419852630284,
+              "last_layer_pearson": 0.7949815345842991,
+              "vector_cosine": 0.9828003603803681,
+              "r2_uniform_average": 0.681152726062277
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7420238721974914,
+              "mean_layer_pearson": 0.8363682631044789,
+              "last_layer_spearman": 0.6989455588190308,
+              "last_layer_pearson": 0.8195949996963584,
+              "vector_cosine": 0.9832416436608991,
+              "r2_uniform_average": 0.7060271914105104
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.004045516905791802,
+            "mean_layer_pearson": 0.015256775621994012,
+            "last_layer_spearman": 0.012103573556002334,
+            "last_layer_pearson": 0.024613465112059307,
+            "vector_cosine": 0.00044128328053094634,
+            "r2_uniform_average": 0.024874465348233454
+          }
+        },
+        {
+          "seed": 1,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7314613513727611,
+              "mean_layer_pearson": 0.8151305599168842,
+              "last_layer_spearman": 0.6834322494944207,
+              "last_layer_pearson": 0.7853649492922465,
+              "vector_cosine": 0.9830160980919983,
+              "r2_uniform_average": 0.6723886928446617
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.737263233763879,
+              "mean_layer_pearson": 0.8310362060883585,
+              "last_layer_spearman": 0.6988648608252435,
+              "last_layer_pearson": 0.8103888181189896,
+              "vector_cosine": 0.9831179247759733,
+              "r2_uniform_average": 0.6980157236319735
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.005801882391117896,
+            "mean_layer_pearson": 0.015905646171474275,
+            "last_layer_spearman": 0.015432611330822743,
+            "last_layer_pearson": 0.025023868826743012,
+            "vector_cosine": 0.00010182668397495931,
+            "r2_uniform_average": 0.025627030787311766
+          }
+        },
+        {
+          "seed": 2,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7426935674488805,
+              "mean_layer_pearson": 0.8254409865461056,
+              "last_layer_spearman": 0.6808264145255891,
+              "last_layer_pearson": 0.7999170449138969,
+              "vector_cosine": 0.9824809973460203,
+              "r2_uniform_average": 0.6907116463201133
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7585419073881239,
+              "mean_layer_pearson": 0.8468304412425613,
+              "last_layer_spearman": 0.7126348981510909,
+              "last_layer_pearson": 0.8339759017313613,
+              "vector_cosine": 0.9835849391822995,
+              "r2_uniform_average": 0.7248579866565598
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.015848339939243394,
+            "mean_layer_pearson": 0.0213894546964557,
+            "last_layer_spearman": 0.031808483625501816,
+            "last_layer_pearson": 0.034058856817464345,
+            "vector_cosine": 0.0011039418362791542,
+            "r2_uniform_average": 0.03414634033644648
+          }
+        },
+        {
+          "seed": 3,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7471674356753477,
+              "mean_layer_pearson": 0.8200801241252939,
+              "last_layer_spearman": 0.7007184132132478,
+              "last_layer_pearson": 0.7876408360612361,
+              "vector_cosine": 0.9832327459102885,
+              "r2_uniform_average": 0.6819183320382067
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7545570882911865,
+              "mean_layer_pearson": 0.834412967719819,
+              "last_layer_spearman": 0.7227610221654812,
+              "last_layer_pearson": 0.8118078316749997,
+              "vector_cosine": 0.9835391095684467,
+              "r2_uniform_average": 0.7048763008937208
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.007389652615838793,
+            "mean_layer_pearson": 0.014332843594525135,
+            "last_layer_spearman": 0.022042608952233422,
+            "last_layer_pearson": 0.024166995613763564,
+            "vector_cosine": 0.0003063636581581708,
+            "r2_uniform_average": 0.022957968855514044
+          }
+        },
+        {
+          "seed": 4,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7404664451742279,
+              "mean_layer_pearson": 0.8191916355935748,
+              "last_layer_spearman": 0.6988974348618241,
+              "last_layer_pearson": 0.787785377906972,
+              "vector_cosine": 0.9837063697981218,
+              "r2_uniform_average": 0.6788710190447649
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7499059199636537,
+              "mean_layer_pearson": 0.8318891752411477,
+              "last_layer_spearman": 0.7194836139801034,
+              "last_layer_pearson": 0.8079567561752709,
+              "vector_cosine": 0.984109039526224,
+              "r2_uniform_average": 0.6994986570381733
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.009439474789425861,
+            "mean_layer_pearson": 0.01269753964757292,
+            "last_layer_spearman": 0.020586179118279313,
+            "last_layer_pearson": 0.020171378268298845,
+            "vector_cosine": 0.0004026697281022118,
+            "r2_uniform_average": 0.020627637993408388
+          }
+        }
+      ],
+      "summary": {
+        "count_q1": {
+          "last_layer_pearson": {
+            "mean": 0.7911379485517301,
+            "std": 0.006095956296497511
+          },
+          "last_layer_spearman": {
+            "mean": 0.690143299471622,
+            "std": 0.009099575944464125
+          },
+          "layer_n": {
+            "mean": 33.0,
+            "std": 0.0
+          },
+          "mean_layer_pearson": {
+            "mean": 0.8201909587328687,
+            "std": 0.003709067687519775
+          },
+          "mean_layer_spearman": {
+            "mean": 0.7399534309925834,
+            "std": 0.005827300730318117
+          },
+          "r2_uniform_average": {
+            "mean": 0.6810084832620047,
+            "std": 0.006592980058974241
+          },
+          "vector_cosine": {
+            "mean": 0.9830473143053593,
+            "std": 0.0004613606545120291
+          }
+        },
+        "count_q1_response": {
+          "last_layer_pearson": {
+            "mean": 0.816744861479396,
+            "std": 0.010571617441833272
+          },
+          "last_layer_spearman": {
+            "mean": 0.7105379907881899,
+            "std": 0.011230206286194817
+          },
+          "layer_n": {
+            "mean": 33.0,
+            "std": 0.0
+          },
+          "mean_layer_pearson": {
+            "mean": 0.8361074106792732,
+            "std": 0.0063528181070719265
+          },
+          "mean_layer_spearman": {
+            "mean": 0.748458404320867,
+            "std": 0.008770708769251855
+          },
+          "r2_uniform_average": {
+            "mean": 0.7066551719261875,
+            "std": 0.010732625237532092
+          },
+          "vector_cosine": {
+            "mean": 0.9835185313427685,
+            "std": 0.0003842804278718932
+          }
+        },
+        "delta_response_minus_base": {
+          "last_layer_pearson": {
+            "mean": 0.025606912927665815,
+            "std": 0.0051083420354923375
+          },
+          "last_layer_spearman": {
+            "mean": 0.020394691316567924,
+            "std": 0.007523161344942017
+          },
+          "mean_layer_pearson": {
+            "mean": 0.015916451946404408,
+            "std": 0.0032885506123343637
+          },
+          "mean_layer_spearman": {
+            "mean": 0.008504973328283549,
+            "std": 0.004561680574474041
+          },
+          "r2_uniform_average": {
+            "mean": 0.025646688664182828,
+            "std": 0.0051298361980906
+          },
+          "vector_cosine": {
+            "mean": 0.0004712170374090885,
+            "std": 0.0003773464271660244
+          }
+        }
+      }
+    },
+    "4": {
+      "seeds": [
+        {
+          "seed": 0,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7412608554434708,
+              "mean_layer_pearson": 0.8205140507103873,
+              "last_layer_spearman": 0.6914446464923427,
+              "last_layer_pearson": 0.8016618483025485,
+              "vector_cosine": 0.9830767780426956,
+              "r2_uniform_average": 0.6751850466001079
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7460636065984864,
+              "mean_layer_pearson": 0.8346077686561768,
+              "last_layer_spearman": 0.7066958994994125,
+              "last_layer_pearson": 0.8221277812968348,
+              "vector_cosine": 0.9833599533741908,
+              "r2_uniform_average": 0.6999265428844773
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.0048027511550156055,
+            "mean_layer_pearson": 0.014093717945789508,
+            "last_layer_spearman": 0.015251253007069754,
+            "last_layer_pearson": 0.02046593299428634,
+            "vector_cosine": 0.00028317533149524454,
+            "r2_uniform_average": 0.02474149628436939
+          }
+        },
+        {
+          "seed": 1,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7397524903120395,
+              "mean_layer_pearson": 0.8202236301160302,
+              "last_layer_spearman": 0.6898293846784036,
+              "last_layer_pearson": 0.8049327527942204,
+              "vector_cosine": 0.9812549539641254,
+              "r2_uniform_average": 0.6760380003858373
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7530170408340825,
+              "mean_layer_pearson": 0.83942081312785,
+              "last_layer_spearman": 0.7185158128932627,
+              "last_layer_pearson": 0.8311405911768673,
+              "vector_cosine": 0.9817258166809076,
+              "r2_uniform_average": 0.7104282101038389
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.013264550522043006,
+            "mean_layer_pearson": 0.01919718301181983,
+            "last_layer_spearman": 0.028686428214859117,
+            "last_layer_pearson": 0.026207838382646953,
+            "vector_cosine": 0.0004708627167822055,
+            "r2_uniform_average": 0.03439020971800166
+          }
+        },
+        {
+          "seed": 2,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7486749409618718,
+              "mean_layer_pearson": 0.832100344256339,
+              "last_layer_spearman": 0.6804870061454518,
+              "last_layer_pearson": 0.8105118954222296,
+              "vector_cosine": 0.9824809148693837,
+              "r2_uniform_average": 0.6977489051724313
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7662032330953554,
+              "mean_layer_pearson": 0.8513601629462743,
+              "last_layer_spearman": 0.7163852023514318,
+              "last_layer_pearson": 0.8390298269722758,
+              "vector_cosine": 0.9837357324413106,
+              "r2_uniform_average": 0.7294934254756583
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.017528292133483614,
+            "mean_layer_pearson": 0.019259818689935204,
+            "last_layer_spearman": 0.035898196205980004,
+            "last_layer_pearson": 0.028517931550046227,
+            "vector_cosine": 0.001254817571926914,
+            "r2_uniform_average": 0.03174452030322705
+          }
+        },
+        {
+          "seed": 3,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7414269624677541,
+              "mean_layer_pearson": 0.8230217102659247,
+              "last_layer_spearman": 0.6889809156586305,
+              "last_layer_pearson": 0.7983932241482435,
+              "vector_cosine": 0.9831755752096026,
+              "r2_uniform_average": 0.6824421760083464
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7543793847258348,
+              "mean_layer_pearson": 0.8407319015794361,
+              "last_layer_spearman": 0.719698490062314,
+              "last_layer_pearson": 0.8256843247703863,
+              "vector_cosine": 0.9837684157827673,
+              "r2_uniform_average": 0.7129462587045576
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.012952422258080687,
+            "mean_layer_pearson": 0.01771019131351137,
+            "last_layer_spearman": 0.0307175744036835,
+            "last_layer_pearson": 0.027291100622142794,
+            "vector_cosine": 0.0005928405731646658,
+            "r2_uniform_average": 0.030504082696211188
+          }
+        },
+        {
+          "seed": 4,
+          "train_n": 3000,
+          "test_n": 1000,
+          "models": {
+            "count_q1": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.7441471798719269,
+              "mean_layer_pearson": 0.8227646670307345,
+              "last_layer_spearman": 0.7037524363139908,
+              "last_layer_pearson": 0.7997362478919797,
+              "vector_cosine": 0.9835776019500506,
+              "r2_uniform_average": 0.6810426736018174
+            },
+            "count_q1_response": {
+              "layer_n": 33.0,
+              "mean_layer_spearman": 0.756295961434883,
+              "mean_layer_pearson": 0.8397947616765404,
+              "last_layer_spearman": 0.7229982717580695,
+              "last_layer_pearson": 0.8237072934380555,
+              "vector_cosine": 0.9841564381078636,
+              "r2_uniform_average": 0.7103264870724717
+            }
+          },
+          "delta_response_minus_base": {
+            "mean_layer_spearman": 0.012148781562956068,
+            "mean_layer_pearson": 0.01703009464580596,
+            "last_layer_spearman": 0.019245835444078763,
+            "last_layer_pearson": 0.023971045546075764,
+            "vector_cosine": 0.0005788361578129564,
+            "r2_uniform_average": 0.02928381347065434
+          }
+        }
+      ],
+      "summary": {
+        "count_q1": {
+          "last_layer_pearson": {
+            "mean": 0.8030471937118444,
+            "std": 0.004842986720563499
+          },
+          "last_layer_spearman": {
+            "mean": 0.6908988778577638,
+            "std": 0.008347773589433583
+          },
+          "layer_n": {
+            "mean": 33.0,
+            "std": 0.0
+          },
+          "mean_layer_pearson": {
+            "mean": 0.8237248804758831,
+            "std": 0.0048511089868067975
+          },
+          "mean_layer_spearman": {
+            "mean": 0.7430524858114127,
+            "std": 0.0035196801281168876
+          },
+          "r2_uniform_average": {
+            "mean": 0.682491360353708,
+            "std": 0.0090818756576112
+          },
+          "vector_cosine": {
+            "mean": 0.9827131648071716,
+            "std": 0.000904655795826977
+          }
+        },
+        "count_q1_response": {
+          "last_layer_pearson": {
+            "mean": 0.8283379635308841,
+            "std": 0.006877898173339955
+          },
+          "last_layer_spearman": {
+            "mean": 0.7168587353128981,
+            "std": 0.006164646910878728
+          },
+          "layer_n": {
+            "mean": 33.0,
+            "std": 0.0
+          },
+          "mean_layer_pearson": {
+            "mean": 0.8411830815972554,
+            "std": 0.006165312458153621
+          },
+          "mean_layer_spearman": {
+            "mean": 0.7551918453377284,
+            "std": 0.00726609148821377
+          },
+          "r2_uniform_average": {
+            "mean": 0.7126241848482007,
+            "std": 0.010677158359102263
+          },
+          "vector_cosine": {
+            "mean": 0.9833492712774079,
+            "std": 0.0009502988442925992
+          }
+        },
+        "delta_response_minus_base": {
+          "last_layer_pearson": {
+            "mean": 0.025290769819039615,
+            "std": 0.0031732331088504613
+          },
+          "last_layer_spearman": {
+            "mean": 0.02595985745513423,
+            "std": 0.008494011663915144
+          },
+          "mean_layer_pearson": {
+            "mean": 0.017458201121372374,
+            "std": 0.0021116584198678278
+          },
+          "mean_layer_spearman": {
+            "mean": 0.012139359526315795,
+            "std": 0.004604172878917928
+          },
+          "r2_uniform_average": {
+            "mean": 0.030132824494492727,
+            "std": 0.003558369168645169
+          },
+          "vector_cosine": {
+            "mean": 0.0006361064702363972,
+            "std": 0.0003673626071874863
+          }
+        }
+      }
+    }
+  }
+}

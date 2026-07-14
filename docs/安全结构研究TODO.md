@@ -15,6 +15,9 @@
 - [ ] 对自然前缀增量实验补 topic-matched 或同题近邻控制，区分回答姿态与主题复述。
 - [ ] 将自然前缀框架的 target 从 future ASR 改为白盒 `H_input/H_start`，比较 `count+q1` 与 `count+q1+response` 对内部状态坐标的条件增量。
 - [ ] 定义并冻结白盒 H：至少区分 harmfulness、refusal/compliance、generation trajectory；禁止继续用 response-only 重新编码代替生成轨迹。
+- [x] 完成 legacy 20 题 H_proxy 管线 smoke：`wb_last/wb_mean` 上 response 只有小幅正增量；该结果不作为机制证据。
+- [ ] 补全 0-79 问题的 `H_input/H_start` 缓存，至少覆盖 JBB Llama 的 OFA、PAIR、DrAttack；预计 GPU 提取耗时需单独评估。
+- [ ] 为 H 实验加入 random80 全局重随机、条件置换和随机方向 baseline；重要结论必须跨 split 复验。
 
 ## 最高优先级
 
