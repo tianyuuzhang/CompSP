@@ -11,8 +11,10 @@
 - [ ] 暂停新的 wrong-agreement/layer-sign 扫描、长时 pseudo-direction LoRA、当前 TF-IDF SVD 最佳分量叙事和 ALR 语义结构叙事。
 - [ ] 所有新增实验必须先给 ETA，并在结果中报告问题数、问题宏平均和独立性限制。
 - [x] 对可能影响方向的重要实验做 80 问题重抽 20 测试题级别的全局重随机复验；自然前缀增量实验已完成 split seed `20260714/20260715`。
-- [ ] 对自然前缀增量实验补 conditional permutation：在 `count+q1` 条件下置换 response，报告 delta 的置换 p 值。
+- [x] 对自然前缀增量实验补 conditional permutation：在 `count+q1` 条件下置换 response，报告 delta 的置换 p 值；random80 split `20260714/20260715` 已完成。
 - [ ] 对自然前缀增量实验补 topic-matched 或同题近邻控制，区分回答姿态与主题复述。
+- [ ] 将自然前缀框架的 target 从 future ASR 改为白盒 `H_input/H_start`，比较 `count+q1` 与 `count+q1+response` 对内部状态坐标的条件增量。
+- [ ] 定义并冻结白盒 H：至少区分 harmfulness、refusal/compliance、generation trajectory；禁止继续用 response-only 重新编码代替生成轨迹。
 
 ## 最高优先级
 
@@ -185,3 +187,17 @@
 - [ ] 对 DrAttack 的成分受控 ASR 弱结果做诊断：检查标签方差、样本数、回答归属打乱、攻击模板和问题分布。
 - [ ] 对 OFA/PAIR 的成分受控 ASR 增量做高权重词项和同题内主题控制审计，避免把固定攻击模板残片误读为安全结构。
 - [ ] 其他目标模型复验成分受控 ASR，必须使用目标模型自己的回答与标签。
+
+## 2026-07-14 科学主线：黑盒观测内部安全结构
+
+完整框架见 `docs/黑盒观测内部安全结构研究框架_2026-07-14.md`。
+
+- [ ] 完成自然前缀 conditional permutation 全量确认；完成后冻结 future-ASR predictor 扩展，将其保留为应用验证。
+- [ ] 独立定义并预注册 `H_input`、`H_start` 和 `H_traj` 的多维白盒安全坐标，区分 harmfulness、refusal/compliance 与生成执行轨迹。
+- [ ] 将自然前缀嵌套增量框架的目标从 `future_asr` 改为白盒 H：比较 `q1+visible controls` 与 `q1+visible controls+response`。
+- [ ] 对白盒 H 的 response 条件增量做问题宏平均、cluster bootstrap、同问题/同组成 conditional permutation 和分攻击报告。
+- [ ] 研究黑盒表征与白盒安全子空间的多维几何对应，加入随机同维子空间、PCA 和跨攻击/跨主题验证。
+- [ ] 在安全审计环境中开展随机化白盒安全干预，检验黑盒输出是否能恢复内部坐标变化，并加入随机无关方向负对照。
+- [ ] 使用真实生成 hidden states 或 teacher-forced `q1+assistant response` 研究 `H_traj`；停止把 response-only 重新编码解释为生成轨迹。
+- [ ] 只有条件解码与随机化干预成立后，才开展黑盒内部坐标的安全审计利用；单纯 future ASR 提升不称为结构利用。
+- [ ] DrAttack 作为关键反例保留：若效应只在 OFA/PAIR 存在，结论限定为攻击特定映射，不称通用安全结构。
